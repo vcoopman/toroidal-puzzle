@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Juego">
+        <menu>
+            <item
+                android:id="@+id/nav_home"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="Home" />
+            <item
+                android:id="@+id/nav_grabar_partida"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Guardar Partida" />
+            <group
+                android:checkableBehavior="single"
+                android:id="@+id/nav_partidas">
+                <item
+                    android:id="@+id/saved_games"
+                    android:icon="@drawable/ic_menu_camera"
+                    android:title="Partidas Guardadas"/>
+            </group>
+        </menu>
+    </item>
+    <item android:title="Ayuda">
+        <menu>
+            <group
+                android:checkableBehavior="single"
+                android:id="@+id/menu_ayuda">
+                <item
+                    android:id="@+id/nav_help"
+                    android:icon="@drawable/ic_menu_camera"
+                    android:title="Ayuda" />
+                <item
+                    android:id="@+id/nav_credito"
+                    android:icon="@drawable/ic_menu_gallery"
+                    android:title="Créditos" />
+            </group>
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,31 @@
+Puzzle toroidal _ Lista por Hacer.
+
+1. Logica movimientos
+	- Como se van a mover los cuadros etc etc ...
+	+ contar cantidad de movimientos
+	+ ver cuando se gana
+
+2. Layout basico Puzzle 
+	- Layout basico de como seria el juego, mas que nada para probar la logica en conjunto al layout.
+	- Buscar una cinta deslizante o algo asi, que pueda parecer que se mueve.
+
+3. Guardar juego
+	- Implementar salvar la partida para continuar mas tarde.
+
+4. Navigation Drawer
+	- creo que es un menu que sale del costado. (fragmentos)
+	+ pantalla instrucciones
+	+ pantalla creditos
+
+5. Mejora de layouts, como se describen en la tarea, vista vertical y horizontal. Dejarlo bonito.
+	+ boton rotulado
+
+6. Implementar boton "Ver imagen original". (fragmentos)
+
+7. Agregar el shuffle a las imagenes.
+
+8. Incluir mas opciones para las imagenes del puzzle .
+	- mas imagenes por defecto, imagenes de galeria y utilizando la camara.
+	- ojo: conservar el aspecto 1:1. 
+
+9. Extras y arreglos.

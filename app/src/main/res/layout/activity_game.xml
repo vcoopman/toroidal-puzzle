@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorUIFloralWhite"
+    tools:context="com.curso.toroidal_puzzle.GameActivity">
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro6"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.348"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.468"
+        android:background="@color/colorUI3PrincetonOrange"
+        app:nro="6" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro8"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro7"
+        app:layout_constraintStart_toEndOf="@+id/cuadro7"
+        app:layout_constraintTop_toTopOf="@+id/cuadro7"
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@color/colorUI3PrincetonOrange"
+        app:nro="8" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro11"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro10"
+        app:layout_constraintStart_toEndOf="@+id/cuadro10"
+        app:layout_constraintTop_toTopOf="@+id/cuadro10"
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@color/colorUI3PrincetonOrange"
+        app:nro="11" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro12"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro11"
+        app:layout_constraintStart_toEndOf="@+id/cuadro11"
+        app:layout_constraintTop_toTopOf="@+id/cuadro11"
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@color/colorUI3Icterine"
+        app:nro="12" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro5"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro6"
+        app:layout_constraintEnd_toStartOf="@+id/cuadro6"
+        app:layout_constraintTop_toTopOf="@+id/cuadro6"
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@color/colorUI3Icterine"
+        app:nro="5" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro9"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro10"
+        app:layout_constraintEnd_toStartOf="@+id/cuadro10"
+        app:layout_constraintTop_toTopOf="@+id/cuadro10"
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@color/colorUI3PrincetonOrange"
+        app:nro="9" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro4"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toTopOf="@+id/cuadro8"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro8"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cuadro8"
+        android:background="@color/colorUI3Icterine"
+        app:nro="4" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro13"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro9"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cuadro9"
+        app:layout_constraintTop_toBottomOf="@+id/cuadro9"
+        android:background="@color/colorUI3Icterine"
+        app:nro="13" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro2"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="191dp"
+        app:layout_constraintBottom_toTopOf="@+id/cuadro6"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro6"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cuadro6"
+        android:background="@color/colorUI3Icterine"
+        app:nro="2" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro7"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro6"
+        app:layout_constraintStart_toEndOf="@+id/cuadro6"
+        app:layout_constraintTop_toTopOf="@+id/cuadro6"
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@color/colorUI3Icterine"
+        app:nro="7" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro1"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toTopOf="@+id/cuadro5"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cuadro5"
+        android:background="@color/colorUI3PrincetonOrange"
+        app:nro="1" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro15"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginEnd="221dp"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro11"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cuadro11"
+        app:layout_constraintTop_toBottomOf="@+id/cuadro11"
+        android:background="@color/colorUI3Icterine"
+        app:nro="15" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro16"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro12"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cuadro12"
+        app:layout_constraintTop_toBottomOf="@+id/cuadro12"
+        android:background="@color/colorUI3PrincetonOrange"
+        app:nro="16" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro3"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toTopOf="@+id/cuadro7"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro7"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cuadro7"
+        android:background="@color/colorUI3PrincetonOrange"
+        app:nro="3" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro10"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro6"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cuadro6"
+        app:layout_constraintTop_toBottomOf="@+id/cuadro6"
+        android:background="@color/colorUI3Icterine"
+        app:nro="10" />
+
+    <com.curso.toroidal_puzzle.views.CuadroImageView
+        android:id="@+id/cuadro14"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro10"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cuadro10"
+        app:layout_constraintTop_toBottomOf="@+id/cuadro10"
+        android:background="@color/colorUI3PrincetonOrange"
+        app:nro="14" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

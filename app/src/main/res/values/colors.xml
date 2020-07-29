@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorBackgroundText">#FF9800</color>
+    <color name="colorBackgroundImage">#FFE57F</color>
+    <color name="colorTextoAmarillo">#FDD835</color>
+    <color name="colorCasilla">#17C3B2</color>
+    <color name="colorCasillaDarks">#227C9D</color>
+    <color name="colorUILightSeaGreen">#17C3B2</color>
+    <color name="colorUICGBlue">#227C9D</color>
+    <color name="colorUIMaximumYellowRed">#FFCB77</color>
+    <color name="colorUIFloralWhite">#FEF9EF</color>
+    <color name="colorUILightCoral">#FEF9EF</color>
+    <color name="colorUI2Coral">#FF8552</color>
+    <color name="colorUI2DarkLava">#504136</color>
+    <color name="colorUI3Icterine">#F7F052</color>
+    <color name="colorUI3PrincetonOrange">#F28123</color>
+    <color name="colorUI3Sinopia">#D34E24</color>
+    <color name="colorUI3PullmanBrown">#563F1B</color>
+    <color name="colorUI3MyrtleGreen">#38726C</color>
+</resources>
