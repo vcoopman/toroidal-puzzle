@@ -1,13 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorUI4VerdeMenosMenosOscuro"
     tools:context="com.curso.toroidal_puzzle.ui.help.HelpFragment">
 
-    <TextView
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/help_scrollview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="ayudaaa" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fillViewport="true">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingBottom="?attr/actionBarSize"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_vertical"
+                android:text="Ayuda"
+                android:textColor="@color/colorUI3Icterine"
+                android:textSize="48sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Instrucciones"
+                android:theme="@style/TextViewTituloCreditos" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/instrucciones"
+                android:theme="@style/TextViewParrafos" />
+
+            <include
+                android:id="@+id/tablero_help"
+                layout="@layout/imagen_tablero_help" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
 
 </FrameLayout>

@@ -56,4 +56,15 @@
         <item name="fontFamily">@font/tillana</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="TextViewParrafos" parent="TextStyle">
+        <item name="android:textColor">@color/colorUILightCoral</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:justificationMode">inter_word</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:paddingLeft">40dp</item>
+        <item name="android:paddingRight">40dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
 </resources>

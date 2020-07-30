@@ -16,4 +16,5 @@
 
     <string name="home_second">Home Second</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="instrucciones">"Este puzzle consiste en un rectángulo de 4x4 donde hay 16 bloques, numerados del 1 al 16. A diferencia de un puzzle tradicional, no se incluye un bloque en blanco.\nLa forma de ordernar la imagen es deslizando los bloques de manera horizontal o vertical. Cuando un bloque se mueve fuera del tablero este reaparece al otro extremo de la fila o columna"</string>
 </resources>
