@@ -9,49 +9,35 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorUI4VerdeMenosMenosOscuro"
         tools:context=".CreditosActivity">
 
-        <include layout="@layout/background" />
-
-        <ImageView
-            android:id="@+id/subtit_autores"
-            android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:src="@drawable/titulo"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.137" />
-
+<!--        <include layout="@layout/background" />-->
         <TextView
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-medium"
             android:gravity="center_vertical"
+            android:textColor="@color/colorUI3Icterine"
             android:text="Créditos"
             android:textSize="48sp"
-            app:layout_constraintBottom_toBottomOf="@+id/subtit_autores"
-            app:layout_constraintEnd_toEndOf="@+id/subtit_autores"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="@+id/subtit_autores"
-            app:layout_constraintTop_toTopOf="@+id/subtit_autores"
-            app:layout_constraintVertical_bias="0.0" />
-
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.115" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/credito_felipe"
+            android:id="@+id/credito_leo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="76dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/credito_leo"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/credito_leo"
-            app:layout_constraintTop_toBottomOf="@+id/credito_leo">
+            app:layout_constraintEnd_toEndOf="@+id/textView5"
+            app:layout_constraintHorizontal_bias="0.625"
+            app:layout_constraintStart_toStartOf="@+id/textView5"
+            app:layout_constraintTop_toBottomOf="@+id/textView5">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="70dp"
@@ -61,11 +47,11 @@
                 app:cardElevation="0dp">
 
                 <ImageView
-                    android:id="@+id/foto_felipe"
+                    android:id="@+id/foto_leo"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/felipe"
+                    android:src="@drawable/leo"
                     tools:ignore="ContentDescription" />
             </androidx.cardview.widget.CardView>
 
@@ -77,24 +63,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Felipe Cerda"
+                    android:text="Leo Aravena"
                     android:theme="@style/TextViewTituloCreditos" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="github.com/felipecer"
+                    android:text="github.com/ldaravena"
                     android:theme="@style/TextViewSubTituloCreditos" />
             </androidx.appcompat.widget.LinearLayoutCompat>
-
-
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/credito_vicente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="60dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="@+id/credito_felipe"
@@ -138,16 +122,16 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/credito_leo"
+            android:id="@+id/credito_felipe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="60dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/textView5"
-            app:layout_constraintHorizontal_bias="0.807"
-            app:layout_constraintStart_toStartOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textView5">
+            app:layout_constraintEnd_toEndOf="@+id/credito_leo"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/credito_leo"
+            app:layout_constraintTop_toBottomOf="@+id/credito_leo">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="70dp"
@@ -157,11 +141,11 @@
                 app:cardElevation="0dp">
 
                 <ImageView
-                    android:id="@+id/foto_leo"
+                    android:id="@+id/foto_felipe"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/leo"
+                    android:src="@drawable/felipe"
                     tools:ignore="ContentDescription" />
             </androidx.cardview.widget.CardView>
 
@@ -173,15 +157,17 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Leo Aravena"
+                    android:text="Felipe Cerda"
                     android:theme="@style/TextViewTituloCreditos" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="github.com/ldaravena"
+                    android:text="github.com/felipecer"
                     android:theme="@style/TextViewSubTituloCreditos" />
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
