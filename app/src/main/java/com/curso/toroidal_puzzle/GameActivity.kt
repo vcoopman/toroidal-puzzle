@@ -1,12 +1,16 @@
 package com.curso.toroidal_puzzle
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.widget.ImageView
 import android.widget.Toast
-import com.curso.toroidal_puzzle.views.CuadroImageView
+import androidx.core.graphics.drawable.toDrawable
 import kotlinx.android.synthetic.main.activity_game.*
 
 class GameActivity : AppCompatActivity() {
@@ -57,22 +61,35 @@ class GameActivity : AppCompatActivity() {
         val f15 = findViewById<ImageView>(R.id.cuadro15)
         val f16 = findViewById<ImageView>(R.id.cuadro16)
 
-        posicionesCuadros.set(f1, Cuadro(R.drawable.imagen1,f1))
-        posicionesCuadros.set(f2, Cuadro(R.drawable.imagen2,f2))
-        posicionesCuadros.set(f3, Cuadro(R.drawable.imagen3,f3))
-        posicionesCuadros.set(f4, Cuadro(R.drawable.imagen4,f4))
-        posicionesCuadros.set(f5, Cuadro(R.drawable.imagen5,f5))
-        posicionesCuadros.set(f6, Cuadro(R.drawable.imagen6,f6))
-        posicionesCuadros.set(f7, Cuadro(R.drawable.imagen7,f7))
-        posicionesCuadros.set(f8, Cuadro(R.drawable.imagen8,f8))
-        posicionesCuadros.set(f9, Cuadro(R.drawable.imagen9,f9))
-        posicionesCuadros.set(f10, Cuadro(R.drawable.imagen10,f10))
-        posicionesCuadros.set(f11, Cuadro(R.drawable.imagen11,f11))
-        posicionesCuadros.set(f12, Cuadro(R.drawable.imagen12,f12))
-        posicionesCuadros.set(f13, Cuadro(R.drawable.imagen13,f13))
-        posicionesCuadros.set(f14, Cuadro(R.drawable.imagen14,f14))
-        posicionesCuadros.set(f15, Cuadro(R.drawable.imagen15,f15))
-        posicionesCuadros.set(f16, Cuadro(R.drawable.imagen16,f16))
+        //Clase para crear las imágenes de cada cuadro
+        val crearCuadros = CrearCuadros()
+
+        //Convierte la imagen que está en Resources en Bitmap
+        var bitmap = BitmapFactory.decodeResource(resources,R.drawable.vicente)
+
+        //Escala la imagen a 400x400px
+        bitmap = Bitmap.createScaledBitmap(bitmap, 400, 400, false)
+
+        //Obtiene la lista de 16 cuadros de 100x100px cada uno
+        val listaCuadros = crearCuadros.crearCuadros(bitmap)
+
+        //Coloca los cuadros en el mapa
+        posicionesCuadros.set(f1, Cuadro(listaCuadros[0], f1))
+        posicionesCuadros.set(f2, Cuadro(listaCuadros[1],f2))
+        posicionesCuadros.set(f3, Cuadro(listaCuadros[2],f3))
+        posicionesCuadros.set(f4, Cuadro(listaCuadros[3],f4))
+        posicionesCuadros.set(f5, Cuadro(listaCuadros[4],f5))
+        posicionesCuadros.set(f6, Cuadro(listaCuadros[5],f6))
+        posicionesCuadros.set(f7, Cuadro(listaCuadros[6],f7))
+        posicionesCuadros.set(f8, Cuadro(listaCuadros[7],f8))
+        posicionesCuadros.set(f9, Cuadro(listaCuadros[8],f9))
+        posicionesCuadros.set(f10, Cuadro(listaCuadros[9],f10))
+        posicionesCuadros.set(f11, Cuadro(listaCuadros[10],f11))
+        posicionesCuadros.set(f12, Cuadro(listaCuadros[11],f12))
+        posicionesCuadros.set(f13, Cuadro(listaCuadros[12],f13))
+        posicionesCuadros.set(f14, Cuadro(listaCuadros[13],f14))
+        posicionesCuadros.set(f15, Cuadro(listaCuadros[14],f15))
+        posicionesCuadros.set(f16, Cuadro(listaCuadros[15],f16))
 
         movimientosHorizontal = mutableMapOf<ImageView, Array<ImageView>>(
             Pair(f1, arrayOf(f1,f2,f3,f4)),
@@ -220,8 +237,9 @@ class GameActivity : AppCompatActivity() {
         return true
     }
     fun updateGameView(){
+
         for(vista in posicionesCuadros.keys){
-            vista.setImageResource(posicionesCuadros[vista]!!.imageResource)
+            vista.setImageBitmap(posicionesCuadros[vista]!!.imageResource)
         }
     }
 }
