@@ -29,7 +29,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".HelpActivity" />
-        <activity android:name=".CreditosActivity" />
     </application>
 
 </manifest>

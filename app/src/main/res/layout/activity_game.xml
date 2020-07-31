@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorUIFloralWhite"
+    android:background="@color/colorUI4VerdeMenosMenosOscuro"
     tools:context="com.curso.toroidal_puzzle.GameActivity">
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
