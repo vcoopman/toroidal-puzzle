@@ -1,16 +1,19 @@
 package com.curso.toroidal_puzzle
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.curso.toroidal_puzzle.views.CuadroImageView
+import android.view.MotionEvent
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.core.graphics.drawable.toDrawable
+import kotlinx.android.synthetic.main.activity_game.*
 
 class GameActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_game)
-    }
 
     // Almacena posicion de los cuadros en el tablero.
     // Los index de este arreglo + 1, marcan la posicion actual del cuadro en el tablero.
@@ -24,58 +27,157 @@ class GameActivity : AppCompatActivity() {
     // 9 | 10| 11| 12
     // 13| 14| 15| 16
 
-    var posicionesCuadros = arrayOf<CuadroImageView>()
+    var posicionesCuadros = mutableMapOf<ImageView,Cuadro>()
 
     // Para cada posicion en el tablero se almacenan las posiciones que se ven afectadas con un movimiento.
     // Primer elemento del pair, representa a la posicion de donde inicia el movimiento. Segundo elemento,
     // los posiciones que se ven afectadas por el.
     // En este caso, movimientos horizontales.
 
-    val movimientosHorizontal = mutableMapOf<Int, Array<Int>>(
-        Pair(1, arrayOf(1,2,3,4)),
-        Pair(2, arrayOf(1,2,3,4)),
-        Pair(3, arrayOf(1,2,3,4)),
-        Pair(4, arrayOf(1,2,3,4)),
-        Pair(5, arrayOf(5,6,7,8)),
-        Pair(6, arrayOf(5,6,7,8)),
-        Pair(7, arrayOf(5,6,7,8)),
-        Pair(8, arrayOf(5,6,7,8)),
-        Pair(9, arrayOf(9,10,11,12)),
-        Pair(10, arrayOf(9,10,11,12)),
-        Pair(11, arrayOf(9,10,11,12)),
-        Pair(12, arrayOf(9,10,11,12)),
-        Pair(13, arrayOf(13,14,15,16)),
-        Pair(14, arrayOf(13,14,15,16)),
-        Pair(15, arrayOf(13,14,15,16)),
-        Pair(16, arrayOf(13,14,15,16))
-    )
+    var movimientosHorizontal = mutableMapOf<ImageView, Array<ImageView>>()
 
     // En este caso, movimientos verticales.
 
-    val movimientoVertical = mutableMapOf<Int, Array<Int>>(
-        Pair(1, arrayOf(1,5,9,13)),
-        Pair(2, arrayOf(2,6,10,14)),
-        Pair(3, arrayOf(3,7,11,15)),
-        Pair(4, arrayOf(4,8,12,16)),
-        Pair(5, arrayOf(1,5,9,13)),
-        Pair(6, arrayOf(2,6,10,14)),
-        Pair(7, arrayOf(3,7,11,15)),
-        Pair(8, arrayOf(4,8,12,16)),
-        Pair(9, arrayOf(1,5,9,13)),
-        Pair(10, arrayOf(2,6,10,14)),
-        Pair(11, arrayOf(3,7,11,15)),
-        Pair(12, arrayOf(4,8,12,16)),
-        Pair(13, arrayOf(1,5,9,13)),
-        Pair(14, arrayOf(2,6,10,14)),
-        Pair(15, arrayOf(3,7,11,15)),
-        Pair(16, arrayOf(4,8,12,16))
-    )
+    var movimientosVertical = mutableMapOf<ImageView, Array<ImageView>>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_game)
+
+        val f1 = findViewById<ImageView>(R.id.cuadro1)
+        val f2 = findViewById<ImageView>(R.id.cuadro2)
+        val f3 = findViewById<ImageView>(R.id.cuadro3)
+        val f4 = findViewById<ImageView>(R.id.cuadro4)
+        val f5 = findViewById<ImageView>(R.id.cuadro5)
+        val f6 = findViewById<ImageView>(R.id.cuadro6)
+        val f7 = findViewById<ImageView>(R.id.cuadro7)
+        val f8 = findViewById<ImageView>(R.id.cuadro8)
+        val f9 = findViewById<ImageView>(R.id.cuadro9)
+        val f10 = findViewById<ImageView>(R.id.cuadro10)
+        val f11 = findViewById<ImageView>(R.id.cuadro11)
+        val f12 = findViewById<ImageView>(R.id.cuadro12)
+        val f13 = findViewById<ImageView>(R.id.cuadro13)
+        val f14 = findViewById<ImageView>(R.id.cuadro14)
+        val f15 = findViewById<ImageView>(R.id.cuadro15)
+        val f16 = findViewById<ImageView>(R.id.cuadro16)
+
+        //Clase para crear las imágenes de cada cuadro
+        val crearCuadros = CrearCuadros()
+
+        //Convierte la imagen que está en Resources en Bitmap
+        var bitmap = BitmapFactory.decodeResource(resources,R.drawable.vicente)
+
+        //Escala la imagen a 400x400px
+        bitmap = Bitmap.createScaledBitmap(bitmap, 400, 400, false)
+
+        //Obtiene la lista de 16 cuadros de 100x100px cada uno
+        val listaCuadros = crearCuadros.crearCuadros(bitmap)
+
+        //Coloca los cuadros en el mapa
+        posicionesCuadros.set(f1, Cuadro(listaCuadros[0], f1))
+        posicionesCuadros.set(f2, Cuadro(listaCuadros[1],f2))
+        posicionesCuadros.set(f3, Cuadro(listaCuadros[2],f3))
+        posicionesCuadros.set(f4, Cuadro(listaCuadros[3],f4))
+        posicionesCuadros.set(f5, Cuadro(listaCuadros[4],f5))
+        posicionesCuadros.set(f6, Cuadro(listaCuadros[5],f6))
+        posicionesCuadros.set(f7, Cuadro(listaCuadros[6],f7))
+        posicionesCuadros.set(f8, Cuadro(listaCuadros[7],f8))
+        posicionesCuadros.set(f9, Cuadro(listaCuadros[8],f9))
+        posicionesCuadros.set(f10, Cuadro(listaCuadros[9],f10))
+        posicionesCuadros.set(f11, Cuadro(listaCuadros[10],f11))
+        posicionesCuadros.set(f12, Cuadro(listaCuadros[11],f12))
+        posicionesCuadros.set(f13, Cuadro(listaCuadros[12],f13))
+        posicionesCuadros.set(f14, Cuadro(listaCuadros[13],f14))
+        posicionesCuadros.set(f15, Cuadro(listaCuadros[14],f15))
+        posicionesCuadros.set(f16, Cuadro(listaCuadros[15],f16))
+
+        movimientosHorizontal = mutableMapOf<ImageView, Array<ImageView>>(
+            Pair(f1, arrayOf(f1,f2,f3,f4)),
+            Pair(f2, arrayOf(f1,f2,f3,f4)),
+            Pair(f3, arrayOf(f1,f2,f3,f4)),
+            Pair(f4, arrayOf(f1,f2,f3,f4)),
+            Pair(f5, arrayOf(f5,f6,f7,f8)),
+            Pair(f6, arrayOf(f5,f6,f7,f8)),
+            Pair(f7, arrayOf(f5,f6,f7,f8)),
+            Pair(f8, arrayOf(f5,f6,f7,f8)),
+            Pair(f9, arrayOf(f9,f10,f11,f12)),
+            Pair(f10, arrayOf(f9,f10,f11,f12)),
+            Pair(f11, arrayOf(f9,f10,f11,f12)),
+            Pair(f12, arrayOf(f9,f10,f11,f12)),
+            Pair(f13, arrayOf(f13,f14,f15,f16)),
+            Pair(f14, arrayOf(f13,f14,f15,f16)),
+            Pair(f15, arrayOf(f13,f14,f15,f16)),
+            Pair(f16, arrayOf(f13,f14,f15,f16))
+        )
+
+        movimientosVertical = mutableMapOf<ImageView, Array<ImageView>>(
+            Pair(f1, arrayOf(f1,f5,f9,f13)),
+            Pair(f2, arrayOf(f2,f6,f10,f14)),
+            Pair(f3, arrayOf(f3,f7,f11,f15)),
+            Pair(f4, arrayOf(f4,f8,f12,f16)),
+            Pair(f5, arrayOf(f1,f5,f9,f13)),
+            Pair(f6, arrayOf(f2,f6,f10,f14)),
+            Pair(f7, arrayOf(f3,f7,f11,f15)),
+            Pair(f8, arrayOf(f4,f8,f12,f16)),
+            Pair(f9, arrayOf(f1,f5,f9,f13)),
+            Pair(f10, arrayOf(f2,f6,f10,f14)),
+            Pair(f11, arrayOf(f3,f7,f11,f15)),
+            Pair(f12, arrayOf(f4,f8,f12,f16)),
+            Pair(f13, arrayOf(f1,f5,f9,f13)),
+            Pair(f14, arrayOf(f2,f6,f10,f14)),
+            Pair(f15, arrayOf(f3,f7,f11,f15)),
+            Pair(f16, arrayOf(f4,f8,f12,f16))
+        )
+
+        updateGameView()
+
+        // va a ser util despues
+
+//        for(view in posicionesCuadros.keys){
+//            view.setOnTouchListener { v, event ->
+//                when (event?.action) {
+//                    MotionEvent.ACTION_DOWN -> {
+//                        rotar(view,"Abajo",true)
+//                        updateGameView()
+//                    }
+//                }
+//                // Retorno obligatorio del touchListener
+//                v?.onTouchEvent(event) ?: true
+//            }
+//        }
+
+        buttondown1.setOnTouchListener { v, event ->
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        rotar(f1,"Abajo",true)
+                        gameOver()
+                        updateGameView()
+                    }
+                }
+                // Retorno obligatorio del touchListener
+                v?.onTouchEvent(event) ?: true
+            }
+
+        buttonright1.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f1,"Derecha",false)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+
+    }
 
     // Esta funcion realiza un movimiento y mueve a la posiciones afectadas por este.
     // Primer parametro, posicion desde la cual se inicia el movimiento.
     // Segundo parametro, direccion del movimiento, arriba/abajo/derecha/izquierda
     // Tercer parametro, true si el moviemiento es vertical, false si es horizontal
-    fun rotar(posicionMovimiento: Int, direccion: String, isVertical: Boolean): Boolean {
+
+    fun rotar(view: ImageView, direccion: String, isVertical: Boolean): Boolean {
         if(isVertical){
             if(direccion == "Arriba"){
                 // Lo mismo que abajo pero en el otro sentido
@@ -84,26 +186,29 @@ class GameActivity : AppCompatActivity() {
             if(direccion == "Abajo"){
 
                 // Se extran index posiciones afectadas
-                val indexArray = movimientoVertical.getValue(posicionMovimiento)
+                val indexArray = movimientosVertical.getValue(view)
 
                 // Se realizan los cambios en las posiciones
-                val aux = posicionesCuadros[indexArray[3]]
-                posicionesCuadros[indexArray[3]] = posicionesCuadros[indexArray[2]]
-                posicionesCuadros[indexArray[2]] = posicionesCuadros[indexArray[1]]
-                posicionesCuadros[indexArray[1]] = posicionesCuadros[indexArray[0]]
-                posicionesCuadros[indexArray[0]] = aux
-
+                val aux = posicionesCuadros.getValue(indexArray[3])
+                posicionesCuadros.set(indexArray[3],posicionesCuadros.getValue(indexArray[2]))
+                posicionesCuadros.set(indexArray[2],posicionesCuadros.getValue(indexArray[1]))
+                posicionesCuadros.set(indexArray[1],posicionesCuadros.getValue(indexArray[0]))
+                posicionesCuadros.set(indexArray[0],aux)
                 return true
 
             }
         } else {
-            if(direccion == "Derecha"){
-                val indexArray = movimientosHorizontal.getValue(posicionMovimiento)
-                val aux = posicionesCuadros[indexArray[3]]
-                posicionesCuadros[indexArray[3]] = posicionesCuadros[indexArray[2]]
-                posicionesCuadros[indexArray[2]] = posicionesCuadros[indexArray[1]]
-                posicionesCuadros[indexArray[1]] = posicionesCuadros[indexArray[0]]
-                posicionesCuadros[indexArray[0]] = aux
+           if(direccion == "Derecha"){
+
+                // Se extran index posiciones afectadas
+                val indexArray = movimientosHorizontal.getValue(view)
+
+                // Se realizan los cambios en las posiciones
+                val aux = posicionesCuadros.getValue(indexArray[3])
+                posicionesCuadros.set(indexArray[3],posicionesCuadros.getValue(indexArray[2]))
+                posicionesCuadros.set(indexArray[2],posicionesCuadros.getValue(indexArray[1]))
+                posicionesCuadros.set(indexArray[1],posicionesCuadros.getValue(indexArray[0]))
+                posicionesCuadros.set(indexArray[0],aux)
                 return true
 
             }
@@ -120,18 +225,21 @@ class GameActivity : AppCompatActivity() {
 
     // Esta funcion verifica si el juego ha terminado, retorna true o false respectivamente.
     fun gameOver(): Boolean{
-        var value = 1
-        for(cuadro in posicionesCuadros){
-            // si estos valores coinciden para un cuadro, significa que el cuadro
-            // esta en su posicion correcta
-            if(cuadro!!.nro != value){
-                // si alguno no esta en su posicion correcta, aun no gana el juego.
+        for(vista in posicionesCuadros.keys){
+
+            if(vista != posicionesCuadros[vista]!!.idVista){
                 return false
             }
-            ++value
         }
         // ningun cuadro no esta en su posicion correcta --> todos los cuadros estan en su
         // posicion correcta.
+        Toast.makeText(this,"YOU WIN", Toast.LENGTH_LONG).show()
         return true
+    }
+    fun updateGameView(){
+
+        for(vista in posicionesCuadros.keys){
+            vista.setImageBitmap(posicionesCuadros[vista]!!.imageResource)
+        }
     }
 }
