@@ -18,11 +18,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_main"
-        app:itemTextAppearance="@style/NavigationDrawerStyle"
-        app:itemBackground="@color/colorUILightCoral"
-        app:itemTextColor="@drawable/drawable_selector_item"
-        android:background="@color/colorUILightCoral"
-        app:menu="@menu/activity_main_drawer" />
+        android:fitsSystemWindows="true"
+        android:background="@drawable/rect_drawer_item"
+        app:menu="@menu/custom_activity_main_drawer"/>
+<!--        app:itemBackground="@drawable/drawable_selector_item"-->
 </androidx.drawerlayout.widget.DrawerLayout>
