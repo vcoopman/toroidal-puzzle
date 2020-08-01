@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item
+        android:id="@+id/nav_home"
+        android:title="@null"
+        app:actionLayout="@layout/nav_drawer_element_home"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/nav_grabar_partida"
+        android:title="@null"
+        app:actionLayout="@layout/nav_drawer_element_save_game"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/saved_games"
+        android:title="@null"
+        app:actionLayout="@layout/nav_drawer_element_saved_game"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/nav_help"
+        android:title="@null"
+        app:actionLayout="@layout/nav_drawer_element_help"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/nav_credito"
+        android:title="@null"
+        app:actionLayout="@layout/nav_drawer_element_creditos"
+        app:showAsAction="always" />
+</menu>

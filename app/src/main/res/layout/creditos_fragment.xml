@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.curso.toroidal_puzzle.ui.help.CreditosFragment"
-    android:background="@color/colorUI4VerdeMenosMenosOscuro">
+    android:background="@color/colorUI3MyrtleGreenDark">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

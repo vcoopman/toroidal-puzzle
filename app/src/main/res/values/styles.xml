@@ -55,6 +55,8 @@
     <style name="NavigationDrawerStyle" parent="Widget.Design.NavigationView">
         <item name="fontFamily">@font/tillana</item>
         <item name="android:textStyle">bold</item>
+        <item name="listPreferredItemPaddingLeft">0dp</item>
+        <item name="listPreferredItemPaddingRight">0dp</item>
     </style>
 
     <style name="TextViewParrafos" parent="TextStyle">
@@ -66,5 +68,12 @@
         <item name="android:paddingRight">40dp</item>
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <style name="TextViewDrawerItem" parent="TextStyle">
+        <item name="android:textColor">@drawable/drawable_highlight_text</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">viewStart</item>
     </style>
 </resources>
