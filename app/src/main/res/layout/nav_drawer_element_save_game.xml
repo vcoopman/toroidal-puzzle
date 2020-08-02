@@ -16,5 +16,5 @@
         android:layout_height="wrap_content"
         android:paddingStart="20dp"
         android:theme="@style/TextViewDrawerItem"
-        android:text="Grabar\nPartida"/>
+        android:text="GRABAR\nPARTIDA"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

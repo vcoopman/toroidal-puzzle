@@ -25,6 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:text="Opciones"
+        android:text="OPCIONES"
+        android:shadowColor="@color/colorUILightCoral"
+        android:shadowDx="4.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="1.0"
         android:theme="@style/TextViewTituloCreditos" />
 </LinearLayout>
