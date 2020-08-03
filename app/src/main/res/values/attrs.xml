@@ -4,5 +4,9 @@
 
     <declare-styleable name="CuadroImageView">
         <attr name="nro" />
+        <attr name="layout_constraintDimensionRatio">1:1</attr>
+        <attr name="layout_constraintWidth_percent">0.146</attr>
+        <attr name="layout_constraintWidth_max">wrap</attr>
+        <attr name="layout_constraintWidth_min">wrap</attr>
     </declare-styleable>
 </resources>

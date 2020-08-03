@@ -4,97 +4,300 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorUI4VerdeMenosMenosOscuro"
+    android:background="@color/colorUI3MyrtleGreenDark"
     tools:context="com.curso.toroidal_puzzle.GameActivity">
+
+    <ImageView
+        android:layout_width="380dp"
+        android:layout_height="0dp"
+        android:src="@drawable/rounded_corner"
+        app:layout_constraintWidth_percent="0.93"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_hori"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
+        app:layout_constraintStart_toStartOf="@+id/guideline_vert"
+        app:layout_constraintTop_toTopOf="@+id/guideline_hori" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/button_left"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro1"
+        app:layout_constraintEnd_toStartOf="@+id/cuadro1"
+        app:layout_constraintTop_toTopOf="@+id/cuadro1" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/button_left"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro5"
+        app:layout_constraintEnd_toStartOf="@+id/cuadro5"
+        app:layout_constraintTop_toTopOf="@+id/cuadro5" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/button_left"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro9"
+        app:layout_constraintEnd_toStartOf="@+id/cuadro9"
+        app:layout_constraintTop_toTopOf="@+id/cuadro9" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        app:layout_constraintDimensionRatio="1:1"
+        android:scaleType="centerCrop"
+        android:src="@drawable/button_left"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro13"
+        app:layout_constraintEnd_toStartOf="@+id/cuadro13"
+        app:layout_constraintTop_toTopOf="@+id/cuadro13" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/button_up"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toTopOf="@+id/cuadro1"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro1"
+        app:layout_constraintStart_toStartOf="@+id/cuadro1" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/button_up"
+        app:layout_constraintBottom_toTopOf="@+id/cuadro2"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro2"
+        app:layout_constraintStart_toStartOf="@+id/cuadro2" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/button_up"
+        app:layout_constraintBottom_toTopOf="@+id/cuadro3"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro3"
+        app:layout_constraintStart_toStartOf="@+id/cuadro3" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/button_up"
+        app:layout_constraintBottom_toTopOf="@+id/cuadro4"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro4"
+        app:layout_constraintStart_toStartOf="@+id/cuadro4" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/button_right"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro4"
+        app:layout_constraintStart_toEndOf="@+id/cuadro4"
+        app:layout_constraintTop_toTopOf="@+id/cuadro4" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/button_right"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro8"
+        app:layout_constraintStart_toEndOf="@+id/cuadro8"
+        app:layout_constraintTop_toTopOf="@+id/cuadro8" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/button_right"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro12"
+        app:layout_constraintStart_toEndOf="@+id/cuadro12"
+        app:layout_constraintTop_toTopOf="@+id/cuadro12" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/button_right"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro16"
+        app:layout_constraintStart_toEndOf="@+id/cuadro16"
+        app:layout_constraintTop_toTopOf="@+id/cuadro16" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/button_down"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro13"
+        app:layout_constraintStart_toStartOf="@+id/cuadro13"
+        app:layout_constraintTop_toBottomOf="@+id/cuadro13" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/button_down"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro14"
+        app:layout_constraintStart_toStartOf="@+id/cuadro14"
+        app:layout_constraintTop_toBottomOf="@+id/cuadro14" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        android:src="@drawable/button_down"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro15"
+        app:layout_constraintStart_toStartOf="@+id/cuadro15"
+        app:layout_constraintTop_toBottomOf="@+id/cuadro15" />
+
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/button_down"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro16"
+        app:layout_constraintStart_toStartOf="@+id/cuadro16"
+        app:layout_constraintTop_toBottomOf="@+id/cuadro16" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
         android:id="@+id/cuadro6"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.348"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468"
         android:background="@color/colorUI3PrincetonOrange"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_hori"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
         app:nro="6" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
         android:id="@+id/cuadro8"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorUI3PrincetonOrange"
         app:layout_constraintBottom_toBottomOf="@+id/cuadro7"
         app:layout_constraintStart_toEndOf="@+id/cuadro7"
         app:layout_constraintTop_toTopOf="@+id/cuadro7"
         app:layout_constraintVertical_bias="0.0"
-        android:background="@color/colorUI3PrincetonOrange"
         app:nro="8" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
         android:id="@+id/cuadro11"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorUI3PrincetonOrange"
         app:layout_constraintBottom_toBottomOf="@+id/cuadro10"
         app:layout_constraintStart_toEndOf="@+id/cuadro10"
         app:layout_constraintTop_toTopOf="@+id/cuadro10"
         app:layout_constraintVertical_bias="0.0"
-        android:background="@color/colorUI3PrincetonOrange"
         app:nro="11" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
         android:id="@+id/cuadro12"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorUILightCoral"
         app:layout_constraintBottom_toBottomOf="@+id/cuadro11"
         app:layout_constraintStart_toEndOf="@+id/cuadro11"
         app:layout_constraintTop_toTopOf="@+id/cuadro11"
         app:layout_constraintVertical_bias="0.0"
-        android:background="@color/colorUI3Icterine"
         app:nro="12" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
         android:id="@+id/cuadro5"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorUILightCoral"
         app:layout_constraintBottom_toBottomOf="@+id/cuadro6"
         app:layout_constraintEnd_toStartOf="@+id/cuadro6"
         app:layout_constraintTop_toTopOf="@+id/cuadro6"
         app:layout_constraintVertical_bias="0.0"
-        android:background="@color/colorUI3Icterine"
         app:nro="5" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
         android:id="@+id/cuadro9"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorUI3PrincetonOrange"
         app:layout_constraintBottom_toBottomOf="@+id/cuadro10"
         app:layout_constraintEnd_toStartOf="@+id/cuadro10"
         app:layout_constraintTop_toTopOf="@+id/cuadro10"
         app:layout_constraintVertical_bias="0.0"
-        android:background="@color/colorUI3PrincetonOrange"
         app:nro="9" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
         android:id="@+id/cuadro4"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorUILightCoral"
         app:layout_constraintBottom_toTopOf="@+id/cuadro8"
         app:layout_constraintEnd_toEndOf="@+id/cuadro8"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/cuadro8"
-        android:background="@color/colorUI3Icterine"
         app:nro="4" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
         android:id="@+id/cuadro13"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorUILightCoral"
         app:layout_constraintEnd_toEndOf="@+id/cuadro9"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/cuadro9"
         app:layout_constraintTop_toBottomOf="@+id/cuadro9"
-        android:background="@color/colorUI3Icterine"
         app:nro="13" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
@@ -102,11 +305,11 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="191dp"
+        android:background="@color/colorUILightCoral"
         app:layout_constraintBottom_toTopOf="@+id/cuadro6"
         app:layout_constraintEnd_toEndOf="@+id/cuadro6"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/cuadro6"
-        android:background="@color/colorUI3Icterine"
         app:nro="2"
         tools:ignore="RtlCompat" />
 
@@ -114,22 +317,22 @@
         android:id="@+id/cuadro7"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorUILightCoral"
         app:layout_constraintBottom_toBottomOf="@+id/cuadro6"
         app:layout_constraintStart_toEndOf="@+id/cuadro6"
         app:layout_constraintTop_toTopOf="@+id/cuadro6"
         app:layout_constraintVertical_bias="0.0"
-        android:background="@color/colorUI3Icterine"
         app:nro="7" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
         android:id="@+id/cuadro1"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorUI3PrincetonOrange"
         app:layout_constraintBottom_toTopOf="@+id/cuadro5"
         app:layout_constraintEnd_toEndOf="@+id/cuadro5"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/cuadro5"
-        android:background="@color/colorUI3PrincetonOrange"
         app:nro="1" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
@@ -137,11 +340,11 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="221dp"
+        android:background="@color/colorUILightCoral"
         app:layout_constraintEnd_toEndOf="@+id/cuadro11"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/cuadro11"
         app:layout_constraintTop_toBottomOf="@+id/cuadro11"
-        android:background="@color/colorUI3Icterine"
         app:nro="15"
         tools:ignore="RtlCompat" />
 
@@ -149,64 +352,77 @@
         android:id="@+id/cuadro16"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorUI3PrincetonOrange"
         app:layout_constraintEnd_toEndOf="@+id/cuadro12"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/cuadro12"
         app:layout_constraintTop_toBottomOf="@+id/cuadro12"
-        android:background="@color/colorUI3PrincetonOrange"
         app:nro="16" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
         android:id="@+id/cuadro3"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorUI3PrincetonOrange"
         app:layout_constraintBottom_toTopOf="@+id/cuadro7"
         app:layout_constraintEnd_toEndOf="@+id/cuadro7"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/cuadro7"
-        android:background="@color/colorUI3PrincetonOrange"
         app:nro="3" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
         android:id="@+id/cuadro10"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorUILightCoral"
         app:layout_constraintEnd_toEndOf="@+id/cuadro6"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/cuadro6"
         app:layout_constraintTop_toBottomOf="@+id/cuadro6"
-        android:background="@color/colorUI3Icterine"
         app:nro="10" />
 
     <com.curso.toroidal_puzzle.views.CuadroImageView
         android:id="@+id/cuadro14"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:background="@color/colorUI3PrincetonOrange"
         app:layout_constraintEnd_toEndOf="@+id/cuadro10"
         app:layout_constraintStart_toStartOf="@+id/cuadro10"
         app:layout_constraintTop_toBottomOf="@+id/cuadro10"
-        android:background="@color/colorUI3PrincetonOrange"
         app:nro="14" />
 
     <Button
         android:id="@+id/buttondown1"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginTop="96dp"
         android:background="#F44336"
         android:text="v"
         app:layout_constraintLeft_toLeftOf="@+id/cuadro13"
-        app:layout_constraintTop_toBottomOf="@+id/cuadro13"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/cuadro13" />
 
     <Button
         android:id="@+id/buttonright1"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="16dp"
         android:background="#8BC34A"
         android:text=">"
         app:layout_constraintLeft_toLeftOf="@+id/buttondown1"
         app:layout_constraintTop_toBottomOf="@+id/buttondown1" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.50" />
 
-
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_hori"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.50" />
 </androidx.constraintlayout.widget.ConstraintLayout>
