@@ -1,19 +1,29 @@
 package com.curso.toroidal_puzzle
 
+import android.annotation.SuppressLint
+import android.content.ContentResolver
+import android.content.ContentValues
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.Log
 import android.view.MotionEvent
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.core.graphics.drawable.toDrawable
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_game.*
+import java.io.*
+import java.io.File.separator
+import java.text.SimpleDateFormat
+import java.util.*
 
 class GameActivity : AppCompatActivity() {
+
+    var listUris = mutableListOf<String>()
 
     // Almacena posicion de los cuadros en el tablero.
     // Los index de este arreglo + 1, marcan la posicion actual del cuadro en el tablero.
@@ -27,7 +37,7 @@ class GameActivity : AppCompatActivity() {
     // 9 | 10| 11| 12
     // 13| 14| 15| 16
 
-    var posicionesCuadros = mutableMapOf<ImageView,Cuadro>()
+    var posicionesCuadros = mutableMapOf<ImageView, Cuadro>()
 
     // Para cada posicion en el tablero se almacenan las posiciones que se ven afectadas con un movimiento.
     // Primer elemento del pair, representa a la posicion de donde inicia el movimiento. Segundo elemento,
@@ -40,6 +50,13 @@ class GameActivity : AppCompatActivity() {
 
     var movimientosVertical = mutableMapOf<ImageView, Array<ImageView>>()
 
+    //Clase para crear las imágenes de cada cuadro
+    val crearCuadros = CrearCuadros()
+
+    //Obtiene la lista de 16 cuadros de 100x100px cada uno
+    var listaCuadros = mutableListOf<Bitmap>()
+
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -61,108 +78,283 @@ class GameActivity : AppCompatActivity() {
         val f15 = findViewById<ImageView>(R.id.cuadro15)
         val f16 = findViewById<ImageView>(R.id.cuadro16)
 
-        //Clase para crear las imágenes de cada cuadro
-        val crearCuadros = CrearCuadros()
-
         //Convierte la imagen que está en Resources en Bitmap
-        var bitmap = BitmapFactory.decodeResource(resources,R.drawable.vicente)
+        var bitmap = BitmapFactory.decodeResource(resources, R.drawable.vicente)
 
         //Escala la imagen a 400x400px
         bitmap = Bitmap.createScaledBitmap(bitmap, 400, 400, false)
 
         //Obtiene la lista de 16 cuadros de 100x100px cada uno
-        val listaCuadros = crearCuadros.crearCuadros(bitmap)
+        listaCuadros = crearCuadros.crearCuadros(bitmap).toMutableList()
 
         //Coloca los cuadros en el mapa
-        posicionesCuadros.set(f1, Cuadro(listaCuadros[0], f1))
-        posicionesCuadros.set(f2, Cuadro(listaCuadros[1],f2))
-        posicionesCuadros.set(f3, Cuadro(listaCuadros[2],f3))
-        posicionesCuadros.set(f4, Cuadro(listaCuadros[3],f4))
-        posicionesCuadros.set(f5, Cuadro(listaCuadros[4],f5))
-        posicionesCuadros.set(f6, Cuadro(listaCuadros[5],f6))
-        posicionesCuadros.set(f7, Cuadro(listaCuadros[6],f7))
-        posicionesCuadros.set(f8, Cuadro(listaCuadros[7],f8))
-        posicionesCuadros.set(f9, Cuadro(listaCuadros[8],f9))
-        posicionesCuadros.set(f10, Cuadro(listaCuadros[9],f10))
-        posicionesCuadros.set(f11, Cuadro(listaCuadros[10],f11))
-        posicionesCuadros.set(f12, Cuadro(listaCuadros[11],f12))
-        posicionesCuadros.set(f13, Cuadro(listaCuadros[12],f13))
-        posicionesCuadros.set(f14, Cuadro(listaCuadros[13],f14))
-        posicionesCuadros.set(f15, Cuadro(listaCuadros[14],f15))
-        posicionesCuadros.set(f16, Cuadro(listaCuadros[15],f16))
+        posicionesCuadros.set(f1, Cuadro(listaCuadros[0], f1,1))
+        posicionesCuadros.set(f2, Cuadro(listaCuadros[1], f2,2))
+        posicionesCuadros.set(f3, Cuadro(listaCuadros[2], f3,3))
+        posicionesCuadros.set(f4, Cuadro(listaCuadros[3], f4,4))
+        posicionesCuadros.set(f5, Cuadro(listaCuadros[4], f5,5))
+        posicionesCuadros.set(f6, Cuadro(listaCuadros[5], f6,6))
+        posicionesCuadros.set(f7, Cuadro(listaCuadros[6], f7,7))
+        posicionesCuadros.set(f8, Cuadro(listaCuadros[7], f8,8))
+        posicionesCuadros.set(f9, Cuadro(listaCuadros[8], f9,9))
+        posicionesCuadros.set(f10, Cuadro(listaCuadros[9], f10,10))
+        posicionesCuadros.set(f11, Cuadro(listaCuadros[10], f11,11))
+        posicionesCuadros.set(f12, Cuadro(listaCuadros[11], f12,12))
+        posicionesCuadros.set(f13, Cuadro(listaCuadros[12], f13,13))
+        posicionesCuadros.set(f14, Cuadro(listaCuadros[13], f14,14))
+        posicionesCuadros.set(f15, Cuadro(listaCuadros[14], f15,15))
+        posicionesCuadros.set(f16, Cuadro(listaCuadros[15], f16,16))
 
         movimientosHorizontal = mutableMapOf<ImageView, Array<ImageView>>(
-            Pair(f1, arrayOf(f1,f2,f3,f4)),
-            Pair(f2, arrayOf(f1,f2,f3,f4)),
-            Pair(f3, arrayOf(f1,f2,f3,f4)),
-            Pair(f4, arrayOf(f1,f2,f3,f4)),
-            Pair(f5, arrayOf(f5,f6,f7,f8)),
-            Pair(f6, arrayOf(f5,f6,f7,f8)),
-            Pair(f7, arrayOf(f5,f6,f7,f8)),
-            Pair(f8, arrayOf(f5,f6,f7,f8)),
-            Pair(f9, arrayOf(f9,f10,f11,f12)),
-            Pair(f10, arrayOf(f9,f10,f11,f12)),
-            Pair(f11, arrayOf(f9,f10,f11,f12)),
-            Pair(f12, arrayOf(f9,f10,f11,f12)),
-            Pair(f13, arrayOf(f13,f14,f15,f16)),
-            Pair(f14, arrayOf(f13,f14,f15,f16)),
-            Pair(f15, arrayOf(f13,f14,f15,f16)),
-            Pair(f16, arrayOf(f13,f14,f15,f16))
+            Pair(f1, arrayOf(f1, f2, f3, f4)),
+            Pair(f2, arrayOf(f1, f2, f3, f4)),
+            Pair(f3, arrayOf(f1, f2, f3, f4)),
+            Pair(f4, arrayOf(f1, f2, f3, f4)),
+            Pair(f5, arrayOf(f5, f6, f7, f8)),
+            Pair(f6, arrayOf(f5, f6, f7, f8)),
+            Pair(f7, arrayOf(f5, f6, f7, f8)),
+            Pair(f8, arrayOf(f5, f6, f7, f8)),
+            Pair(f9, arrayOf(f9, f10, f11, f12)),
+            Pair(f10, arrayOf(f9, f10, f11, f12)),
+            Pair(f11, arrayOf(f9, f10, f11, f12)),
+            Pair(f12, arrayOf(f9, f10, f11, f12)),
+            Pair(f13, arrayOf(f13, f14, f15, f16)),
+            Pair(f14, arrayOf(f13, f14, f15, f16)),
+            Pair(f15, arrayOf(f13, f14, f15, f16)),
+            Pair(f16, arrayOf(f13, f14, f15, f16))
         )
 
         movimientosVertical = mutableMapOf<ImageView, Array<ImageView>>(
-            Pair(f1, arrayOf(f1,f5,f9,f13)),
-            Pair(f2, arrayOf(f2,f6,f10,f14)),
-            Pair(f3, arrayOf(f3,f7,f11,f15)),
-            Pair(f4, arrayOf(f4,f8,f12,f16)),
-            Pair(f5, arrayOf(f1,f5,f9,f13)),
-            Pair(f6, arrayOf(f2,f6,f10,f14)),
-            Pair(f7, arrayOf(f3,f7,f11,f15)),
-            Pair(f8, arrayOf(f4,f8,f12,f16)),
-            Pair(f9, arrayOf(f1,f5,f9,f13)),
-            Pair(f10, arrayOf(f2,f6,f10,f14)),
-            Pair(f11, arrayOf(f3,f7,f11,f15)),
-            Pair(f12, arrayOf(f4,f8,f12,f16)),
-            Pair(f13, arrayOf(f1,f5,f9,f13)),
-            Pair(f14, arrayOf(f2,f6,f10,f14)),
-            Pair(f15, arrayOf(f3,f7,f11,f15)),
-            Pair(f16, arrayOf(f4,f8,f12,f16))
+            Pair(f1, arrayOf(f1, f5, f9, f13)),
+            Pair(f2, arrayOf(f2, f6, f10, f14)),
+            Pair(f3, arrayOf(f3, f7, f11, f15)),
+            Pair(f4, arrayOf(f4, f8, f12, f16)),
+            Pair(f5, arrayOf(f1, f5, f9, f13)),
+            Pair(f6, arrayOf(f2, f6, f10, f14)),
+            Pair(f7, arrayOf(f3, f7, f11, f15)),
+            Pair(f8, arrayOf(f4, f8, f12, f16)),
+            Pair(f9, arrayOf(f1, f5, f9, f13)),
+            Pair(f10, arrayOf(f2, f6, f10, f14)),
+            Pair(f11, arrayOf(f3, f7, f11, f15)),
+            Pair(f12, arrayOf(f4, f8, f12, f16)),
+            Pair(f13, arrayOf(f1, f5, f9, f13)),
+            Pair(f14, arrayOf(f2, f6, f10, f14)),
+            Pair(f15, arrayOf(f3, f7, f11, f15)),
+            Pair(f16, arrayOf(f4, f8, f12, f16))
         )
 
         updateGameView()
 
-        // va a ser util despues
-
-//        for(view in posicionesCuadros.keys){
-//            view.setOnTouchListener { v, event ->
-//                when (event?.action) {
-//                    MotionEvent.ACTION_DOWN -> {
-//                        rotar(view,"Abajo",true)
-//                        updateGameView()
-//                    }
-//                }
-//                // Retorno obligatorio del touchListener
-//                v?.onTouchEvent(event) ?: true
-//            }
-//        }
-
-        buttondown1.setOnTouchListener { v, event ->
-                when (event?.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        rotar(f1,"Abajo",true)
-                        gameOver()
-                        updateGameView()
-                    }
-                }
-                // Retorno obligatorio del touchListener
-                v?.onTouchEvent(event) ?: true
-            }
-
-        buttonright1.setOnTouchListener { v, event ->
+        arrowUp1.setOnTouchListener { v, event ->
             when (event?.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    rotar(f1,"Derecha",false)
+                    rotar(f1, "Arriba", true)
                     gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowUp2.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f2, "Arriba", true)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowUp3.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f3, "Arriba", true)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowUp4.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f4, "Arriba", true)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowRight1.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f1, "Derecha", false)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowRight2.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f5, "Derecha", false)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowRight3.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f9, "Derecha", false)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowRight4.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f13, "Derecha", false)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowDown1.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f1, "Abajo", true)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowDown2.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f2, "Abajo", true)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowDown3.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f3, "Abajo", true)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowDown4.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f4, "Abajo", true)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowLeft1.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f1, "Izquierda", false)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowLeft2.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f5, "Izquierda", false)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowLeft3.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f9, "Izquierda", false)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        arrowLeft4.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    rotar(f13, "Izquierda", false)
+                    gameOver()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+        saveButton.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    var i = 1
+
+                    for(cuadro in posicionesCuadros.values){
+                        guardarImagen(cuadro.imageResource,"img${i}")
+                        ++i
+
+                    }
+                    Toast.makeText(this, "Game Saved $i bitmaps", Toast.LENGTH_SHORT)
+                        .show()
+
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+
+        loadButton.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    recuperarImagen()
+                    updateGameView()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+
+        shuffleButton.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    shuffle()
                     updateGameView()
                 }
             }
@@ -178,68 +370,203 @@ class GameActivity : AppCompatActivity() {
     // Tercer parametro, true si el moviemiento es vertical, false si es horizontal
 
     fun rotar(view: ImageView, direccion: String, isVertical: Boolean): Boolean {
-        if(isVertical){
-            if(direccion == "Arriba"){
+        if (isVertical) {
+            if (direccion == "Arriba") {
                 // Lo mismo que abajo pero en el otro sentido
+                val indexArray = movimientosVertical.getValue(view)
+
+                val aux = posicionesCuadros.getValue(indexArray[0])
+                posicionesCuadros.set(indexArray[0], posicionesCuadros.getValue(indexArray[1]))
+                posicionesCuadros.set(indexArray[1], posicionesCuadros.getValue(indexArray[2]))
+                posicionesCuadros.set(indexArray[2], posicionesCuadros.getValue(indexArray[3]))
+                posicionesCuadros.set(indexArray[3], aux)
+
                 return true
             }
-            if(direccion == "Abajo"){
+            if (direccion == "Abajo") {
 
                 // Se extran index posiciones afectadas
                 val indexArray = movimientosVertical.getValue(view)
 
                 // Se realizan los cambios en las posiciones
                 val aux = posicionesCuadros.getValue(indexArray[3])
-                posicionesCuadros.set(indexArray[3],posicionesCuadros.getValue(indexArray[2]))
-                posicionesCuadros.set(indexArray[2],posicionesCuadros.getValue(indexArray[1]))
-                posicionesCuadros.set(indexArray[1],posicionesCuadros.getValue(indexArray[0]))
-                posicionesCuadros.set(indexArray[0],aux)
+                posicionesCuadros.set(indexArray[3], posicionesCuadros.getValue(indexArray[2]))
+                posicionesCuadros.set(indexArray[2], posicionesCuadros.getValue(indexArray[1]))
+                posicionesCuadros.set(indexArray[1], posicionesCuadros.getValue(indexArray[0]))
+                posicionesCuadros.set(indexArray[0], aux)
                 return true
 
             }
         } else {
-           if(direccion == "Derecha"){
+            if (direccion == "Derecha") {
 
                 // Se extran index posiciones afectadas
                 val indexArray = movimientosHorizontal.getValue(view)
 
                 // Se realizan los cambios en las posiciones
                 val aux = posicionesCuadros.getValue(indexArray[3])
-                posicionesCuadros.set(indexArray[3],posicionesCuadros.getValue(indexArray[2]))
-                posicionesCuadros.set(indexArray[2],posicionesCuadros.getValue(indexArray[1]))
-                posicionesCuadros.set(indexArray[1],posicionesCuadros.getValue(indexArray[0]))
-                posicionesCuadros.set(indexArray[0],aux)
+                posicionesCuadros.set(indexArray[3], posicionesCuadros.getValue(indexArray[2]))
+                posicionesCuadros.set(indexArray[2], posicionesCuadros.getValue(indexArray[1]))
+                posicionesCuadros.set(indexArray[1], posicionesCuadros.getValue(indexArray[0]))
+                posicionesCuadros.set(indexArray[0], aux)
                 return true
 
             }
-            if(direccion == "Izquierda"){
+            if (direccion == "Izquierda") {
                 // Lo mismo que derecha pero en el otro sentido
+                val indexArray = movimientosHorizontal.getValue(view)
+
+                val aux = posicionesCuadros.getValue(indexArray[0])
+                posicionesCuadros.set(indexArray[0], posicionesCuadros.getValue(indexArray[1]))
+                posicionesCuadros.set(indexArray[1], posicionesCuadros.getValue(indexArray[2]))
+                posicionesCuadros.set(indexArray[2], posicionesCuadros.getValue(indexArray[3]))
+                posicionesCuadros.set(indexArray[3], aux)
                 return true
             }
         }
 
         // Caso Error
-        Log.i("MOVIMIENTO","No se realizo el movimiento")
+        Log.i("MOVIMIENTO", "No se realizo el movimiento")
         return false
     }
 
     // Esta funcion verifica si el juego ha terminado, retorna true o false respectivamente.
-    fun gameOver(): Boolean{
-        for(vista in posicionesCuadros.keys){
+    fun gameOver(): Boolean {
+        for (vista in posicionesCuadros.keys) {
 
-            if(vista != posicionesCuadros[vista]!!.idVista){
+            if (vista != posicionesCuadros[vista]!!.idVista) {
                 return false
             }
         }
         // ningun cuadro no esta en su posicion correcta --> todos los cuadros estan en su
         // posicion correcta.
-        Toast.makeText(this,"YOU WIN", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "YOU WIN", Toast.LENGTH_LONG).show()
         return true
     }
-    fun updateGameView(){
 
-        for(vista in posicionesCuadros.keys){
+    fun updateGameView() {
+
+        for (vista in posicionesCuadros.keys) {
             vista.setImageBitmap(posicionesCuadros[vista]!!.imageResource)
         }
     }
+
+    /*private fun saveGame(){
+        val fOut = openFileOutput("savedGame.txt", Context.MODE_PRIVATE)
+        var imageresource = 0
+
+        for(value in posicionesCuadros.values){
+
+            imageresource = value.imageResource
+
+            try {
+                var stringToWrite = imageresource.toString()
+                fOut.write(stringToWrite.toByteArray())
+
+
+            }catch (e: Exception){
+                e.printStackTrace()
+            }
+
+        }
+        fOut.close()
+        Toast.makeText(this, "Game Saved", Toast.LENGTH_SHORT).show()
+
+    }
+
+    private fun restoreGame(){
+
+        var fileInputStream: FileInputStream? = null
+        fileInputStream = openFileInput("savedGame.txt")
+        var inputStreamReader: InputStreamReader = InputStreamReader(fileInputStream)
+        val bufferedReader: BufferedReader = BufferedReader(inputStreamReader)
+        val stringBuilder: StringBuilder = StringBuilder()
+        var text: String? = null
+        while ({ text = bufferedReader.readLine(); text }() != null) {
+            stringBuilder.append(text)
+        }
+
+        var finalString = stringBuilder.toString()
+        var numberList = finalString.chunked(10)
+
+        Toast.makeText(this, "Game Loaded", Toast.LENGTH_SHORT).show()
+
+        var i = 0
+        for (key in posicionesCuadros.keys) {
+            while (i < 16){
+                posicionesCuadros[key] = Cuadro(numberList[i].toInt(), key)
+                ++i
+                break
+            }
+        }
+
+        updateGameView()
+    }*/
+
+    // TO SAVE IMAGE TO GALLERY
+
+    fun guardarImagen(imagen: Bitmap, fileName: String){
+
+        try {
+            //Ubicación donde se guardan las imágenes
+            val path = File(applicationContext.dataDir.toString() + File.separator + "img")
+
+            //Si la ubicación no existe, se crea
+            if (!path.exists()) path.mkdirs()
+
+            //Se obtiene la fecha y hora actual para el nombre
+            val name = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ROOT).format(Date())
+
+            //Nombre del archivo a guardar
+            val outFile = File(path, "$fileName.png")
+
+            //Guarda el archivo en formato PNG
+            val outStream = FileOutputStream(outFile)
+            imagen.compress(Bitmap.CompressFormat.PNG, 100, outStream)
+
+            //Cierra el archivo
+            outStream.close()
+        }
+        catch (e: FileNotFoundException){
+            Log.v("ErrorGuardarArchivo", "Archivo no encontrado: " + e.message!!)
+        }
+        catch (e: IOException){
+            Log.v("ErrorGuardarArchivo", "Error de Entrada Salida: " + e.message!!)
+        }
+    }
+
+    fun recuperarImagen(){
+        val path = File(applicationContext.dataDir.toString() + File.separator + "img")
+        var i = 1
+        var img: File? = null
+        val posicionesCuadrosKeys = posicionesCuadros.keys.toMutableList()
+
+
+        while( i <= 16) {
+            var img = File(path, "img$i.png")
+
+            var bitmap = BitmapFactory.decodeFile(img.absolutePath)
+
+            posicionesCuadros[posicionesCuadrosKeys[i-1]]!!.imageResource = bitmap
+
+            ++i
+        }
+        updateGameView()
+    }
+
+    fun shuffle(){
+        var listaCuadrosAux = listaCuadros
+        listaCuadrosAux = listaCuadrosAux.toMutableList()
+        var max = 15
+
+        for (value in posicionesCuadros.values){
+            var index = (0..max).random()
+            value.imageResource = listaCuadrosAux[index]
+            listaCuadrosAux.removeAt(index)
+            --max
+        }
+        updateGameView()
+    }
+
 }
+
