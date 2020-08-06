@@ -7,6 +7,34 @@
     android:background="@color/colorUI3MyrtleGreenDark"
     tools:context="com.curso.toroidal_puzzle.GameActivity">
 
+    <Chronometer
+        android:id="@+id/cronometro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="76dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintLeft_toLeftOf="@+id/arrowUp1" />
+
+    <Button
+        android:id="@+id/iniciarCronometro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INCIAR"
+        app:layout_constraintBottom_toBottomOf="@+id/cronometro"
+        app:layout_constraintRight_toLeftOf="@+id/cronometro"
+        />
+
+    <Button
+        android:id="@+id/pausarCronometro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PAUSAR"
+        app:layout_constraintBottom_toBottomOf="@+id/cronometro"
+        app:layout_constraintLeft_toRightOf="@+id/cronometro"
+        />
+
     <Button
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"

@@ -1,29 +1,31 @@
 package com.curso.toroidal_puzzle
 
 import android.annotation.SuppressLint
-import android.content.ContentResolver
-import android.content.ContentValues
+
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
-import android.provider.MediaStore
+import android.os.SystemClock
 import android.util.Log
 import android.view.MotionEvent
+import android.widget.Chronometer
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_game.*
 import java.io.*
-import java.io.File.separator
-import java.text.SimpleDateFormat
-import java.util.*
 
 class GameActivity : AppCompatActivity() {
 
-    var listUris = mutableListOf<String>()
+    var isRunning : Boolean = false
+    var cronometro : Chronometer? = null
+    var pauseOffSet : Long = 0
+    var movimientosRealizados : Long = 0
+    var hayTiempoGuardado : Boolean = false
+    var seHizoLoad : Boolean = false
+    var seHizoSave: Boolean = false
+
 
     // Almacena posicion de los cuadros en el tablero.
     // Los index de este arreglo + 1, marcan la posicion actual del cuadro en el tablero.
@@ -60,6 +62,16 @@ class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+
+        cronometro = findViewById<Chronometer>(R.id.cronometro)
+
+        try {
+            if(readFromInternalStorage("cronometro") > 0 ){
+                hayTiempoGuardado = true
+            }
+        }catch (e: Exception){
+            // Error pq no hay archivo de save
+        }
 
         val f1 = findViewById<ImageView>(R.id.cuadro1)
         val f2 = findViewById<ImageView>(R.id.cuadro2)
@@ -324,16 +336,7 @@ class GameActivity : AppCompatActivity() {
         saveButton.setOnTouchListener { v, event ->
             when (event?.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    var i = 1
-
-                    for(cuadro in posicionesCuadros.values){
-                        guardarImagen(cuadro.imageResource,"img${i}")
-                        ++i
-
-                    }
-                    Toast.makeText(this, "Game Saved $i bitmaps", Toast.LENGTH_SHORT)
-                        .show()
-
+                   guardarPartida()
                 }
             }
             // Retorno obligatorio del touchListener
@@ -343,8 +346,12 @@ class GameActivity : AppCompatActivity() {
         loadButton.setOnTouchListener { v, event ->
             when (event?.action) {
                 MotionEvent.ACTION_DOWN -> {
-                    recuperarImagen()
-                    updateGameView()
+                    try {
+                        cargarPartida()
+                    }catch (e: Exception){
+                        Toast.makeText(this, "Error al cargar la partida", Toast.LENGTH_SHORT).show()
+                    }
+
                 }
             }
             // Retorno obligatorio del touchListener
@@ -362,7 +369,86 @@ class GameActivity : AppCompatActivity() {
             v?.onTouchEvent(event) ?: true
         }
 
+        iniciarCronometro.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    iniciarCronometro()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+
+        pausarCronometro.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    pausarCronometro()
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+
+
+
     }
+
+    fun iniciarCronometro(){
+
+        if(!isRunning && hayTiempoGuardado && seHizoLoad){
+            cronometro!!.base = SystemClock.elapsedRealtime() - pauseOffSet - readFromInternalStorage("cronometro")
+            cronometro!!.start()
+            isRunning = true
+            hayTiempoGuardado = false
+            return
+        }
+
+        if(!isRunning && hayTiempoGuardado && seHizoSave){
+            cronometro!!.base = SystemClock.elapsedRealtime() - pauseOffSet
+            cronometro!!.start()
+            isRunning = true
+            hayTiempoGuardado = false
+            seHizoSave = false
+            return
+        }
+
+//        if(!isRunning && hayTiempoGuardado ){
+//            cronometro!!.base = SystemClock.elapsedRealtime() - pauseOffSet - readFromInternalStorage("cronometro")
+//            cronometro!!.start()
+//            isRunning = true
+//            hayTiempoGuardado = false
+//            return
+//        }
+
+        if(!isRunning){
+            cronometro!!.base = SystemClock.elapsedRealtime() - pauseOffSet
+            cronometro!!.start()
+            isRunning = true
+        }
+
+
+    }
+
+    fun pausarCronometro(){
+        if(isRunning){
+            cronometro!!.stop()
+            pauseOffSet = SystemClock.elapsedRealtime() - cronometro!!.base
+            isRunning = false
+        }
+
+
+    }
+
+//    fun reiniciarCronometro(){
+//        cronometro!!.base = SystemClock.elapsedRealtime()
+//        pauseOffSet = 0
+//    }
+
+    fun tiempoCronometro(): Long {
+        var tiempo = SystemClock.elapsedRealtime() - cronometro!!.base
+        return tiempo
+    }
+
 
     // Esta funcion realiza un movimiento y mueve a la posiciones afectadas por este.
     // Primer parametro, posicion desde la cual se inicia el movimiento.
@@ -370,78 +456,91 @@ class GameActivity : AppCompatActivity() {
     // Tercer parametro, true si el moviemiento es vertical, false si es horizontal
 
     fun rotar(view: ImageView, direccion: String, isVertical: Boolean): Boolean {
-        if (isVertical) {
-            if (direccion == "Arriba") {
-                // Lo mismo que abajo pero en el otro sentido
-                val indexArray = movimientosVertical.getValue(view)
+        if(isRunning) {
+            if (isVertical) {
+                if (direccion == "Arriba") {
+                    // Lo mismo que abajo pero en el otro sentido
+                    val indexArray = movimientosVertical.getValue(view)
 
-                val aux = posicionesCuadros.getValue(indexArray[0])
-                posicionesCuadros.set(indexArray[0], posicionesCuadros.getValue(indexArray[1]))
-                posicionesCuadros.set(indexArray[1], posicionesCuadros.getValue(indexArray[2]))
-                posicionesCuadros.set(indexArray[2], posicionesCuadros.getValue(indexArray[3]))
-                posicionesCuadros.set(indexArray[3], aux)
+                    val aux = posicionesCuadros.getValue(indexArray[0])
+                    posicionesCuadros.set(indexArray[0], posicionesCuadros.getValue(indexArray[1]))
+                    posicionesCuadros.set(indexArray[1], posicionesCuadros.getValue(indexArray[2]))
+                    posicionesCuadros.set(indexArray[2], posicionesCuadros.getValue(indexArray[3]))
+                    posicionesCuadros.set(indexArray[3], aux)
+                    movimientosRealizados++
 
-                return true
+                    return true
+                }
+                if (direccion == "Abajo") {
+
+                    // Se extran index posiciones afectadas
+                    val indexArray = movimientosVertical.getValue(view)
+
+                    // Se realizan los cambios en las posiciones
+                    val aux = posicionesCuadros.getValue(indexArray[3])
+                    posicionesCuadros.set(indexArray[3], posicionesCuadros.getValue(indexArray[2]))
+                    posicionesCuadros.set(indexArray[2], posicionesCuadros.getValue(indexArray[1]))
+                    posicionesCuadros.set(indexArray[1], posicionesCuadros.getValue(indexArray[0]))
+                    posicionesCuadros.set(indexArray[0], aux)
+                    movimientosRealizados++
+
+                    return true
+
+                }
+            } else {
+                if (direccion == "Derecha") {
+
+                    // Se extran index posiciones afectadas
+                    val indexArray = movimientosHorizontal.getValue(view)
+
+                    // Se realizan los cambios en las posiciones
+                    val aux = posicionesCuadros.getValue(indexArray[3])
+                    posicionesCuadros.set(indexArray[3], posicionesCuadros.getValue(indexArray[2]))
+                    posicionesCuadros.set(indexArray[2], posicionesCuadros.getValue(indexArray[1]))
+                    posicionesCuadros.set(indexArray[1], posicionesCuadros.getValue(indexArray[0]))
+                    posicionesCuadros.set(indexArray[0], aux)
+                    movimientosRealizados++
+
+                    return true
+
+                }
+                if (direccion == "Izquierda") {
+                    // Lo mismo que derecha pero en el otro sentido
+                    val indexArray = movimientosHorizontal.getValue(view)
+
+                    val aux = posicionesCuadros.getValue(indexArray[0])
+                    posicionesCuadros.set(indexArray[0], posicionesCuadros.getValue(indexArray[1]))
+                    posicionesCuadros.set(indexArray[1], posicionesCuadros.getValue(indexArray[2]))
+                    posicionesCuadros.set(indexArray[2], posicionesCuadros.getValue(indexArray[3]))
+                    posicionesCuadros.set(indexArray[3], aux)
+                    movimientosRealizados++
+
+                    return true
+                }
             }
-            if (direccion == "Abajo") {
 
-                // Se extran index posiciones afectadas
-                val indexArray = movimientosVertical.getValue(view)
-
-                // Se realizan los cambios en las posiciones
-                val aux = posicionesCuadros.getValue(indexArray[3])
-                posicionesCuadros.set(indexArray[3], posicionesCuadros.getValue(indexArray[2]))
-                posicionesCuadros.set(indexArray[2], posicionesCuadros.getValue(indexArray[1]))
-                posicionesCuadros.set(indexArray[1], posicionesCuadros.getValue(indexArray[0]))
-                posicionesCuadros.set(indexArray[0], aux)
-                return true
-
-            }
-        } else {
-            if (direccion == "Derecha") {
-
-                // Se extran index posiciones afectadas
-                val indexArray = movimientosHorizontal.getValue(view)
-
-                // Se realizan los cambios en las posiciones
-                val aux = posicionesCuadros.getValue(indexArray[3])
-                posicionesCuadros.set(indexArray[3], posicionesCuadros.getValue(indexArray[2]))
-                posicionesCuadros.set(indexArray[2], posicionesCuadros.getValue(indexArray[1]))
-                posicionesCuadros.set(indexArray[1], posicionesCuadros.getValue(indexArray[0]))
-                posicionesCuadros.set(indexArray[0], aux)
-                return true
-
-            }
-            if (direccion == "Izquierda") {
-                // Lo mismo que derecha pero en el otro sentido
-                val indexArray = movimientosHorizontal.getValue(view)
-
-                val aux = posicionesCuadros.getValue(indexArray[0])
-                posicionesCuadros.set(indexArray[0], posicionesCuadros.getValue(indexArray[1]))
-                posicionesCuadros.set(indexArray[1], posicionesCuadros.getValue(indexArray[2]))
-                posicionesCuadros.set(indexArray[2], posicionesCuadros.getValue(indexArray[3]))
-                posicionesCuadros.set(indexArray[3], aux)
-                return true
-            }
+            // Caso Error
+            Log.i("MOVIMIENTO", "No se realizo el movimiento")
+            return false
         }
-
-        // Caso Error
-        Log.i("MOVIMIENTO", "No se realizo el movimiento")
         return false
     }
 
     // Esta funcion verifica si el juego ha terminado, retorna true o false respectivamente.
     fun gameOver(): Boolean {
-        for (vista in posicionesCuadros.keys) {
+        if(isRunning) {
+            for (vista in posicionesCuadros.keys) {
 
-            if (vista != posicionesCuadros[vista]!!.idVista) {
-                return false
+                if (vista != posicionesCuadros[vista]!!.idVista) {
+                    return false
+                }
             }
+            // ningun cuadro no esta en su posicion correcta --> todos los cuadros estan en su
+            // posicion correcta.
+            Toast.makeText(this, "YOU WIN", Toast.LENGTH_LONG).show()
+            return true
         }
-        // ningun cuadro no esta en su posicion correcta --> todos los cuadros estan en su
-        // posicion correcta.
-        Toast.makeText(this, "YOU WIN", Toast.LENGTH_LONG).show()
-        return true
+        return false
     }
 
     fun updateGameView() {
@@ -451,33 +550,25 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    /*private fun saveGame(){
-        val fOut = openFileOutput("savedGame.txt", Context.MODE_PRIVATE)
-        var imageresource = 0
+    private fun saveToInternalStorage(toSave : Long, fileName : String){
+        val fOut = openFileOutput("$fileName.txt", Context.MODE_PRIVATE)
 
-        for(value in posicionesCuadros.values){
-
-            imageresource = value.imageResource
-
-            try {
-                var stringToWrite = imageresource.toString()
-                fOut.write(stringToWrite.toByteArray())
+        try {
+            var stringToWrite = toSave.toString()
+            fOut.write(stringToWrite.toByteArray())
 
 
-            }catch (e: Exception){
-                e.printStackTrace()
-            }
-
+        }catch (e: Exception){
+            e.printStackTrace()
         }
-        fOut.close()
-        Toast.makeText(this, "Game Saved", Toast.LENGTH_SHORT).show()
 
+        fOut.close()
     }
 
-    private fun restoreGame(){
+    private fun readFromInternalStorage(fileName: String) : Long{
 
         var fileInputStream: FileInputStream? = null
-        fileInputStream = openFileInput("savedGame.txt")
+        fileInputStream = openFileInput("$fileName.txt")
         var inputStreamReader: InputStreamReader = InputStreamReader(fileInputStream)
         val bufferedReader: BufferedReader = BufferedReader(inputStreamReader)
         val stringBuilder: StringBuilder = StringBuilder()
@@ -485,23 +576,10 @@ class GameActivity : AppCompatActivity() {
         while ({ text = bufferedReader.readLine(); text }() != null) {
             stringBuilder.append(text)
         }
-
         var finalString = stringBuilder.toString()
-        var numberList = finalString.chunked(10)
+        return finalString.toLong()
 
-        Toast.makeText(this, "Game Loaded", Toast.LENGTH_SHORT).show()
-
-        var i = 0
-        for (key in posicionesCuadros.keys) {
-            while (i < 16){
-                posicionesCuadros[key] = Cuadro(numberList[i].toInt(), key)
-                ++i
-                break
-            }
-        }
-
-        updateGameView()
-    }*/
+    }
 
     // TO SAVE IMAGE TO GALLERY
 
@@ -513,9 +591,6 @@ class GameActivity : AppCompatActivity() {
 
             //Si la ubicación no existe, se crea
             if (!path.exists()) path.mkdirs()
-
-            //Se obtiene la fecha y hora actual para el nombre
-            val name = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ROOT).format(Date())
 
             //Nombre del archivo a guardar
             val outFile = File(path, "$fileName.png")
@@ -538,7 +613,6 @@ class GameActivity : AppCompatActivity() {
     fun recuperarImagen(){
         val path = File(applicationContext.dataDir.toString() + File.separator + "img")
         var i = 1
-        var img: File? = null
         val posicionesCuadrosKeys = posicionesCuadros.keys.toMutableList()
 
 
@@ -568,5 +642,36 @@ class GameActivity : AppCompatActivity() {
         updateGameView()
     }
 
+    fun guardarPartida(){
+        // Se guardan imagenes
+        var i = 1
+        for(cuadro in posicionesCuadros.values){
+            guardarImagen(cuadro.imageResource,"img${i}")
+            ++i
+        }
+        // Se guarda tiempo cronometro y cantidad de movimientos
+        iniciarCronometro()
+        pausarCronometro()
+        saveToInternalStorage(tiempoCronometro(), "cronometro")
+        saveToInternalStorage(movimientosRealizados, "movimientosRealizados")
+        hayTiempoGuardado = true
+        seHizoSave = true
+
+    }
+
+    fun cargarPartida(){
+        // Se recuperan imagenes
+        recuperarImagen()
+
+        // Se recuperan cronometro y cantidad de movimientos
+        pausarCronometro()
+        cronometro!!.base = SystemClock.elapsedRealtime()
+        cronometro!!.base -= readFromInternalStorage("cronometro")
+        movimientosRealizados = readFromInternalStorage("movimientosRealizados")
+        seHizoLoad = true
+
+        updateGameView()
+
+    }
 }
 
