@@ -41,7 +41,6 @@ class GameFragment : Fragment() {
     // Nro Jugadas
     var movimientosRealizados : Long = 0
     var hayTiempoGuardado : Boolean = false
-    var seHizoLoad : Boolean = false
     var seHizoSave: Boolean = false
     val calcWidth = { size: Point, percentage: Double -> ceil(percentage * size.x).toInt()}
     val calcHeight = { size: Point, percentage: Double -> ceil(percentage * size.y).toInt()}
@@ -273,16 +272,24 @@ class GameFragment : Fragment() {
         arrowLeft3.setOnTouch(f9, "Izquierda")
         arrowLeft4.setOnTouch(f13, "Izquierda")
         ajustarBarraJuego()
-        ajustarTextoJuego()       
-                                       
+        ajustarTextoJuego()
+
         iniciarCronometro.setOnTouchListener { v, event ->
-              when (event?.action) {
-                  MotionEvent.ACTION_DOWN -> {
-                      iniciarCronometro()
-                  }
-              }
-              // Retorno obligatorio del touchListener
-              v?.onTouchEvent(event) ?: true
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+
+                    if(!isRunning) {
+                        iniciarCronometro()
+                    }
+                    else{
+                        pausarCronometro()
+                        iniciarCronometro()
+                        pausarCronometro()
+                    }
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
         }
 
         pausarCronometro.setOnTouchListener { v, event ->
@@ -356,6 +363,8 @@ class GameFragment : Fragment() {
             cronometro!!.start()
             seHizoLoad = false
             isRunning = true
+
+            iniciarCronometro.setImageResource(R.drawable.button_pause)
         }
 
         if(!isRunning){
@@ -367,6 +376,8 @@ class GameFragment : Fragment() {
             }
             cronometro!!.start()
             isRunning = true
+
+            iniciarCronometro.setImageResource(R.drawable.button_pause)
         }
     }
 
@@ -375,6 +386,8 @@ class GameFragment : Fragment() {
             cronometro!!.stop()
             pauseTime = SystemClock.elapsedRealtime()
             isRunning = false
+
+            iniciarCronometro.setImageResource(R.drawable.button_play)
         }
     }
 
