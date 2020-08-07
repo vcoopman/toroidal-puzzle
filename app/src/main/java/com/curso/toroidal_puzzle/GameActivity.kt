@@ -3,12 +3,14 @@ package com.curso.toroidal_puzzle
 import android.annotation.SuppressLint
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
 import android.view.MotionEvent
+import android.view.View
 import android.widget.Chronometer
 import android.widget.ImageView
 import android.widget.Toast
@@ -90,12 +92,22 @@ class GameActivity : AppCompatActivity() {
         val f15 = findViewById<ImageView>(R.id.cuadro15)
         val f16 = findViewById<ImageView>(R.id.cuadro16)
 
-        //Convierte la imagen que está en Resources en Bitmap
-        var bitmap = BitmapFactory.decodeResource(resources, R.drawable.vicente)
+        lateinit var bitmap: Bitmap
 
-        //Escala la imagen a 400x400px
-        bitmap = Bitmap.createScaledBitmap(bitmap, 400, 400, false)
+        val i = intent
+        val imagen = i.getParcelableExtra<Bitmap>("imagen")
 
+
+        if(imagen == null) {
+            //Convierte la imagen que está en Resources en Bitmap
+            bitmap = BitmapFactory.decodeResource(resources, R.drawable.imagen_udec)
+
+            //Escala la imagen a 400x400px
+            bitmap = Bitmap.createScaledBitmap(bitmap, 400, 400, false)
+        }
+        else{
+            bitmap = imagen
+        }
         //Obtiene la lista de 16 cuadros de 100x100px cada uno
         listaCuadros = crearCuadros.crearCuadros(bitmap).toMutableList()
 
@@ -672,6 +684,13 @@ class GameActivity : AppCompatActivity() {
 
         updateGameView()
 
+    }
+
+    //Función para llamar a la actividad de selección de imagen
+    fun elegirImagen(view: View) {
+
+        val i = Intent(this, ElegirImagenActivity::class.java)
+        startActivity(i)
     }
 }
 
