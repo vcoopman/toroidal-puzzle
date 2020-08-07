@@ -12,8 +12,8 @@
         android:background="@color/colorUI3MyrtleGreenDark"
         tools:context="com.curso.toroidal_puzzle.GameActivity">
 
-
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
@@ -67,54 +67,73 @@
             android:id="@+id/cronometro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="76dp"
-            android:layout_marginBottom="8dp"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/saveButton"
-            app:layout_constraintLeft_toLeftOf="@+id/arrowUp1" />
+            android:textSize="20dp"
+            android:paddingEnd="8dp"
+            android:textColor="@color/colorUILightCoral"
+            android:textStyle="bold"
+            android:fontFamily="@font/tillana"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_bar"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2" />
 
-        <Button
-            android:id="@+id/iniciarCronometro"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="INCIAR"
-            app:layout_constraintBottom_toBottomOf="@+id/cronometro"
-            app:layout_constraintRight_toLeftOf="@+id/cronometro"
-            />
+            android:layout_marginTop="30dp"
+            android:padding="8dp"
+            app:divider="@drawable/divider_barra"
+            app:showDividers="middle"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@drawable/rounded_corner_barra"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
-        <Button
-            android:id="@+id/pausarCronometro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PAUSAR"
-            app:layout_constraintBottom_toBottomOf="@+id/cronometro"
-            app:layout_constraintLeft_toRightOf="@+id/cronometro"
-            />
+            <ImageButton
+                android:id="@+id/iniciarCronometro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/button_play"
+                android:text="INCIAR"/>
 
-        <Button
-            android:id="@+id/saveButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SAVE"
-            app:layout_constraintBottom_toTopOf="@+id/arrowUp1"
-            app:layout_constraintLeft_toLeftOf="@+id/arrowUp1"
-            />
-        <Button
-            android:id="@+id/loadButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LOAD"
-            app:layout_constraintBottom_toTopOf="@+id/arrowUp3"
-            app:layout_constraintLeft_toLeftOf="@+id/arrowUp3"
-            />
+            <ImageButton
+                android:id="@+id/pausarCronometro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/button_pause"
+                android:text="PAUSAR" />
 
-        <Button
-            android:id="@+id/shuffleButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SHUFFLE"
-            app:layout_constraintBottom_toBottomOf="@+id/loadButton"
-            app:layout_constraintLeft_toRightOf="@+id/loadButton" />
+            <ImageButton
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/button_save"
+                android:text="SAVE" />
+
+            <ImageButton
+                android:id="@+id/loadButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/button_load"
+                android:text="LOAD"/>
+
+            <ImageButton
+                android:id="@+id/shuffleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/button_shuffle"
+                android:text="SHUFFLE"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <ImageView
             android:id="@+id/imageView2"

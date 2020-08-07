@@ -24,4 +24,9 @@
     <color name="colorUI4VerdeMenosMenosOscuro">#2F433F</color>
     <color name="colorUI4VerdeMenosOscuro">#273230</color>
     <color name="colorUI4VerdeOscuro">#232E2C</color>
+    <color name="FrostBite">#EF27A6</color>
+    <color name="RedRYB">#FF101F</color>
+    <color name="BitterLime">#BCED09</color>
+    <color name="BlueRYB">#2F52E0</color>
+    <color name="Sunglow">#F9CB40</color>
 </resources>

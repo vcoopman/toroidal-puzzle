@@ -115,9 +115,11 @@ class GameFragment : Fragment() {
         var arrowRight2 = view.findViewById<ImageButton>(R.id.arrowRight2)
         var arrowRight3 = view.findViewById<ImageButton>(R.id.arrowRight3)
         var arrowRight4 = view.findViewById<ImageButton>(R.id.arrowRight4)
-        var saveButton = view.findViewById<Button>(R.id.saveButton)
-        var loadButton = view.findViewById<Button>(R.id.loadButton)
-        var shuffleButton = view.findViewById<Button>(R.id.shuffleButton)
+        var saveButton = view.findViewById<ImageButton>(R.id.saveButton)
+        var loadButton = view.findViewById<ImageButton>(R.id.loadButton)
+        var shuffleButton = view.findViewById<ImageButton>(R.id.shuffleButton)
+        var iniciarCronometro = view.findViewById<ImageButton>(R.id.iniciarCronometro)
+        var pausarCronometro = view.findViewById<ImageButton>(R.id.pausarCronometro)
 
         //Convierte la imagen que está en Resources en Bitmap
         var bitmap = BitmapFactory.decodeResource(resources,
