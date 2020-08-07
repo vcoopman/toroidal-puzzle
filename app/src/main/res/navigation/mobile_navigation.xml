@@ -19,6 +19,13 @@
     </fragment>
 
     <fragment
+        android:id="@+id/nav_elegir"
+        android:name="com.curso.toroidal_puzzle.ui.ElegirImagenFragment"
+        android:label="Elegir Imagen"
+        tools:layout="@layout/elegir_imagen_fragment">
+    </fragment>
+
+    <fragment
         android:id="@+id/nav_credito"
         android:name="com.curso.toroidal_puzzle.ui.help.CreditosFragment"
         android:label= "Créditos"
