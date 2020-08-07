@@ -7,6 +7,7 @@
     android:background="@color/colorUI3MyrtleGreenDark"
     tools:context="com.curso.toroidal_puzzle.GameActivity">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,6 +58,60 @@
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <Chronometer
+        android:id="@+id/cronometro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="76dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/saveButton"
+        app:layout_constraintLeft_toLeftOf="@+id/arrowUp1" />
+
+    <Button
+        android:id="@+id/iniciarCronometro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INCIAR"
+        app:layout_constraintBottom_toBottomOf="@+id/cronometro"
+        app:layout_constraintRight_toLeftOf="@+id/cronometro"
+        />
+
+    <Button
+        android:id="@+id/pausarCronometro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PAUSAR"
+        app:layout_constraintBottom_toBottomOf="@+id/cronometro"
+        app:layout_constraintLeft_toRightOf="@+id/cronometro"
+        />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        app:layout_constraintBottom_toTopOf="@+id/arrowUp1"
+        app:layout_constraintLeft_toLeftOf="@+id/arrowUp1"
+        />
+    <Button
+        android:id="@+id/loadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOAD"
+        app:layout_constraintBottom_toTopOf="@+id/arrowUp3"
+        app:layout_constraintLeft_toLeftOf="@+id/arrowUp3"
+        />
+
+    <Button
+        android:id="@+id/shuffleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SHUFFLE"
+        app:layout_constraintBottom_toBottomOf="@+id/loadButton"
+        app:layout_constraintLeft_toRightOf="@+id/loadButton" />
+
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="380dp"
@@ -70,7 +125,7 @@
         app:layout_constraintWidth_percent="0.93" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/arrowLeft1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -83,7 +138,7 @@
         app:layout_constraintTop_toTopOf="@+id/cuadro1" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/arrowLeft2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -96,7 +151,7 @@
         app:layout_constraintTop_toTopOf="@+id/cuadro5" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/arrowLeft3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -109,6 +164,7 @@
         app:layout_constraintTop_toTopOf="@+id/cuadro9" />
 
     <ImageButton
+        android:id="@+id/arrowLeft4"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -121,6 +177,7 @@
         app:layout_constraintTop_toTopOf="@+id/cuadro13" />
 
     <ImageButton
+        android:id="@+id/arrowUp1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -133,6 +190,7 @@
         app:layout_constraintStart_toStartOf="@+id/cuadro1" />
 
     <ImageButton
+        android:id="@+id/arrowUp2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -145,6 +203,7 @@
         app:layout_constraintStart_toStartOf="@+id/cuadro2" />
 
     <ImageButton
+        android:id="@+id/arrowUp3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -157,6 +216,7 @@
         app:layout_constraintStart_toStartOf="@+id/cuadro3" />
 
     <ImageButton
+        android:id="@+id/arrowUp4"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -169,6 +229,7 @@
         app:layout_constraintStart_toStartOf="@+id/cuadro4" />
 
     <ImageButton
+        android:id="@+id/arrowRight1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -181,6 +242,7 @@
         app:layout_constraintTop_toTopOf="@+id/cuadro4" />
 
     <ImageButton
+        android:id="@+id/arrowRight2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -193,6 +255,7 @@
         app:layout_constraintTop_toTopOf="@+id/cuadro8" />
 
     <ImageButton
+        android:id="@+id/arrowRight3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -205,6 +268,7 @@
         app:layout_constraintTop_toTopOf="@+id/cuadro12" />
 
     <ImageButton
+        android:id="@+id/arrowRight4"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -217,6 +281,7 @@
         app:layout_constraintTop_toTopOf="@+id/cuadro16" />
 
     <ImageButton
+        android:id="@+id/arrowDown1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -229,6 +294,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cuadro13" />
 
     <ImageButton
+        android:id="@+id/arrowDown2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -241,6 +307,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cuadro14" />
 
     <ImageButton
+        android:id="@+id/arrowDown3"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -253,6 +320,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cuadro15" />
 
     <ImageButton
+        android:id="@+id/arrowDown4"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="10dp"
@@ -440,27 +508,6 @@
         app:layout_constraintStart_toStartOf="@+id/cuadro10"
         app:layout_constraintTop_toBottomOf="@+id/cuadro10"
         app:nro="14" />
-
-    <Button
-        android:id="@+id/buttondown1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="96dp"
-        android:background="#F44336"
-        android:text="v"
-        app:layout_constraintLeft_toLeftOf="@+id/cuadro13"
-        app:layout_constraintTop_toBottomOf="@+id/cuadro13" />
-
-    <Button
-        android:id="@+id/buttonright1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="16dp"
-        android:background="#8BC34A"
-        android:text=">"
-        app:layout_constraintLeft_toLeftOf="@+id/buttondown1"
-        app:layout_constraintTop_toBottomOf="@+id/buttondown1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vert"
