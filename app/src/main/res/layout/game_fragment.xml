@@ -108,6 +108,15 @@
                 android:text="PAUSAR" />
 
             <ImageButton
+                android:id="@+id/reiniciarCronometro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/button_restart"
+                android:text="REINICIAR"/>
+
+            <ImageButton
                 android:id="@+id/saveButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -354,6 +363,15 @@
             app:layout_constraintEnd_toEndOf="@+id/cuadro16"
             app:layout_constraintStart_toStartOf="@+id/cuadro16"
             app:layout_constraintTop_toBottomOf="@+id/cuadro16" />
+
+        <ImageView
+            android:id="@+id/ver_imagen_original"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_hori"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vert"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
+            app:layout_constraintTop_toTopOf="@+id/guideline_hori" />
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro6"
