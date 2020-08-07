@@ -3,21 +3,28 @@ package com.curso.toroidal_puzzle.ui.home
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Point
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.shapes.Shape
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.children
+import androidx.core.view.marginLeft
+import androidx.core.view.setPadding
 import com.curso.toroidal_puzzle.CrearCuadros
 import com.curso.toroidal_puzzle.Cuadro
 import com.curso.toroidal_puzzle.R
 import kotlinx.android.synthetic.main.activity_game.*
 import java.io.*
+import kotlin.math.ceil
+import kotlin.math.floor
 
 class GameFragment : Fragment() {
     var isRunning : Boolean = false
@@ -27,6 +34,11 @@ class GameFragment : Fragment() {
     var hayTiempoGuardado : Boolean = false
     var seHizoLoad : Boolean = false
     var seHizoSave: Boolean = false
+    val calcWidth = { size: Point, percentage: Double -> ceil(percentage * size.x).toInt()}
+    val calcHeight = { size: Point, percentage: Double -> ceil(percentage * size.y).toInt()}
+    val defDeviceWidth = 1080
+    val defDeviceHeight = 1920
+    lateinit var displaySize : Point
 
 
     // Almacena posicion de los cuadros en el tablero.
@@ -74,6 +86,7 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        getDisplaySize()
         cronometro = view?.findViewById(R.id.cronometro)
         try {
             if(readFromInternalStorage("cronometro") > 0 ){
@@ -239,6 +252,8 @@ class GameFragment : Fragment() {
         arrowLeft3.setOnTouch(f9, "Izquierda")
         arrowLeft4.setOnTouch(f13, "Izquierda")
 
+        ajustarBarraJuego()
+        ajustarTextoJuego()
         saveButton.setOnTouchListener { v, event ->
             when (event?.action) {
                 MotionEvent.ACTION_DOWN -> guardarPartida()
@@ -584,6 +599,63 @@ class GameFragment : Fragment() {
             updateGameView()
             view?.onTouchEvent(event) ?: true
         }
+    }
+
+    fun getDisplaySize() {
+        val windowManager = requireContext().getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val display = windowManager.defaultDisplay
+        displaySize = Point()
+        display.getSize(displaySize)
+    }
+
+    fun ajustarBarraJuego() {
+        var barraJuego = requireView().findViewById<LinearLayoutCompat>(R.id.barraJuego)
+        barraJuego.invalidate()
+        var imageButtons = barraJuego.children.toList().filterIsInstance<ImageButton>()
+        for (ib in imageButtons) {
+            var percentage = 0.13
+            var ibWidth = calcWidth(displaySize, percentage)
+            ib.layoutParams.width = ibWidth
+            ib.layoutParams.height = ibWidth
+            ib.scaleType = ImageView.ScaleType.CENTER_INSIDE
+            ib.requestLayout()
+        }
+        barraJuego.layoutParams.width = calcWidth(displaySize, 0.93)
+        val padding = calcWidth(displaySize, 0.02)
+        barraJuego.setPadding(padding, padding, padding, padding)
+        var divider = resources.getDrawable(R.drawable.divider_barra, null)
+        divider.setBounds(0, 0, calcWidth(displaySize, 0.02), 0)
+        barraJuego.showDividers = LinearLayoutCompat.SHOW_DIVIDER_MIDDLE
+        barraJuego.dividerDrawable = divider
+        (barraJuego.layoutParams as ConstraintLayout.LayoutParams).setMargins(0, calcHeight(displaySize, 0.03), 0, 0)
+        barraJuego.requestLayout()
+    }
+
+    fun ajustarTextoJuego() {
+        if (defDeviceWidth != displaySize.x) {
+            var titulo = requireView().findViewById<TextView>(R.id.textTituloGame)
+            var textMov = requireView().findViewById<TextView>(R.id.textMovimientos)
+            var countMov = requireView().findViewById<TextView>(R.id.nromov)
+            var chrono = requireView().findViewById<Chronometer>(R.id.cronometro)
+            textMov.invalidate()
+            countMov.invalidate()
+            titulo.invalidate()
+            chrono.invalidate()
+            var factor = (displaySize.x.toFloat() / defDeviceWidth)
+            textMov.textSize *= factor
+            textMov.setShadowLayer(textMov.shadowRadius * factor, 0.0f, textMov.shadowDx * factor, textMov.shadowColor)
+            countMov.textSize *= factor
+            countMov.setShadowLayer(countMov.shadowRadius * factor, 0.0f, countMov.shadowDx * factor, countMov.shadowColor)
+            titulo.textSize *= factor
+            titulo.setShadowLayer(titulo.shadowRadius * factor, 0.0f, titulo.shadowDx * factor, titulo.shadowColor)
+            chrono.textSize *= factor
+            chrono.setShadowLayer(chrono.shadowRadius * factor, 0.0f, chrono.shadowDx * factor, chrono.shadowColor)
+            textMov.requestLayout()
+            countMov.requestLayout()
+            titulo.requestLayout()
+            chrono.requestLayout()
+        }
+
     }
 }
 

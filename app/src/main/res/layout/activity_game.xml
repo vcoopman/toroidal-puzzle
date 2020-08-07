@@ -40,7 +40,7 @@
         android:textColor="@color/colorUILightCoral"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline_bar"
-        app:layout_constraintStart_toStartOf="@+id/imageView2" />
+        app:layout_constraintStart_toStartOf="@+id/fondoTablero" />
 
     <TextView
         android:id="@+id/nromov"
@@ -113,7 +113,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/fondoTablero"
         android:layout_width="380dp"
         android:layout_height="0dp"
         android:src="@drawable/rounded_corner"
