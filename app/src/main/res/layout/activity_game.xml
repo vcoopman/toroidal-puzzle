@@ -509,6 +509,20 @@
         app:layout_constraintTop_toBottomOf="@+id/cuadro10"
         app:nro="14" />
 
+    <!--TODO: Botón de prueba, quitarlo-->
+    <!-- //////////////////////////////////// -->
+    <Button
+        android:id="@+id/botonTemporal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="ELEGIR IMAGEN"
+        android:onClick="elegirImagen"
+        />
+    <!-- //////////////////////////////////// -->
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_vert"
         android:layout_width="wrap_content"
