@@ -16,5 +16,5 @@
         android:layout_height="wrap_content"
         android:paddingStart="20dp"
         android:theme="@style/TextViewDrawerItem"
-        android:text="Partidas Grabadas"/>
+        android:text="PARTIDAS GRABADAS"/>
 </androidx.appcompat.widget.LinearLayoutCompat>
