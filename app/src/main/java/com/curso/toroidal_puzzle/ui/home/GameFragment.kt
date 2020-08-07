@@ -32,6 +32,7 @@ class GameFragment : Fragment() {
 
     // Estado del juego
     var isRunning : Boolean = false
+    var showingOriginal : Boolean = false
 
     // Varibles cronometro
     var cronometro : Chronometer? = null
@@ -40,8 +41,8 @@ class GameFragment : Fragment() {
 
     // Nro Jugadas
     var movimientosRealizados : Long = 0
-    var hayTiempoGuardado : Boolean = false
-    var seHizoSave: Boolean = false
+
+    // Layout
     val calcWidth = { size: Point, percentage: Double -> ceil(percentage * size.x).toInt()}
     val calcHeight = { size: Point, percentage: Double -> ceil(percentage * size.y).toInt()}
     val defDeviceWidth = 1080
@@ -98,7 +99,7 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getDisplaySize()
-        cronometro = view?.findViewById(R.id.cronometro)
+
         // Init cronometro
         cronometro = view.findViewById(R.id.cronometro)
 
@@ -271,6 +272,7 @@ class GameFragment : Fragment() {
         arrowLeft2.setOnTouch(f5, "Izquierda")
         arrowLeft3.setOnTouch(f9, "Izquierda")
         arrowLeft4.setOnTouch(f13, "Izquierda")
+
         ajustarBarraJuego()
         ajustarTextoJuego()
 
@@ -349,6 +351,26 @@ class GameFragment : Fragment() {
             // Retorno obligatorio del touchListener
             v?.onTouchEvent(event) ?: true
         }
+
+        botonVerOriginal.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    if(showingOriginal){
+                        imagen_original.visibility = View.INVISIBLE
+                        showingOriginal = false
+                    } else {
+                        imagen_original.visibility = View.VISIBLE
+                        showingOriginal = true
+                    }
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+
+        // Set imagen original
+        // Este recurso o imagen debe ser la que se esta usando para jugar
+        imagen_original.setImageResource(R.drawable.felipe)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -425,7 +447,6 @@ class GameFragment : Fragment() {
             recuperarImagen()
 
             // Se recuperan cronometro y cantidad de movimientos
-//            pausarCronometro()
             cronometro!!.base =
                 SystemClock.elapsedRealtime() - readFromInternalStorage("cronometro")
 
@@ -453,7 +474,6 @@ class GameFragment : Fragment() {
 
         updateGameView()
     }
-
 
     // Esta funcion realiza un movimiento y mueve a la posiciones afectadas por este.
     // Primer parametro, posicion desde la cual se inicia el movimiento.
