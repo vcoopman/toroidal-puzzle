@@ -123,9 +123,9 @@
                 android:text="PAUSAR" />
 
             <ImageButton
-                android:id="@+id/reiniciarCronometro"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:id="@+id/reiniciarJuego"
                 android:background="@null"
                 android:scaleType="fitXY"
                 android:src="@drawable/button_restart"
