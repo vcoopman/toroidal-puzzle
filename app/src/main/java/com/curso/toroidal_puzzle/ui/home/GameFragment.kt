@@ -1,22 +1,25 @@
-package com.curso.toroidal_puzzle
-
-import android.annotation.SuppressLint
+package com.curso.toroidal_puzzle.ui.home
 
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.MotionEvent
-import android.widget.Chronometer
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import android.view.ViewGroup
+import android.widget.*
+import com.curso.toroidal_puzzle.CrearCuadros
+import com.curso.toroidal_puzzle.Cuadro
+import com.curso.toroidal_puzzle.R
 import kotlinx.android.synthetic.main.activity_game.*
 import java.io.*
 
-class GameActivity : AppCompatActivity() {
+class GameFragment : Fragment() {
 
     var isRunning : Boolean = false
     var cronometro : Chronometer? = null
@@ -58,13 +61,21 @@ class GameActivity : AppCompatActivity() {
     //Obtiene la lista de 16 cuadros de 100x100px cada uno
     var listaCuadros = mutableListOf<Bitmap>()
 
-    @SuppressLint("ClickableViewAccessibility")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_game)
+    companion object {
+        fun newInstance() = GameFragment()
+    }
 
-        cronometro = findViewById<Chronometer>(R.id.cronometro)
+    private lateinit var viewModel: GameViewModel
 
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.game_fragment, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        cronometro = view?.findViewById(R.id.cronometro)
         try {
             if(readFromInternalStorage("cronometro") > 0 ){
                 hayTiempoGuardado = true
@@ -73,25 +84,46 @@ class GameActivity : AppCompatActivity() {
             // Error pq no hay archivo de save
         }
 
-        val f1 = findViewById<ImageView>(R.id.cuadro1)
-        val f2 = findViewById<ImageView>(R.id.cuadro2)
-        val f3 = findViewById<ImageView>(R.id.cuadro3)
-        val f4 = findViewById<ImageView>(R.id.cuadro4)
-        val f5 = findViewById<ImageView>(R.id.cuadro5)
-        val f6 = findViewById<ImageView>(R.id.cuadro6)
-        val f7 = findViewById<ImageView>(R.id.cuadro7)
-        val f8 = findViewById<ImageView>(R.id.cuadro8)
-        val f9 = findViewById<ImageView>(R.id.cuadro9)
-        val f10 = findViewById<ImageView>(R.id.cuadro10)
-        val f11 = findViewById<ImageView>(R.id.cuadro11)
-        val f12 = findViewById<ImageView>(R.id.cuadro12)
-        val f13 = findViewById<ImageView>(R.id.cuadro13)
-        val f14 = findViewById<ImageView>(R.id.cuadro14)
-        val f15 = findViewById<ImageView>(R.id.cuadro15)
-        val f16 = findViewById<ImageView>(R.id.cuadro16)
+        val f1 = view.findViewById<ImageView>(R.id.cuadro1)
+        val f2 = view.findViewById<ImageView>(R.id.cuadro2)
+        val f3 = view.findViewById<ImageView>(R.id.cuadro3)
+        val f4 = view.findViewById<ImageView>(R.id.cuadro4)
+        val f5 = view.findViewById<ImageView>(R.id.cuadro5)
+        val f6 = view.findViewById<ImageView>(R.id.cuadro6)
+        val f7 = view.findViewById<ImageView>(R.id.cuadro7)
+        val f8 = view.findViewById<ImageView>(R.id.cuadro8)
+        val f9 = view.findViewById<ImageView>(R.id.cuadro9)
+        val f10 = view.findViewById<ImageView>(R.id.cuadro10)
+        val f11 = view.findViewById<ImageView>(R.id.cuadro11)
+        val f12 = view.findViewById<ImageView>(R.id.cuadro12)
+        val f13 = view.findViewById<ImageView>(R.id.cuadro13)
+        val f14 = view.findViewById<ImageView>(R.id.cuadro14)
+        val f15 = view.findViewById<ImageView>(R.id.cuadro15)
+        val f16 = view.findViewById<ImageView>(R.id.cuadro16)
+        var arrowUp1 = view.findViewById<ImageButton>(R.id.arrowUp1)
+        var arrowUp2 = view.findViewById<ImageButton>(R.id.arrowUp2)
+        var arrowUp3 = view.findViewById<ImageButton>(R.id.arrowUp3)
+        var arrowUp4 = view.findViewById<ImageButton>(R.id.arrowUp4)
+        var arrowDown1 = view.findViewById<ImageButton>(R.id.arrowDown1)
+        var arrowDown2 = view.findViewById<ImageButton>(R.id.arrowDown2)
+        var arrowDown3 = view.findViewById<ImageButton>(R.id.arrowDown3)
+        var arrowDown4 = view.findViewById<ImageButton>(R.id.arrowDown4)
+        var arrowLeft1 = view.findViewById<ImageButton>(R.id.arrowLeft1)
+        var arrowLeft2 = view.findViewById<ImageButton>(R.id.arrowLeft2)
+        var arrowLeft3 = view.findViewById<ImageButton>(R.id.arrowLeft3)
+        var arrowLeft4 = view.findViewById<ImageButton>(R.id.arrowLeft4)
+        var arrowRight1 = view.findViewById<ImageButton>(R.id.arrowRight1)
+        var arrowRight2 = view.findViewById<ImageButton>(R.id.arrowRight2)
+        var arrowRight3 = view.findViewById<ImageButton>(R.id.arrowRight3)
+        var arrowRight4 = view.findViewById<ImageButton>(R.id.arrowRight4)
+        var saveButton = view.findViewById<Button>(R.id.saveButton)
+        var loadButton = view.findViewById<Button>(R.id.loadButton)
+        var shuffleButton = view.findViewById<Button>(R.id.shuffleButton)
 
         //Convierte la imagen que está en Resources en Bitmap
-        var bitmap = BitmapFactory.decodeResource(resources, R.drawable.vicente)
+        var bitmap = BitmapFactory.decodeResource(resources,
+            R.drawable.vicente
+        )
 
         //Escala la imagen a 400x400px
         bitmap = Bitmap.createScaledBitmap(bitmap, 400, 400, false)
@@ -100,22 +132,54 @@ class GameActivity : AppCompatActivity() {
         listaCuadros = crearCuadros.crearCuadros(bitmap).toMutableList()
 
         //Coloca los cuadros en el mapa
-        posicionesCuadros.set(f1, Cuadro(listaCuadros[0], f1,1))
-        posicionesCuadros.set(f2, Cuadro(listaCuadros[1], f2,2))
-        posicionesCuadros.set(f3, Cuadro(listaCuadros[2], f3,3))
-        posicionesCuadros.set(f4, Cuadro(listaCuadros[3], f4,4))
-        posicionesCuadros.set(f5, Cuadro(listaCuadros[4], f5,5))
-        posicionesCuadros.set(f6, Cuadro(listaCuadros[5], f6,6))
-        posicionesCuadros.set(f7, Cuadro(listaCuadros[6], f7,7))
-        posicionesCuadros.set(f8, Cuadro(listaCuadros[7], f8,8))
-        posicionesCuadros.set(f9, Cuadro(listaCuadros[8], f9,9))
-        posicionesCuadros.set(f10, Cuadro(listaCuadros[9], f10,10))
-        posicionesCuadros.set(f11, Cuadro(listaCuadros[10], f11,11))
-        posicionesCuadros.set(f12, Cuadro(listaCuadros[11], f12,12))
-        posicionesCuadros.set(f13, Cuadro(listaCuadros[12], f13,13))
-        posicionesCuadros.set(f14, Cuadro(listaCuadros[13], f14,14))
-        posicionesCuadros.set(f15, Cuadro(listaCuadros[14], f15,15))
-        posicionesCuadros.set(f16, Cuadro(listaCuadros[15], f16,16))
+        posicionesCuadros.set(f1,
+            Cuadro(listaCuadros[0], f1, 1)
+        )
+        posicionesCuadros.set(f2,
+            Cuadro(listaCuadros[1], f2, 2)
+        )
+        posicionesCuadros.set(f3,
+            Cuadro(listaCuadros[2], f3, 3)
+        )
+        posicionesCuadros.set(f4,
+            Cuadro(listaCuadros[3], f4, 4)
+        )
+        posicionesCuadros.set(f5,
+            Cuadro(listaCuadros[4], f5, 5)
+        )
+        posicionesCuadros.set(f6,
+            Cuadro(listaCuadros[5], f6, 6)
+        )
+        posicionesCuadros.set(f7,
+            Cuadro(listaCuadros[6], f7, 7)
+        )
+        posicionesCuadros.set(f8,
+            Cuadro(listaCuadros[7], f8, 8)
+        )
+        posicionesCuadros.set(f9,
+            Cuadro(listaCuadros[8], f9, 9)
+        )
+        posicionesCuadros.set(f10,
+            Cuadro(listaCuadros[9], f10, 10)
+        )
+        posicionesCuadros.set(f11,
+            Cuadro(listaCuadros[10], f11, 11)
+        )
+        posicionesCuadros.set(f12,
+            Cuadro(listaCuadros[11], f12, 12)
+        )
+        posicionesCuadros.set(f13,
+            Cuadro(listaCuadros[12], f13, 13)
+        )
+        posicionesCuadros.set(f14,
+            Cuadro(listaCuadros[13], f14, 14)
+        )
+        posicionesCuadros.set(f15,
+            Cuadro(listaCuadros[14], f15, 15)
+        )
+        posicionesCuadros.set(f16,
+            Cuadro(listaCuadros[15], f16, 16)
+        )
 
         movimientosHorizontal = mutableMapOf<ImageView, Array<ImageView>>(
             Pair(f1, arrayOf(f1, f2, f3, f4)),
@@ -157,187 +221,26 @@ class GameActivity : AppCompatActivity() {
 
         updateGameView()
 
-        arrowUp1.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f1, "Arriba", true)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowUp2.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f2, "Arriba", true)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowUp3.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f3, "Arriba", true)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowUp4.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f4, "Arriba", true)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowRight1.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f1, "Derecha", false)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowRight2.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f5, "Derecha", false)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowRight3.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f9, "Derecha", false)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowRight4.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f13, "Derecha", false)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowDown1.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f1, "Abajo", true)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowDown2.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f2, "Abajo", true)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowDown3.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f3, "Abajo", true)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowDown4.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f4, "Abajo", true)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowLeft1.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f1, "Izquierda", false)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowLeft2.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f5, "Izquierda", false)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowLeft3.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f9, "Izquierda", false)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
-        arrowLeft4.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    rotar(f13, "Izquierda", false)
-                    gameOver()
-                    updateGameView()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
+        arrowUp1.setOnTouch(f1, "Arriba")
+        arrowUp2.setOnTouch(f2, "Arriba")
+        arrowUp3.setOnTouch(f3, "Arriba")
+        arrowUp4.setOnTouch(f4, "Arriba")
+        arrowRight1.setOnTouch(f1, "Derecha")
+        arrowRight2.setOnTouch(f5, "Derecha")
+        arrowRight3.setOnTouch(f9, "Derecha")
+        arrowRight4.setOnTouch(f13, "Derecha")
+        arrowDown1.setOnTouch(f1, "Abajo")
+        arrowDown2.setOnTouch(f2, "Abajo")
+        arrowDown3.setOnTouch(f3, "Abajo")
+        arrowDown4.setOnTouch(f4, "Abajo")
+        arrowLeft1.setOnTouch(f1, "Izquierda")
+        arrowLeft2.setOnTouch(f5, "Izquierda")
+        arrowLeft3.setOnTouch(f9, "Izquierda")
+        arrowLeft4.setOnTouch(f13, "Izquierda")
+
         saveButton.setOnTouchListener { v, event ->
             when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                   guardarPartida()
-                }
+                MotionEvent.ACTION_DOWN -> guardarPartida()
             }
             // Retorno obligatorio del touchListener
             v?.onTouchEvent(event) ?: true
@@ -349,7 +252,7 @@ class GameActivity : AppCompatActivity() {
                     try {
                         cargarPartida()
                     }catch (e: Exception){
-                        Toast.makeText(this, "Error al cargar la partida", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this.activity, "Error al cargar la partida", Toast.LENGTH_SHORT).show()
                     }
 
                 }
@@ -390,6 +293,12 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
+        // TODO: Use the ViewModel
+    }
+
     fun iniciarCronometro(){
 
         if(!isRunning && hayTiempoGuardado && seHizoLoad){
@@ -422,9 +331,8 @@ class GameActivity : AppCompatActivity() {
             cronometro!!.start()
             isRunning = true
         }
-
-
     }
+
 
     fun pausarCronometro(){
         if(isRunning){
@@ -432,8 +340,6 @@ class GameActivity : AppCompatActivity() {
             pauseOffSet = SystemClock.elapsedRealtime() - cronometro!!.base
             isRunning = false
         }
-
-
     }
 
 //    fun reiniciarCronometro(){
@@ -534,21 +440,20 @@ class GameActivity : AppCompatActivity() {
             }
             // ningun cuadro no esta en su posicion correcta --> todos los cuadros estan en su
             // posicion correcta.
-            Toast.makeText(this, "YOU WIN", Toast.LENGTH_LONG).show()
+            Toast.makeText(this.activity, "YOU WIN", Toast.LENGTH_LONG).show()
             return true
         }
         return false
     }
 
     fun updateGameView() {
-
         for (vista in posicionesCuadros.keys) {
             vista.setImageBitmap(posicionesCuadros[vista]!!.imageResource)
         }
     }
 
     private fun saveToInternalStorage(toSave : Long, fileName : String){
-        val fOut = openFileOutput("$fileName.txt", Context.MODE_PRIVATE)
+        val fOut = requireContext().openFileOutput("$fileName.txt", Context.MODE_PRIVATE)
 
         try {
             var stringToWrite = toSave.toString()
@@ -563,9 +468,8 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun readFromInternalStorage(fileName: String) : Long{
-
         var fileInputStream: FileInputStream? = null
-        fileInputStream = openFileInput("$fileName.txt")
+        fileInputStream = context?.openFileInput("$fileName.txt")
         var inputStreamReader: InputStreamReader = InputStreamReader(fileInputStream)
         val bufferedReader: BufferedReader = BufferedReader(inputStreamReader)
         val stringBuilder: StringBuilder = StringBuilder()
@@ -575,16 +479,13 @@ class GameActivity : AppCompatActivity() {
         }
         var finalString = stringBuilder.toString()
         return finalString.toLong()
-
     }
-
-    // TO SAVE IMAGE TO GALLERY
 
     fun guardarImagen(imagen: Bitmap, fileName: String){
 
         try {
             //Ubicación donde se guardan las imágenes
-            val path = File(applicationContext.dataDir.toString() + File.separator + "img")
+            val path = File(requireContext().applicationContext.dataDir.toString() + File.separator + "img")
 
             //Si la ubicación no existe, se crea
             if (!path.exists()) path.mkdirs()
@@ -608,7 +509,7 @@ class GameActivity : AppCompatActivity() {
     }
 
     fun recuperarImagen(){
-        val path = File(applicationContext.dataDir.toString() + File.separator + "img")
+        val path = File(requireContext().applicationContext.dataDir.toString() + File.separator + "img")
         var i = 1
         val posicionesCuadrosKeys = posicionesCuadros.keys.toMutableList()
 
@@ -669,6 +570,20 @@ class GameActivity : AppCompatActivity() {
 
         updateGameView()
 
+    }
+
+    fun ImageButton.setOnTouch(f:ImageView, direccion:String) {
+        this.setOnTouchListener { view, event->
+            when(Pair(event?.action, direccion)) {
+                Pair(MotionEvent.ACTION_DOWN, "Arriba") -> rotar(f, direccion, true)
+                Pair(MotionEvent.ACTION_DOWN, "Abajo") -> rotar(f, direccion, true)
+                Pair(MotionEvent.ACTION_DOWN, "Derecha") -> rotar(f, direccion, false)
+                Pair(MotionEvent.ACTION_DOWN, "Izquierda") -> rotar(f, direccion, false)
+            }
+            gameOver()
+            updateGameView()
+            view?.onTouchEvent(event) ?: true
+        }
     }
 }
 
