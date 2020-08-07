@@ -41,7 +41,6 @@
             android:onClick="tomarFoto"
             android:scaleType="fitCenter"
             android:src="@drawable/baseline_add_a_photo_black_24" />
-
     </RelativeLayout>
 
     <GridView
@@ -53,7 +52,5 @@
         android:verticalSpacing="5dp"
         android:horizontalSpacing="5dp"
         android:stretchMode="columnWidth"
-        android:gravity="center"
-        />
-
+        android:gravity="center" />
 </LinearLayout>

@@ -42,6 +42,7 @@ class GameFragment : Fragment() {
     // Nro Jugadas
     var movimientosRealizados : Long = 0
 
+
     // Layout
     val calcWidth = { size: Point, percentage: Double -> ceil(percentage * size.x).toInt()}
     val calcHeight = { size: Point, percentage: Double -> ceil(percentage * size.y).toInt()}

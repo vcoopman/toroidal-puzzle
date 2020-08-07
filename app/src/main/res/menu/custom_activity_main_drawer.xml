@@ -9,7 +9,7 @@
         app:actionLayout="@layout/nav_drawer_element_home"
         app:showAsAction="always" />
     <item
-        android:id="@+id/nav_grabar_partida"
+        android:id="@+id/nav_elegir"
         android:title="@null"
         app:actionLayout="@layout/nav_drawer_element_save_game"
         app:showAsAction="always" />
