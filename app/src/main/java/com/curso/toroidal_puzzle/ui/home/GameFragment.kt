@@ -1,6 +1,7 @@
 package com.curso.toroidal_puzzle.ui.home
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.lifecycle.ViewModelProviders
@@ -15,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.curso.toroidal_puzzle.CrearCuadros
 import com.curso.toroidal_puzzle.Cuadro
+import com.curso.toroidal_puzzle.ElegirImagenActivity
 import com.curso.toroidal_puzzle.R
 import kotlinx.android.synthetic.main.activity_game.*
 import java.io.*
@@ -74,7 +76,7 @@ class GameFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        cronometro = view?.findViewById(R.id.cronometro)
+        cronometro = view.findViewById(R.id.cronometro)
         try {
             if(readFromInternalStorage("cronometro") > 0 ){
                 hayTiempoGuardado = true
@@ -99,31 +101,31 @@ class GameFragment : Fragment() {
         val f14 = view.findViewById<ImageView>(R.id.cuadro14)
         val f15 = view.findViewById<ImageView>(R.id.cuadro15)
         val f16 = view.findViewById<ImageView>(R.id.cuadro16)
-        var arrowUp1 = view.findViewById<ImageButton>(R.id.arrowUp1)
-        var arrowUp2 = view.findViewById<ImageButton>(R.id.arrowUp2)
-        var arrowUp3 = view.findViewById<ImageButton>(R.id.arrowUp3)
-        var arrowUp4 = view.findViewById<ImageButton>(R.id.arrowUp4)
-        var arrowDown1 = view.findViewById<ImageButton>(R.id.arrowDown1)
-        var arrowDown2 = view.findViewById<ImageButton>(R.id.arrowDown2)
-        var arrowDown3 = view.findViewById<ImageButton>(R.id.arrowDown3)
-        var arrowDown4 = view.findViewById<ImageButton>(R.id.arrowDown4)
-        var arrowLeft1 = view.findViewById<ImageButton>(R.id.arrowLeft1)
-        var arrowLeft2 = view.findViewById<ImageButton>(R.id.arrowLeft2)
-        var arrowLeft3 = view.findViewById<ImageButton>(R.id.arrowLeft3)
-        var arrowLeft4 = view.findViewById<ImageButton>(R.id.arrowLeft4)
-        var arrowRight1 = view.findViewById<ImageButton>(R.id.arrowRight1)
-        var arrowRight2 = view.findViewById<ImageButton>(R.id.arrowRight2)
-        var arrowRight3 = view.findViewById<ImageButton>(R.id.arrowRight3)
-        var arrowRight4 = view.findViewById<ImageButton>(R.id.arrowRight4)
-        var saveButton = view.findViewById<ImageButton>(R.id.saveButton)
-        var loadButton = view.findViewById<ImageButton>(R.id.loadButton)
-        var shuffleButton = view.findViewById<ImageButton>(R.id.shuffleButton)
-        var iniciarCronometro = view.findViewById<ImageButton>(R.id.iniciarCronometro)
-        var pausarCronometro = view.findViewById<ImageButton>(R.id.pausarCronometro)
+        val arrowUp1 = view.findViewById<ImageButton>(R.id.arrowUp1)
+        val arrowUp2 = view.findViewById<ImageButton>(R.id.arrowUp2)
+        val arrowUp3 = view.findViewById<ImageButton>(R.id.arrowUp3)
+        val arrowUp4 = view.findViewById<ImageButton>(R.id.arrowUp4)
+        val arrowDown1 = view.findViewById<ImageButton>(R.id.arrowDown1)
+        val arrowDown2 = view.findViewById<ImageButton>(R.id.arrowDown2)
+        val arrowDown3 = view.findViewById<ImageButton>(R.id.arrowDown3)
+        val arrowDown4 = view.findViewById<ImageButton>(R.id.arrowDown4)
+        val arrowLeft1 = view.findViewById<ImageButton>(R.id.arrowLeft1)
+        val arrowLeft2 = view.findViewById<ImageButton>(R.id.arrowLeft2)
+        val arrowLeft3 = view.findViewById<ImageButton>(R.id.arrowLeft3)
+        val arrowLeft4 = view.findViewById<ImageButton>(R.id.arrowLeft4)
+        val arrowRight1 = view.findViewById<ImageButton>(R.id.arrowRight1)
+        val arrowRight2 = view.findViewById<ImageButton>(R.id.arrowRight2)
+        val arrowRight3 = view.findViewById<ImageButton>(R.id.arrowRight3)
+        val arrowRight4 = view.findViewById<ImageButton>(R.id.arrowRight4)
+        val saveButton = view.findViewById<ImageButton>(R.id.saveButton)
+        val loadButton = view.findViewById<ImageButton>(R.id.loadButton)
+        val shuffleButton = view.findViewById<ImageButton>(R.id.shuffleButton)
+        val iniciarCronometro = view.findViewById<ImageButton>(R.id.iniciarCronometro)
+        val pausarCronometro = view.findViewById<ImageButton>(R.id.pausarCronometro)
 
         //Convierte la imagen que está en Resources en Bitmap
         var bitmap = BitmapFactory.decodeResource(resources,
-            R.drawable.vicente
+            R.drawable.imagen_udec
         )
 
         //Escala la imagen a 400x400px
