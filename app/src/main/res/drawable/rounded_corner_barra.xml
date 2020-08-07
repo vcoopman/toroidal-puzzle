@@ -4,7 +4,7 @@
         android:width="4dp"
         android:color="@color/colorUI4VerdeOscuro" />
 
-    <solid android:color="@color/Sunglow" />
+    <solid android:color="@color/colorUI4VerdeMenosMenosOscuro" />
 
     <padding
         android:left="1dp"
