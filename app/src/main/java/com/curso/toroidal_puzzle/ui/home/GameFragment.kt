@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.activity_game.*
 import java.io.*
 
 class GameFragment : Fragment() {
-
     var isRunning : Boolean = false
     var cronometro : Chronometer? = null
     var pauseOffSet : Long = 0
@@ -567,7 +566,6 @@ class GameFragment : Fragment() {
         cronometro!!.base -= readFromInternalStorage("cronometro")
         movimientosRealizados = readFromInternalStorage("movimientosRealizados")
         seHizoLoad = true
-
         updateGameView()
 
     }
