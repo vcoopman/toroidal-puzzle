@@ -4,50 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.ElegirImagenFragment">
+    tools:context=".ui.home.ElegirImagenFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context=".ElegirImagenActivity">
+        android:background="@color/colorUI3MyrtleGreenDark"
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/layoutBotones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:padding="4dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            style="?android:attr/buttonBarStyle">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
                 android:id="@+id/elegirFotoBoton"
-                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toStartOf="@id/tomarFotoBoton"
-
                 android:contentDescription="Elegir Foto"
-                android:onClick="cargarImagen"
                 android:scaleType="centerCrop"
                 android:src="@drawable/baseline_add_photo_alternate_black_24" />
 
             <ImageButton
                 android:id="@+id/tomarFotoBoton"
-                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:contentDescription="Tomar Foto"
                 android:onClick="tomarFoto"
                 android:scaleType="fitCenter"
                 android:src="@drawable/baseline_add_a_photo_black_24" />
-        </RelativeLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
         <GridView
             android:id="@+id/gridViewGaleria"

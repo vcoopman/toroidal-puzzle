@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/nav_elegir"
-        android:name="com.curso.toroidal_puzzle.ui.ElegirImagenFragment"
+        android:name="com.curso.toroidal_puzzle.ui.home.ElegirImagenFragment"
         android:label="Elegir Imagen"
         tools:layout="@layout/elegir_imagen_fragment">
     </fragment>

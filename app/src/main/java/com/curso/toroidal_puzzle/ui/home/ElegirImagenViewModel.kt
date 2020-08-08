@@ -1,4 +1,4 @@
-package com.curso.toroidal_puzzle.ui
+package com.curso.toroidal_puzzle.ui.home
 
 import androidx.lifecycle.ViewModel
 
