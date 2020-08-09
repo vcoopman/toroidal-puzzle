@@ -11,6 +11,24 @@
         android:layout_height="match_parent"
         android:background="@color/colorUI3MyrtleGreenDark">
 
+        <ImageView
+            android:id="@+id/imagen_original"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintLeft_toLeftOf="@+id/cuadro1"
+            app:layout_constraintTop_toTopOf="@+id/cuadro1"
+            app:layout_constraintHeight_percent="0.58536"
+            app:layout_constraintDimensionRatio="1:1" />
+
+        <Button
+            android:id="@+id/botonVerOriginal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/arrowDown4"
+            app:layout_constraintTop_toBottomOf="@id/arrowRight4"
+            />
+
         <TextView
             android:id="@+id/textTituloGame"
             android:layout_width="wrap_content"
@@ -182,16 +200,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline_hori_bor_top"
             app:layout_constraintVertical_bias="0.0"
-            android:contentDescription="TODO" />
-
-        <ImageView
-            android:id="@+id/imagen_original"
-            android:layout_width="240dp"
-            android:layout_height="240dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline_hori"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/guideline_vert"
-            app:layout_constraintTop_toTopOf="@+id/guideline_hori"
             android:contentDescription="TODO" />
 
         <ImageButton
