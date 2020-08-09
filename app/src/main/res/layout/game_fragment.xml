@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.GameFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,21 +13,22 @@
 
         <TextView
             android:id="@+id/textTituloGame"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:shadowColor="@color/colorUILightCoral"
-            android:shadowDx="4.0"
-            android:shadowDy="0.0"
-            android:shadowRadius="1.0"
+            style="@style/TextViewTitulo"
             android:text="A JUGAR!"
-            android:textSize="36sp"
-            android:textStyle="normal"
-            android:theme="@style/TextViewTituloCreditos"
             app:layout_constraintBottom_toTopOf="@+id/guideline_titulo"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert_bor_bot"
             app:layout_constraintStart_toStartOf="@+id/guideline_vert_bor_top"
             app:layout_constraintTop_toTopOf="@+id/guideline_titulo" />
+
+        <ImageView
+            android:id="@+id/imagen_original"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="@+id/cuadro1"
+            app:layout_constraintTop_toTopOf="@+id/cuadro1"
+            app:layout_constraintWidth_percent="0.58536" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/movimientos"
@@ -52,7 +53,7 @@
                 android:shadowRadius="1.0"
                 android:text="MOVIMIENTOS"
                 android:textColor="@color/colorUILightCoral"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -67,7 +68,7 @@
                 android:shadowRadius="1.0"
                 android:text="00000"
                 android:textColor="@color/colorUILightCoral"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -82,7 +83,7 @@
             android:shadowDy="0.0"
             android:shadowRadius="1.0"
             android:textColor="@color/colorUILightCoral"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline_bar"
             app:layout_constraintEnd_toEndOf="@+id/fondoTablero" />
@@ -106,69 +107,46 @@
 
             <ImageButton
                 android:id="@+id/iniciarCronometro"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@null"
-                android:scaleType="fitXY"
+                style="@style/ButtonBarraGame"
                 android:src="@drawable/button_play"
-                android:text="INCIAR"
-                android:contentDescription="TODO" />
+                android:text="INCIAR" />
 
             <ImageButton
                 android:id="@+id/pausarCronometro"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@null"
-                android:scaleType="fitXY"
+                style="@style/ButtonBarraGame"
                 android:src="@drawable/button_pause"
-                android:text="PAUSAR"
-                android:contentDescription="TODO" />
+                android:text="PAUSAR" />
 
             <ImageButton
                 android:id="@+id/reiniciarJuego"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@null"
-                android:scaleType="fitXY"
+                style="@style/ButtonBarraGame"
                 android:src="@drawable/button_restart"
-                android:text="REINICIAR"
-                android:contentDescription="TODO" />
+                android:text="REINICIAR" />
 
             <ImageButton
                 android:id="@+id/saveButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@null"
-                android:scaleType="fitXY"
+                style="@style/ButtonBarraGame"
                 android:src="@drawable/button_save"
-                android:text="SAVE"
-                android:contentDescription="TODO" />
+                android:text="SAVE" />
 
             <ImageButton
                 android:id="@+id/loadButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:scaleType="fitXY"
+                style="@style/ButtonBarraGame"
                 android:src="@drawable/button_load"
-                android:text="LOAD"
-                android:contentDescription="TODO" />
+                android:text="LOAD" />
 
             <ImageButton
                 android:id="@+id/shuffleButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@null"
-                android:scaleType="fitXY"
+                style="@style/ButtonBarraGame"
                 android:src="@drawable/button_shuffle"
-                android:text="SHUFFLE"
-                android:contentDescription="TODO" />
+                android:text="SHUFFLE" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <ImageView
             android:id="@+id/fondoTablero"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:contentDescription="TODO"
             android:src="@drawable/rounded_corner"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
@@ -177,15 +155,11 @@
             app:layout_constraintStart_toStartOf="@+id/guideline_vert_bor_top"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.93"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.93" />
 
         <ImageButton
             android:id="@+id/arrowLeft1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_left"
             app:layout_constraintBottom_toBottomOf="@+id/cuadro1"
             app:layout_constraintDimensionRatio="1:1"
@@ -193,15 +167,11 @@
             app:layout_constraintStart_toStartOf="@+id/guideline_vert_bor_top"
             app:layout_constraintTop_toTopOf="@+id/cuadro1"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowLeft2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_left"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori"
             app:layout_constraintDimensionRatio="1:1"
@@ -209,15 +179,11 @@
             app:layout_constraintStart_toStartOf="@+id/guideline_vert_bor_top"
             app:layout_constraintTop_toTopOf="@+id/cuadro5"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowLeft3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_left"
             app:layout_constraintBottom_toBottomOf="@+id/cuadro9"
             app:layout_constraintDimensionRatio="1:1"
@@ -225,15 +191,11 @@
             app:layout_constraintStart_toStartOf="@+id/guideline_vert_bor_top"
             app:layout_constraintTop_toTopOf="@+id/cuadro9"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowLeft4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_left"
             app:layout_constraintBottom_toBottomOf="@+id/cuadro13"
             app:layout_constraintDimensionRatio="1:1"
@@ -241,15 +203,11 @@
             app:layout_constraintStart_toStartOf="@+id/guideline_vert_bor_top"
             app:layout_constraintTop_toTopOf="@+id/cuadro13"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowUp1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_up"
             app:layout_constraintBottom_toTopOf="@+id/cuadro1"
             app:layout_constraintDimensionRatio="1:1"
@@ -257,15 +215,11 @@
             app:layout_constraintStart_toStartOf="@+id/cuadro1"
             app:layout_constraintTop_toTopOf="@+id/fondoTablero"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowUp2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_up"
             app:layout_constraintBottom_toTopOf="@+id/cuadro2"
             app:layout_constraintDimensionRatio="1:1"
@@ -273,15 +227,11 @@
             app:layout_constraintStart_toStartOf="@+id/cuadro2"
             app:layout_constraintTop_toTopOf="@+id/fondoTablero"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowUp3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_up"
             app:layout_constraintBottom_toTopOf="@+id/cuadro3"
             app:layout_constraintDimensionRatio="1:1"
@@ -289,15 +239,11 @@
             app:layout_constraintStart_toStartOf="@+id/cuadro3"
             app:layout_constraintTop_toTopOf="@+id/fondoTablero"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowUp4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_up"
             app:layout_constraintBottom_toTopOf="@+id/cuadro4"
             app:layout_constraintDimensionRatio="1:1"
@@ -305,15 +251,11 @@
             app:layout_constraintStart_toStartOf="@+id/cuadro4"
             app:layout_constraintTop_toTopOf="@+id/fondoTablero"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowRight1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_right"
             app:layout_constraintBottom_toBottomOf="@+id/cuadro4"
             app:layout_constraintDimensionRatio="1:1"
@@ -321,15 +263,11 @@
             app:layout_constraintStart_toEndOf="@+id/cuadro4"
             app:layout_constraintTop_toTopOf="@+id/cuadro4"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowRight2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_right"
             app:layout_constraintBottom_toBottomOf="@+id/cuadro8"
             app:layout_constraintDimensionRatio="1:1"
@@ -337,15 +275,11 @@
             app:layout_constraintStart_toEndOf="@+id/cuadro8"
             app:layout_constraintTop_toTopOf="@+id/cuadro8"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowRight3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_right"
             app:layout_constraintBottom_toBottomOf="@+id/cuadro12"
             app:layout_constraintDimensionRatio="1:1"
@@ -353,15 +287,11 @@
             app:layout_constraintStart_toEndOf="@+id/cuadro12"
             app:layout_constraintTop_toTopOf="@+id/cuadro12"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowRight4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_right"
             app:layout_constraintBottom_toBottomOf="@+id/cuadro16"
             app:layout_constraintDimensionRatio="1:1"
@@ -369,15 +299,11 @@
             app:layout_constraintStart_toEndOf="@+id/cuadro16"
             app:layout_constraintTop_toTopOf="@+id/cuadro16"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowDown1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_down"
             app:layout_constraintBottom_toBottomOf="@+id/fondoTablero"
             app:layout_constraintDimensionRatio="1:1"
@@ -385,15 +311,11 @@
             app:layout_constraintStart_toStartOf="@+id/cuadro13"
             app:layout_constraintTop_toBottomOf="@+id/cuadro13"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowDown2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_down"
             app:layout_constraintBottom_toBottomOf="@+id/fondoTablero"
             app:layout_constraintDimensionRatio="1:1"
@@ -401,15 +323,11 @@
             app:layout_constraintStart_toStartOf="@+id/cuadro14"
             app:layout_constraintTop_toBottomOf="@+id/cuadro14"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowDown3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_down"
             app:layout_constraintBottom_toBottomOf="@+id/fondoTablero"
             app:layout_constraintDimensionRatio="1:1"
@@ -417,15 +335,11 @@
             app:layout_constraintStart_toStartOf="@+id/cuadro15"
             app:layout_constraintTop_toBottomOf="@+id/cuadro15"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <ImageButton
             android:id="@+id/arrowDown4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:scaleType="centerCrop"
+            style="@style/ButtonArrow"
             android:src="@drawable/button_down"
             app:layout_constraintBottom_toBottomOf="@+id/fondoTablero"
             app:layout_constraintDimensionRatio="1:1"
@@ -433,14 +347,11 @@
             app:layout_constraintStart_toStartOf="@+id/cuadro16"
             app:layout_constraintTop_toBottomOf="@+id/cuadro16"
             app:layout_constraintWidth_default="percent"
-            app:layout_constraintWidth_percent="0.122"
-            android:contentDescription="TODO" />
+            app:layout_constraintWidth_percent="0.122" />
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro6"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUI3PrincetonOrange"
+            style="@style/CuadroTableroNaranjo"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
@@ -450,9 +361,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro8"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUI3PrincetonOrange"
+            style="@style/CuadroTableroNaranjo"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toEndOf="@+id/cuadro7"
@@ -462,9 +371,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro11"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUI3PrincetonOrange"
+            style="@style/CuadroTableroNaranjo"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="@+id/guideline_vert"
             app:layout_constraintTop_toTopOf="@+id/guideline_hori"
@@ -474,9 +381,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro12"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUILightCoral"
+            style="@style/CuadroTableroBlanco"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toEndOf="@+id/cuadro11"
             app:layout_constraintTop_toTopOf="@+id/guideline_hori"
@@ -486,9 +391,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro5"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUILightCoral"
+            style="@style/CuadroTableroBlanco"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/cuadro6"
@@ -498,9 +401,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro9"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUI3PrincetonOrange"
+            style="@style/CuadroTableroNaranjo"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/cuadro10"
             app:layout_constraintTop_toTopOf="@+id/guideline_hori"
@@ -510,9 +411,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUILightCoral"
+            style="@style/CuadroTableroBlanco"
             app:layout_constraintBottom_toTopOf="@+id/cuadro8"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toEndOf="@+id/cuadro3"
@@ -522,9 +421,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro13"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUILightCoral"
+            style="@style/CuadroTableroBlanco"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/cuadro14"
             app:layout_constraintTop_toBottomOf="@+id/cuadro9"
@@ -534,9 +431,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUILightCoral"
+            style="@style/CuadroTableroBlanco"
             app:layout_constraintBottom_toTopOf="@+id/cuadro6"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
@@ -546,9 +441,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro7"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUILightCoral"
+            style="@style/CuadroTableroBlanco"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="@+id/guideline_vert"
@@ -559,9 +452,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUI3PrincetonOrange"
+            style="@style/CuadroTableroNaranjo"
             app:layout_constraintBottom_toTopOf="@+id/cuadro5"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/cuadro2"
@@ -571,9 +462,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro15"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUILightCoral"
+            style="@style/CuadroTableroBlanco"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="@+id/guideline_vert"
             app:layout_constraintTop_toBottomOf="@+id/cuadro11"
@@ -583,9 +472,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro16"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUI3PrincetonOrange"
+            style="@style/CuadroTableroNaranjo"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toEndOf="@+id/cuadro15"
             app:layout_constraintTop_toBottomOf="@+id/cuadro12"
@@ -595,9 +482,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUI3PrincetonOrange"
+            style="@style/CuadroTableroNaranjo"
             app:layout_constraintBottom_toTopOf="@+id/cuadro7"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="@+id/guideline_vert"
@@ -607,9 +492,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro10"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUILightCoral"
+            style="@style/CuadroTableroBlanco"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
             app:layout_constraintTop_toBottomOf="@+id/guideline_hori"
@@ -619,9 +502,7 @@
 
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro14"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/colorUI3PrincetonOrange"
+            style="@style/CuadroTableroNaranjo"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
             app:layout_constraintTop_toBottomOf="@+id/cuadro10"
@@ -629,24 +510,12 @@
             app:layout_constraintWidth_percent="0.14634"
             app:nro="14" />
 
-        <ImageView
-            android:id="@+id/imagen_original"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="invisible"
-            app:layout_constraintLeft_toLeftOf="@+id/cuadro1"
-            app:layout_constraintTop_toTopOf="@+id/cuadro1"
-            app:layout_constraintWidth_percent="0.58536"
-            app:layout_constraintDimensionRatio="1:1"
-            />
-
         <Button
             android:id="@+id/botonVerOriginal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="@id/arrowDown4"
-            app:layout_constraintTop_toBottomOf="@id/arrowRight4"
-            />
+            app:layout_constraintTop_toBottomOf="@id/arrowRight4" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_vert"
@@ -704,6 +573,4 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.76" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </FrameLayout>

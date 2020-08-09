@@ -16,18 +16,12 @@
         <item name="fontFamily">@font/tillana</item>
     </style>
 
-    <style name="TextViewTituloCreditos" parent="TextStyle">
-        <item name="android:textColor">#FDD835</item>
-        <item name="android:textSize">24dp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="TextViewSubTituloCreditos" parent="TextStyle">
-        <item name="android:textColor">#FDD835</item>
-        <item name="android:textSize">18dp</item>
-        <item name="android:textStyle">bold</item>
+    <style name="TextViewEnlaceGitHub" parent="TextStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#FDD835</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:autoLink">web</item>
         <item name="android:textColorLink">@color/colorUI3PrincetonOrange</item>
     </style>
@@ -45,7 +39,7 @@
 
     <style name="TextViewParrafos" parent="TextStyle">
         <item name="android:textColor">@color/colorUILightCoral</item>
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textAlignment">viewStart</item>
         <item name="android:paddingLeft">40dp</item>
         <item name="android:paddingRight">40dp</item>
@@ -55,12 +49,93 @@
 
     <style name="TextViewDrawerItem" parent="TextStyle">
         <item name="android:textColor">@drawable/drawable_highlight_text</item>
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAlignment">viewStart</item>
         <item name="android:shadowColor">@color/colorUI4VerdeOscuro</item>
         <item name="android:shadowDx">2.0</item>
         <item name="android:shadowDy">0.0</item>
         <item name="android:shadowRadius">1.0</item>
+    </style>
+
+    <style name="TextViewTitulo">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:shadowColor">@color/colorUILightCoral</item>
+        <item name="android:shadowDx">4.0</item>
+        <item name="android:shadowDy">0.0</item>
+        <item name="android:shadowRadius">1.0</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#FDD835</item>
+    </style>
+
+    <style name="TextViewNombreCreditos">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#FDD835</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewNombreCreditos.Tablet">
+        <item name="android:textSize">48sp</item>
+    </style>
+
+    <style name="TextViewEnlaceGitHub.Tablet">
+        <item name="android:textSize">36sp</item>
+    </style>
+
+    <style name="CardViewCreditos.Tablet">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">140dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+    </style>
+
+    <style name="TextViewTitulo.Tablet">
+        <item name="android:textSize">72sp</item>
+    </style>
+
+    <style name="FotoCreditos">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="CardViewCreditos">
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+    </style>
+
+    <style name="ButtonBarraGame">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:contentDescription">TODO</item>
+    </style>
+
+    <style name="CuadroTableroNaranjo">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:background">@color/colorUI3PrincetonOrange</item>
+    </style>
+
+    <style name="CuadroTableroBlanco">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:background">@color/colorUILightCoral</item>
+    </style>
+
+    <style name="ButtonArrow">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:contentDescription">TODO</item>
     </style>
 </resources>

@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import com.curso.toroidal_puzzle.R
 
-class CuadroImageView(context: Context?, attrs: AttributeSet?) : androidx.appcompat.widget.AppCompatImageView(context, attrs) {
+class CuadroImageView(context: Context, attrs: AttributeSet?) : androidx.appcompat.widget.AppCompatImageView(context, attrs) {
     private var nro : Int = 0
 
     init {
