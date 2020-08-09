@@ -2,6 +2,7 @@ package com.curso.toroidal_puzzle.ui.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Point
@@ -265,8 +266,10 @@ class GameFragment : Fragment() {
         arrowLeft2.setOnTouch(f5, "Izquierda")
         arrowLeft3.setOnTouch(f9, "Izquierda")
         arrowLeft4.setOnTouch(f13, "Izquierda")
-        ajustarBarraJuego()
-        ajustarTextoJuego()       
+
+        val orientation = resources.configuration.orientation
+        ajustarBarraJuego(orientation)
+        ajustarTextoJuego(orientation)
                                        
         iniciarCronometro.setOnTouchListener { v, event ->
               when (event?.action) {
@@ -624,31 +627,48 @@ class GameFragment : Fragment() {
         display.getSize(displaySize)
     }
 
-    fun ajustarBarraJuego() {
+    fun ajustarBarraJuego(orientation: Int) {
         var barraJuego = requireView().findViewById<LinearLayoutCompat>(R.id.barraJuego)
         barraJuego.invalidate()
+        var divider = resources.getDrawable(R.drawable.divider_barra, null)
+        val resize: (Point, Double) -> Int
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            resize = calcHeight
+            barraJuego.layoutParams.height = resize(displaySize, 0.9255)
+            divider.setBounds(0, 0, 0, resize(displaySize, 0.02))
+        } else {
+            resize = calcWidth
+            barraJuego.layoutParams.width = resize(displaySize, 0.9255)
+            divider.setBounds(0, 0, resize(displaySize, 0.02), 0)
+        }
         var imageButtons = barraJuego.children.toList().filterIsInstance<ImageButton>()
         for (ib in imageButtons) {
             var percentage = 0.13
-            var ibWidth = calcWidth(displaySize, percentage)
-            ib.layoutParams.width = ibWidth
-            ib.layoutParams.height = ibWidth
+            var ibSize = resize(displaySize, percentage)
+            ib.layoutParams.width = ibSize
+            ib.layoutParams.height = ibSize
             ib.scaleType = ImageView.ScaleType.CENTER_INSIDE
             ib.requestLayout()
         }
-        barraJuego.layoutParams.width = calcWidth(displaySize, 0.93)
-        val padding = calcWidth(displaySize, 0.02)
+        val padding = resize(displaySize, 0.02)
         barraJuego.setPadding(padding, padding, padding, padding)
-        var divider = resources.getDrawable(R.drawable.divider_barra, null)
-        divider.setBounds(0, 0, calcWidth(displaySize, 0.02), 0)
         barraJuego.showDividers = LinearLayoutCompat.SHOW_DIVIDER_MIDDLE
         barraJuego.dividerDrawable = divider
-        (barraJuego.layoutParams as ConstraintLayout.LayoutParams).setMargins(0, calcHeight(displaySize, 0.03), 0, 0)
         barraJuego.requestLayout()
     }
 
-    fun ajustarTextoJuego() {
-        if (defDeviceWidth != displaySize.x) {
+    fun ajustarTextoJuego(orientation: Int) {
+        var comp: Boolean
+        var factor: Float
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            comp = defDeviceWidth != displaySize.y
+            factor = (displaySize.x.toFloat() / defDeviceWidth)
+        } else {
+            comp = defDeviceWidth != displaySize.x
+            factor = (displaySize.y.toFloat() / defDeviceWidth)
+        }
+
+        if (comp) {
             var titulo = requireView().findViewById<TextView>(R.id.textTituloGame)
             var textMov = requireView().findViewById<TextView>(R.id.textMovimientos)
             var countMov = requireView().findViewById<TextView>(R.id.nromov)
@@ -657,7 +677,6 @@ class GameFragment : Fragment() {
             countMov.invalidate()
             titulo.invalidate()
             chrono.invalidate()
-            var factor = (displaySize.x.toFloat() / defDeviceWidth)
             textMov.textSize *= factor
             textMov.setShadowLayer(textMov.shadowRadius * factor, 0.0f, textMov.shadowDx * factor, textMov.shadowColor)
             countMov.textSize *= factor
@@ -671,7 +690,6 @@ class GameFragment : Fragment() {
             titulo.requestLayout()
             chrono.requestLayout()
         }
-
     }
 }
 
