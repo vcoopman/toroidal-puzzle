@@ -1,37 +1,37 @@
-package com.curso.toroidal_puzzle.ui
+package com.curso.toroidal_puzzle.ui.home
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.AdapterView
 import android.widget.GridView
+import android.widget.ImageButton
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.curso.toroidal_puzzle.CrearCuadros
 import com.curso.toroidal_puzzle.GalleryAdapter
-import com.curso.toroidal_puzzle.PICK_IMAGE
 import com.curso.toroidal_puzzle.R
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
+
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
 
+
 class ElegirImagenFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ElegirImagenFragment()
-    }
-
+    val PICK_IMAGE = 100
     private lateinit var viewModel: ElegirImagenViewModel
 
     override fun onCreateView(
@@ -41,28 +41,45 @@ class ElegirImagenFragment : Fragment() {
         return inflater.inflate(R.layout.elegir_imagen_fragment, container, false)
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val ga = mostrarImagen()
         val gv = view.findViewById<GridView>(R.id.gridViewGaleria)
         gv.adapter = ga
-
         if (gv != null) {
-
-            gv.onItemClickListener = AdapterView.OnItemClickListener{ parent, v, pos, id ->
+            gv.onItemClickListener = AdapterView.OnItemClickListener { parent, v, pos, id ->
 
                 if (ga != null) {
                     ga.getItem(pos)?.let { usarImagen(it) }
                 }
             }
         }
+        var tomarFotoBtn = view.findViewById<ImageButton>(R.id.tomarFotoBoton)
+
+        tomarFotoBtn.setOnTouchListener { view, event ->
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> tomarFoto(view)
+                }
+                view?.onTouchEvent(event) ?: true
+            }
+
+        var elegirFotoBtn = view.findViewById<ImageButton>(R.id.elegirFotoBoton)
+        elegirFotoBtn.setOnTouchListener { view, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> cargarImagen(view)
+            }
+            view?.onTouchEvent(event) ?: true
+        }
     }
+
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ElegirImagenViewModel::class.java)
         // TODO: Use the ViewModel
     }
+
 
     //Llama a la cámara
     fun tomarFoto(view: View) {
@@ -141,7 +158,7 @@ class ElegirImagenFragment : Fragment() {
             .start(this.requireActivity())
     }
 
-    fun guardarImagen(imagen: Bitmap){
+    fun guardarImagen(imagen: Bitmap) {
 
         try {
             //Ubicación donde se guardan las imágenes
@@ -162,22 +179,20 @@ class ElegirImagenFragment : Fragment() {
 
             //Cierra el archivo
             outStream.close()
-        }
-        catch (e: FileNotFoundException){
+        } catch (e: FileNotFoundException) {
             Log.v("ErrorGuardarArchivo", "Archivo no encontrado: " + e.message!!)
-        }
-        catch (e: IOException){
+        } catch (e: IOException) {
             Log.v("ErrorGuardarArchivo", "Error de Entrada Salida: " + e.message!!)
         }
     }
 
-    fun mostrarImagen() : GalleryAdapter?{
+    fun mostrarImagen(): GalleryAdapter? {
 
         try {
-            val bitmapList : MutableList<Bitmap> = mutableListOf()
+            val bitmapList: MutableList<Bitmap> = mutableListOf()
 
             //Se agrega a la lista de bitmap la imagen por defecto
-            var imagenDefecto = BitmapFactory.decodeResource(resources,R.drawable.imagen_udec)
+            var imagenDefecto = BitmapFactory.decodeResource(resources, R.drawable.imagen_udec)
             imagenDefecto = Bitmap.createScaledBitmap(imagenDefecto, 400, 400, false)
             bitmapList.add(imagenDefecto)
 
@@ -187,7 +202,7 @@ class ElegirImagenFragment : Fragment() {
             //Arreglo de todos los archivos en path
             val imgs = path.listFiles()
 
-            if(imgs!=null) {
+            if (imgs != null) {
                 for (i in imgs) {
 
                     //Guarda los archivos como Bitmap
@@ -196,14 +211,12 @@ class ElegirImagenFragment : Fragment() {
             }
 
             return GalleryAdapter(this.requireActivity(), bitmapList)
-        }
-        catch (e: FileNotFoundException){
+        } catch (e: FileNotFoundException) {
 
             Log.v("ErrorCargarArchivo", "Archivo no encontrado: " + e.message!!)
 
             return null
-        }
-        catch (e: IOException){
+        } catch (e: IOException) {
 
             Log.v("ErrorCargarArchivo", "Error de Entrada Salida: " + e.message!!)
 
@@ -212,7 +225,7 @@ class ElegirImagenFragment : Fragment() {
     }
 
     //Inicia el juego con la imagen seleccionada
-    fun usarImagen(img: Bitmap){
+    fun usarImagen(img: Bitmap) {
 
         val imagen = Bitmap.createScaledBitmap(img, 400, 400, false)
 
@@ -222,7 +235,7 @@ class ElegirImagenFragment : Fragment() {
 
         var i = 1
 
-        for(bm in listaCuadros) {
+        for (bm in listaCuadros) {
 
             try {
                 //Ubicación donde se guardan las imágenes
@@ -260,6 +273,7 @@ class ElegirImagenFragment : Fragment() {
             startActivity(intent)
         }
         */
+
     }
 
 }

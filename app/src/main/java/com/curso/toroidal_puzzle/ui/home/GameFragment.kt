@@ -5,28 +5,22 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Point
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.shapes.Shape
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
 import android.view.*
-import androidx.fragment.app.Fragment
 import android.widget.*
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
-import androidx.core.view.marginLeft
-import androidx.core.view.setPadding
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.curso.toroidal_puzzle.CrearCuadros
 import com.curso.toroidal_puzzle.Cuadro
 import com.curso.toroidal_puzzle.R
-import kotlinx.android.synthetic.main.activity_game.nromov
 import kotlinx.android.synthetic.main.game_fragment.*
 import java.io.*
 import kotlin.math.ceil
-import kotlin.math.floor
 
 class GameFragment : Fragment() {
 
