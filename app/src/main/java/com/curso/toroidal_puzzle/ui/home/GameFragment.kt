@@ -25,7 +25,10 @@ import kotlin.math.ceil
 class GameFragment : Fragment() {
 
     // Estado del juego
+
     private var isRunning : Boolean = false
+    private var showingOriginal : Boolean = false
+
 
     // Varibles cronometro
     private var cronometro : Chronometer? = null
@@ -33,6 +36,7 @@ class GameFragment : Fragment() {
     private var startTime : Long = 0
 
     // Nro Jugadas
+
     private var movimientosRealizados : Long = 0
     var hayTiempoGuardado : Boolean = false
     var seHizoSave: Boolean = false
@@ -92,7 +96,6 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getDisplaySize()
-        cronometro = view.findViewById(R.id.cronometro)
         // Init cronometro
         cronometro = view.findViewById(R.id.cronometro)
 
@@ -234,18 +237,27 @@ class GameFragment : Fragment() {
         arrowLeft3.setOnTouch(f9, "Izquierda")
         arrowLeft4.setOnTouch(f13, "Izquierda")
 
+
         val orientation = resources.configuration.orientation
         ajustarBarraJuego(orientation)
-        ajustarTextoJuego(orientation)
-                                       
+        ajustarTextoJuego(orientation)                                       
+
         iniciarCronometro.setOnTouchListener { v, event ->
-              when (event?.action) {
-                  MotionEvent.ACTION_DOWN -> {
-                      iniciarCronometro()
-                  }
-              }
-              // Retorno obligatorio del touchListener
-              v?.onTouchEvent(event) ?: true
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+
+                    if(!isRunning) {
+                        iniciarCronometro()
+                    }
+                    else{
+                        pausarCronometro()
+                        iniciarCronometro()
+                        pausarCronometro()
+                    }
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
         }
 
         pausarCronometro.setOnTouchListener { v, event ->
@@ -305,6 +317,26 @@ class GameFragment : Fragment() {
             // Retorno obligatorio del touchListener
             v?.onTouchEvent(event) ?: true
         }
+
+        botonVerOriginal.setOnTouchListener { v, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    if(showingOriginal){
+                        imagen_original.visibility = View.INVISIBLE
+                        showingOriginal = false
+                    } else {
+                        imagen_original.visibility = View.VISIBLE
+                        showingOriginal = true
+                    }
+                }
+            }
+            // Retorno obligatorio del touchListener
+            v?.onTouchEvent(event) ?: true
+        }
+
+        // Set imagen original
+        // Este recurso o imagen debe ser la que se esta usando para jugar
+        imagen_original.setImageResource(R.drawable.felipe)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -319,6 +351,8 @@ class GameFragment : Fragment() {
             cronometro!!.start()
             seHizoLoad = false
             isRunning = true
+
+            iniciarCronometro.setImageResource(R.drawable.button_pause)
         }
 
         if(!isRunning){
@@ -330,6 +364,8 @@ class GameFragment : Fragment() {
             }
             cronometro!!.start()
             isRunning = true
+
+            iniciarCronometro.setImageResource(R.drawable.button_pause)
         }
     }
 
@@ -338,6 +374,8 @@ class GameFragment : Fragment() {
             cronometro!!.stop()
             pauseTime = SystemClock.elapsedRealtime()
             isRunning = false
+
+            iniciarCronometro.setImageResource(R.drawable.button_play)
         }
     }
 
@@ -375,7 +413,6 @@ class GameFragment : Fragment() {
             recuperarImagen()
 
             // Se recuperan cronometro y cantidad de movimientos
-//            pausarCronometro()
             cronometro!!.base =
                 SystemClock.elapsedRealtime() - readFromInternalStorage("cronometro")
 
@@ -403,7 +440,6 @@ class GameFragment : Fragment() {
 
         updateGameView()
     }
-
 
     // Esta funcion realiza un movimiento y mueve a la posiciones afectadas por este.
     // Primer parametro, posicion desde la cual se inicia el movimiento.
