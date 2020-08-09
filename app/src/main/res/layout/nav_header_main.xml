@@ -29,5 +29,5 @@
         android:shadowDx="4.0"
         android:shadowDy="0.0"
         android:shadowRadius="1.0"
-        android:theme="@style/TextViewTituloCreditos" />
+        android:theme="@style/TextViewNombreCreditos" />
 </LinearLayout>

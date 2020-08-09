@@ -6,40 +6,32 @@
     android:background="@color/colorUI3MyrtleGreenDark"
     tools:context="com.curso.toroidal_puzzle.ui.help.HelpFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="AYUDA"
+        style="@style/TextViewTitulo.Tablet" />
+
     <androidx.core.widget.NestedScrollView
         android:id="@+id/help_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginTop="120dp"
         android:fillViewport="true">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:paddingBottom="?attr/actionBarSize"
+            android:paddingBottom="90dp"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:gravity="center_vertical"
-                android:text="AYUDA"
-                android:shadowDx="4.0"
-                android:shadowDy="0.0"
-                android:shadowRadius="1.0"
-                android:theme="@style/TextViewTituloCreditos"
-                android:shadowColor="@color/colorUILightCoral"
-                android:textStyle="normal"
-                android:textSize="48sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Instrucciones"
-                android:theme="@style/TextViewTituloCreditos" />
+                android:theme="@style/TextViewNombreCreditos" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -52,6 +44,4 @@
                 layout="@layout/imagen_tablero_help" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
-
-
 </FrameLayout>
