@@ -2,6 +2,7 @@ package com.curso.toroidal_puzzle.ui.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -28,6 +29,7 @@ class GameFragment : Fragment() {
 
     private var isRunning : Boolean = false
     private var showingOriginal : Boolean = false
+    private var isTablet: Boolean = false
 
 
     // Varibles cronometro
@@ -95,6 +97,12 @@ class GameFragment : Fragment() {
     @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(resources.getBoolean(R.bool.portrait_only))
+            requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+
+        isTablet = resources.getBoolean(R.bool.tablet)
+
+
         getDisplaySize()
         // Init cronometro
         cronometro = view.findViewById(R.id.cronometro)
@@ -240,7 +248,8 @@ class GameFragment : Fragment() {
 
         val orientation = resources.configuration.orientation
         ajustarBarraJuego(orientation)
-        ajustarTextoJuego(orientation)                                       
+        if (!isTablet)
+            ajustarTextoJuego(orientation)
 
         iniciarCronometro.setOnTouchListener { v, event ->
             when (event?.action) {

@@ -8,7 +8,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="120dp"
         android:gravity="center_vertical|center_horizontal"
         android:text="AYUDA"
         style="@style/TextViewTitulo.Tablet" />
@@ -17,14 +17,14 @@
         android:id="@+id/help_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginTop="120dp"
         android:fillViewport="true">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:paddingBottom="?attr/actionBarSize"
+            android:paddingBottom="90dp"
             android:orientation="vertical">
 
             <TextView
