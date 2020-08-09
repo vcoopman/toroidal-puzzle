@@ -11,12 +11,7 @@
     <item
         android:id="@+id/nav_elegir"
         android:title="@null"
-        app:actionLayout="@layout/nav_drawer_element_save_game"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/saved_games"
-        android:title="@null"
-        app:actionLayout="@layout/nav_drawer_element_saved_game"
+        app:actionLayout="@layout/nav_drawer_element_elegir_imagen"
         app:showAsAction="always" />
     <item
         android:id="@+id/nav_help"

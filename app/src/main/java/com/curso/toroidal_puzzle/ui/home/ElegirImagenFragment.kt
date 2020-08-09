@@ -10,11 +10,12 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.*
+import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.GridView
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.curso.toroidal_puzzle.CrearCuadros
@@ -22,7 +23,6 @@ import com.curso.toroidal_puzzle.GalleryAdapter
 import com.curso.toroidal_puzzle.R
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
-
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
@@ -31,7 +31,7 @@ import java.io.IOException
 
 class ElegirImagenFragment : Fragment() {
 
-    val PICK_IMAGE = 100
+    private val PICK_IMAGE = 100
     private lateinit var viewModel: ElegirImagenViewModel
 
     override fun onCreateView(
@@ -55,7 +55,7 @@ class ElegirImagenFragment : Fragment() {
                 }
             }
         }
-        var tomarFotoBtn = view.findViewById<ImageButton>(R.id.tomarFotoBoton)
+        val tomarFotoBtn = view.findViewById<ImageButton>(R.id.tomarFotoBoton)
 
         tomarFotoBtn.setOnTouchListener { view, event ->
                 when (event?.action) {
@@ -64,7 +64,7 @@ class ElegirImagenFragment : Fragment() {
                 view?.onTouchEvent(event) ?: true
             }
 
-        var elegirFotoBtn = view.findViewById<ImageButton>(R.id.elegirFotoBoton)
+        val elegirFotoBtn = view.findViewById<ImageButton>(R.id.elegirFotoBoton)
         elegirFotoBtn.setOnTouchListener { view, event ->
             when (event?.action) {
                 MotionEvent.ACTION_DOWN -> cargarImagen(view)
@@ -82,14 +82,14 @@ class ElegirImagenFragment : Fragment() {
 
 
     //Llama a la cámara
-    fun tomarFoto(view: View) {
+    private fun tomarFoto(view: View) {
         val camaraIntent = Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA)
         if (camaraIntent.resolveActivity(requireActivity().packageManager) != null) {
             startActivity(camaraIntent)
         }
     }
 
-    fun cargarImagen(view: View) {
+    private fun cargarImagen(view: View) {
 
         //Crea el intent para seleccionar la imagen a utilizar en el tablero
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
@@ -130,14 +130,14 @@ class ElegirImagenFragment : Fragment() {
 
                 //Si ocurre algún error al cortar la imagen
                 else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                    Log.e("CropError", "Error al cortar imagen: ${result.getError()}")
+                    Log.e("CropError", "Error al cortar imagen: ${result.error}")
                 }
             }
         }
     }
 
     //Función para lanzar la actividad para seleccionar la imagen a utilizar en el tablero
-    fun imageCrop(uri: Uri) {
+    private fun imageCrop(uri: Uri) {
         CropImage.activity(uri)
             //La resolución mínima de la imagen a cortar es de 400px
             //.setMinCropResultSize(400, 400)
@@ -158,7 +158,7 @@ class ElegirImagenFragment : Fragment() {
             .start(this.requireActivity())
     }
 
-    fun guardarImagen(imagen: Bitmap) {
+    private fun guardarImagen(imagen: Bitmap) {
 
         try {
             //Ubicación donde se guardan las imágenes
@@ -186,7 +186,7 @@ class ElegirImagenFragment : Fragment() {
         }
     }
 
-    fun mostrarImagen(): GalleryAdapter? {
+    private fun mostrarImagen(): GalleryAdapter? {
 
         try {
             val bitmapList: MutableList<Bitmap> = mutableListOf()
@@ -225,7 +225,7 @@ class ElegirImagenFragment : Fragment() {
     }
 
     //Inicia el juego con la imagen seleccionada
-    fun usarImagen(img: Bitmap) {
+    private fun usarImagen(img: Bitmap) {
 
         val imagen = Bitmap.createScaledBitmap(img, 400, 400, false)
 

@@ -33,9 +33,9 @@
                 android:id="@+id/tomarFotoBoton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="tomarFoto"
                 android:scaleType="fitCenter"
-                android:src="@drawable/baseline_add_a_photo_black_24" />
+                android:src="@drawable/baseline_add_a_photo_black_24"
+                android:contentDescription="TODO" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <GridView

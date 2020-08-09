@@ -11,7 +11,6 @@ import com.curso.toroidal_puzzle.R
 class HelpFragment : Fragment() {
 
     companion object {
-        fun newInstance() = HelpFragment()
     }
 
     private lateinit var viewModel: HelpViewModel
