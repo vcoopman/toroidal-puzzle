@@ -11,7 +11,6 @@ import com.curso.toroidal_puzzle.R
 class CreditosFragment : Fragment() {
 
     companion object {
-        fun newInstance() = CreditosFragment()
     }
 
     private lateinit var viewModel: CreditosViewModel

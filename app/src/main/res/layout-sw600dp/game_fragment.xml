@@ -21,13 +21,13 @@
             android:shadowDy="0.0"
             android:shadowRadius="1.0"
             android:text="A JUGAR!"
-            android:textSize="36sp"
+            android:textSize="60sp"
             android:textStyle="normal"
             android:theme="@style/TextViewTituloCreditos"
             app:layout_constraintBottom_toTopOf="@+id/guideline_titulo"
+            app:layout_constraintTop_toTopOf="@+id/guideline_titulo"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert_bor_bot"
-            app:layout_constraintStart_toStartOf="@+id/guideline_vert_bor_top"
-            app:layout_constraintTop_toTopOf="@+id/guideline_titulo" />
+            app:layout_constraintStart_toStartOf="@+id/guideline_vert_bor_top" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/movimientos"
@@ -52,7 +52,7 @@
                 android:shadowRadius="1.0"
                 android:text="MOVIMIENTOS"
                 android:textColor="@color/colorUILightCoral"
-                android:textSize="18dp"
+                android:textSize="26dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -67,7 +67,7 @@
                 android:shadowRadius="1.0"
                 android:text="00000"
                 android:textColor="@color/colorUILightCoral"
-                android:textSize="18dp"
+                android:textSize="26dp"
                 android:textStyle="bold" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -82,7 +82,7 @@
             android:shadowDy="0.0"
             android:shadowRadius="1.0"
             android:textColor="@color/colorUILightCoral"
-            android:textSize="18dp"
+            android:textSize="26dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline_bar"
             app:layout_constraintEnd_toEndOf="@+id/fondoTablero" />
@@ -91,14 +91,13 @@
             android:id="@+id/barraJuego"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:background="@drawable/rounded_corner_barra"
             android:gravity="center_vertical|center_horizontal"
-            android:padding="2pt"
             app:divider="@drawable/divider_barra"
-            app:layout_constraintBottom_toTopOf="@+id/guideline_bar2"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/guideline_vert"
-            app:layout_constraintTop_toTopOf="@+id/guideline_bar2"
+            app:layout_constraintTop_toBottomOf="@+id/fondoTablero"
             app:layout_constraintWidth_default="percent"
             app:layout_constraintWidth_max="wrap"
             app:layout_constraintWidth_percent="0.93"
@@ -125,9 +124,9 @@
                 android:contentDescription="TODO" />
 
             <ImageButton
-                android:id="@+id/reiniciarJuego"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:id="@+id/reiniciarJuego"
                 android:background="@null"
                 android:scaleType="fitXY"
                 android:src="@drawable/button_restart"
@@ -178,6 +177,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_default="percent"
             app:layout_constraintWidth_percent="0.93"
+            android:contentDescription="TODO" />
+
+        <ImageView
+            android:id="@+id/imagen_original"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_hori"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/guideline_vert"
+            app:layout_constraintTop_toTopOf="@+id/guideline_hori"
             android:contentDescription="TODO" />
 
         <ImageButton
@@ -629,25 +638,6 @@
             app:layout_constraintWidth_percent="0.14634"
             app:nro="14" />
 
-        <ImageView
-            android:id="@+id/imagen_original"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="invisible"
-            app:layout_constraintLeft_toLeftOf="@+id/cuadro1"
-            app:layout_constraintTop_toTopOf="@+id/cuadro1"
-            app:layout_constraintWidth_percent="0.58536"
-            app:layout_constraintDimensionRatio="1:1"
-            />
-
-        <Button
-            android:id="@+id/botonVerOriginal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="@id/arrowDown4"
-            app:layout_constraintTop_toBottomOf="@id/arrowRight4"
-            />
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_vert"
             android:layout_width="wrap_content"
@@ -667,7 +657,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.18" />
+            app:layout_constraintGuide_percent="0.11" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_vert_bor_top"
@@ -689,20 +679,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.05" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline_bar2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.84" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.76" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

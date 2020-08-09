@@ -16,7 +16,6 @@
         <!--Actividad para cortar la imagen a eligir desde galería: -->
         <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat"/>
-        <activity android:name=".GameActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"

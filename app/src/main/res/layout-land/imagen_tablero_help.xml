@@ -10,12 +10,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.5">
 
         <!--region GuideLines-->
 
@@ -97,11 +97,11 @@
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
             android:tint="@color/colorUILightCoral"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori1"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert2"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <ImageView
@@ -110,11 +110,11 @@
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
             android:tint="@color/colorUILightCoral"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori1"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert3"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <ImageView
@@ -123,11 +123,11 @@
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
             android:tint="@color/colorUILightCoral"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori1"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert4"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <ImageView
@@ -136,11 +136,11 @@
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
             android:tint="@color/colorUILightCoral"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_hori1"
             app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vert5"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintBottom_toTopOf="@+id/guideline_hori1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_vert5"
             android:contentDescription="TODO" />
         <!--endregion-->
 
@@ -149,52 +149,52 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_left"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori2"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_left"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori3"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_left"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori4"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_left"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori5"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <!--endregion-->
@@ -204,12 +204,12 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_right"
             android:tint="@color/colorUIMaximumYellowRed"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori2"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintStart_toEndOf="@+id/guideline_vert5"
             android:contentDescription="TODO" />
 
@@ -217,12 +217,12 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_right"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori3"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintStart_toEndOf="@+id/guideline_vert5"
             android:contentDescription="TODO" />
 
@@ -230,12 +230,12 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_right"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori4"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintStart_toEndOf="@+id/guideline_vert5"
             android:contentDescription="TODO" />
 
@@ -243,12 +243,12 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_right"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori5"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintStart_toEndOf="@+id/guideline_vert5"
             android:contentDescription="TODO" />
         <!--endregion-->
@@ -262,10 +262,10 @@
             android:src="@drawable/arrow_down"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline_hori5"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert2"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
+            app:layout_constraintTop_toTopOf="@+id/guideline_hori5"
             android:contentDescription="TODO" />
 
         <ImageView
@@ -275,10 +275,10 @@
             android:src="@drawable/arrow_down"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline_hori5"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert3"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
+            app:layout_constraintTop_toTopOf="@+id/guideline_hori5"
             android:contentDescription="TODO" />
 
         <ImageView
@@ -288,10 +288,10 @@
             android:src="@drawable/arrow_down"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline_hori5"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert4"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
+            app:layout_constraintTop_toTopOf="@+id/guideline_hori5"
             android:contentDescription="TODO" />
 
         <ImageView
@@ -301,10 +301,10 @@
             android:src="@drawable/arrow_down"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vert5"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintTop_toTopOf="@+id/guideline_hori5"
-            app:layout_constraintEnd_toStartOf="@+id/guideline_vert5"
             android:contentDescription="TODO" />
 
         <!--endregion-->
@@ -317,48 +317,48 @@
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="1"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori2"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert2"
-            android:text="1" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="2"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori2"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert3"
-            android:text="2" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="3"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori2"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert4"
-            android:text="3" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="4"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori2"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert5"
-            android:text="4" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
         <!--endregion-->
 
         <!--region segunda_fila-->
@@ -367,48 +367,48 @@
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="5"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori3"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert2"
-            android:text="5" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="6"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori3"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert3"
-            android:text="6" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="7"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori3"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert4"
-            android:text="7" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="8"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori3"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert5"
-            android:text="8" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
         <!--endregion-->
 
         <!--region tercera_fila-->
@@ -417,48 +417,48 @@
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="9"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori4"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert2"
-            android:text="9" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="10"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori4"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert3"
-            android:text="10" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="11"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori4"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert4"
-            android:text="11" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="12"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori4"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert5"
-            android:text="12" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
         <!--endregion-->
 
         <!--region scuarta_fila-->
@@ -467,48 +467,48 @@
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="13"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori5"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert2"
-            android:text="13" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="14"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori5"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert3"
-            android:text="14" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="15"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori5"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert4"
-            android:text="15" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="16"
             app:layout_constraintBottom_toBottomOf="@+id/guideline_hori5"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert5"
-            android:text="16" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
         <!--endregion-->
 
         <!--endregion-->
@@ -519,12 +519,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_default="percent"
-        app:layout_constraintHeight_percent="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+        app:layout_constraintTop_toTopOf="parent">
 
         <!--region GuideLines-->
 
@@ -606,11 +606,11 @@
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
             android:tint="@color/colorUILightCoral"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori1"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert2"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <ImageView
@@ -619,11 +619,11 @@
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
             android:tint="@color/colorUILightCoral"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori1"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert3"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <ImageView
@@ -632,11 +632,11 @@
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
             android:tint="@color/colorUILightCoral"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori1"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert4"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <ImageView
@@ -645,11 +645,11 @@
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
             android:tint="@color/colorUILightCoral"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2_hori1"
             app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2_vert5"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintBottom_toTopOf="@+id/guideline2_hori1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2_vert5"
             android:contentDescription="TODO" />
         <!--endregion-->
 
@@ -658,52 +658,52 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_left"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori2"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_left"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori3"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_left"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori4"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_left"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori5"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             android:contentDescription="TODO" />
 
         <!--endregion-->
@@ -713,12 +713,12 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_right"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori2"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintStart_toEndOf="@+id/guideline2_vert5"
             android:contentDescription="TODO" />
 
@@ -726,12 +726,12 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_right"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori3"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintStart_toEndOf="@+id/guideline2_vert5"
             android:contentDescription="TODO" />
 
@@ -739,12 +739,12 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_right"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori4"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintStart_toEndOf="@+id/guideline2_vert5"
             android:contentDescription="TODO" />
 
@@ -752,12 +752,12 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:scaleType="fitXY"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
             android:src="@drawable/arrow_right"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori5"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintStart_toEndOf="@+id/guideline2_vert5"
             android:contentDescription="TODO" />
         <!--endregion-->
@@ -771,10 +771,10 @@
             android:src="@drawable/arrow_down"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert2"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
+            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5"
             android:contentDescription="TODO" />
 
         <ImageView
@@ -784,10 +784,10 @@
             android:src="@drawable/arrow_down"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert3"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
+            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5"
             android:contentDescription="TODO" />
 
         <ImageView
@@ -797,10 +797,10 @@
             android:src="@drawable/arrow_down"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert4"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666"
+            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5"
             android:contentDescription="TODO" />
 
         <ImageView
@@ -810,10 +810,10 @@
             android:src="@drawable/arrow_down"
             android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2_vert5"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
             app:layout_constraintTop_toTopOf="@+id/guideline2_hori5"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2_vert5"
             android:contentDescription="TODO" />
 
         <!--endregion-->
@@ -826,48 +826,48 @@
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="4"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori2"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert2"
-            android:text="4" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="1"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori2"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert3"
-            android:text="1" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="2"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori2"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert4"
-            android:text="2" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="3"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori2"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert5"
-            android:text="3" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
         <!--endregion-->
 
         <!--region segunda_fila-->
@@ -876,48 +876,48 @@
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="5"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori3"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert2"
-            android:text="5" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="6"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori3"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert3"
-            android:text="6" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="7"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori3"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert4"
-            android:text="7" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="8"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori3"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert5"
-            android:text="8" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
         <!--endregion-->
 
         <!--region tercera_fila-->
@@ -926,48 +926,48 @@
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="9"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori4"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert2"
-            android:text="9" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="10"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori4"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert3"
-            android:text="10" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="11"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori4"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert4"
-            android:text="11" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="12"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori4"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert5"
-            android:text="12" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
         <!--endregion-->
 
         <!--region scuarta_fila-->
@@ -976,48 +976,48 @@
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="13"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori5"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert2"
-            android:text="13" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="14"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori5"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert3"
-            android:text="14" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3Icterine"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="15"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori5"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert4"
-            android:text="15" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/colorUI3PrincetonOrange"
             android:gravity="center_horizontal|center_vertical"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666"
+            android:text="16"
             app:layout_constraintBottom_toBottomOf="@+id/guideline2_hori5"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert5"
-            android:text="16" />
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.16666" />
         <!--endregion-->
 
         <!--endregion-->

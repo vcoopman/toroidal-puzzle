@@ -1,21 +1,9 @@
 <resources>
     <string name="app_name">Toroidal_Puzzle</string>
-    <string name="reglas_juego">reglas pulentas</string>
-    <string name="modos_juego">modos de juego</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
 
-    <string name="home_second">Home Second</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="instrucciones">"Este puzzle consiste en un rectángulo de 4x4 donde hay 16 bloques, numerados del 1 al 16. A diferencia de un puzzle tradicional, no se incluye un bloque en blanco.\nLa forma de ordernar la imagen es deslizando los bloques de manera horizontal o vertical. Cuando un bloque se mueve fuera del tablero este reaparece al otro extremo de la fila o columna"</string>
-    <string name="error_happened"> ERROR HAPPENED </string>
 </resources>

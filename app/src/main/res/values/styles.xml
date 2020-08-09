@@ -1,11 +1,5 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
@@ -16,10 +10,7 @@
         <item name="android:textViewStyle">@style/TextStyle</item>
     </style>
 
-    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen.NoActionBar"></style>
 
     <style name="TextStyle">
         <item name="fontFamily">@font/tillana</item>
@@ -50,13 +41,6 @@
 
     <style name="Theme.AppCompat.Light.NoActionBar.FullScreen.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
 
-    </style>
-
-    <style name="NavigationDrawerStyle" parent="Widget.Design.NavigationView">
-        <item name="fontFamily">@font/tillana</item>
-        <item name="android:textStyle">bold</item>
-        <item name="listPreferredItemPaddingLeft">0dp</item>
-        <item name="listPreferredItemPaddingRight">0dp</item>
     </style>
 
     <style name="TextViewParrafos" parent="TextStyle">
