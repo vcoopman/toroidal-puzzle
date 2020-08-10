@@ -138,31 +138,34 @@ class ElegirImagenFragment : Fragment() {
 
     //Función para lanzar la actividad para seleccionar la imagen a utilizar en el tablero
     private fun imageCrop(uri: Uri) {
-        CropImage.activity(uri)
-            //La resolución mínima de la imagen a cortar es de 400px
-            //.setMinCropResultSize(400, 400)
+        context?.let {
+            CropImage.activity(uri)
+                //La resolución mínima de la imagen a cortar es de 400px
+                //.setMinCropResultSize(400, 400)
 
-            //No se muestran las guías de ayuda al realizar el cortado
-            .setGuidelines(CropImageView.Guidelines.OFF)
+                //No se muestran las guías de ayuda al realizar el cortado
+                .setGuidelines(CropImageView.Guidelines.OFF)
 
-            //La relación de aspecto de la imagen es de 1:1
-            .setAspectRatio(1, 1)
+                //La relación de aspecto de la imagen es de 1:1
+                .setAspectRatio(1, 1)
 
-            //La forma de la selección a cortar es un rectángulo
-            .setCropShape(CropImageView.CropShape.RECTANGLE)
+                //La forma de la selección a cortar es un rectángulo
+                .setCropShape(CropImageView.CropShape.RECTANGLE)
 
-            //Se escala el tamaño de la imagen seleccionada a 400px
-            //.setRequestedSize(400, 400, CropImageView.RequestSizeOptions.RESIZE_INSIDE)
+                //Se escala el tamaño de la imagen seleccionada a 400px
+                //.setRequestedSize(400, 400, CropImageView.RequestSizeOptions.RESIZE_INSIDE)
 
-            //Se lanza la actividad para realizar la selección y cortado de la imagen
-            .start(this.requireActivity())
+                //Se lanza la actividad para realizar la selección y cortado de la imagen
+                //.start(this.requireActivity())
+                .start(it, this)
+        }
     }
 
     private fun guardarImagen(imagen: Bitmap) {
 
         try {
             //Ubicación donde se guardan las imágenes
-            val path = File(requireContext().dataDir.toString() + File.separator + "gallery")
+            val path = File(requireContext().applicationContext.dataDir.toString() + File.separator + "gallery")
 
             //Si la ubicación no existe, se crea
             if (!path.exists()) path.mkdirs()
