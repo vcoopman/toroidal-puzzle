@@ -28,7 +28,6 @@ class GameFragment : Fragment() {
     // Estado del juego
 
     private var isRunning : Boolean = false
-    private var showingOriginal : Boolean = false
     private var isTablet: Boolean = false
 
 
@@ -155,7 +154,7 @@ class GameFragment : Fragment() {
         val loadButton = view.findViewById<ImageButton>(R.id.loadButton)
         val shuffleButton = view.findViewById<ImageButton>(R.id.shuffleButton)
         val iniciarCronometro = view.findViewById<ImageButton>(R.id.iniciarCronometro)
-        val pausarCronometro = view.findViewById<ImageButton>(R.id.pausarCronometro)
+//        val pausarCronometro = view.findViewById<ImageButton>(R.id.pausarCronometro)
 
         //Convierte la imagen que está en Resources en Bitmap
         var bitmap = BitmapFactory.decodeResource(resources,
@@ -269,19 +268,19 @@ class GameFragment : Fragment() {
             v?.onTouchEvent(event) ?: true
         }
 
-        pausarCronometro.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-
-                    // Esto increiblemente elimina bugs.
-                    pausarCronometro()
-                    iniciarCronometro()
-                    pausarCronometro()
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
-        }
+//        pausarCronometro.setOnTouchListener { v, event ->
+//            when (event?.action) {
+//                MotionEvent.ACTION_DOWN -> {
+//
+//                    // Esto increiblemente elimina bugs.
+//                    pausarCronometro()
+//                    iniciarCronometro()
+//                    pausarCronometro()
+//                }
+//            }
+//            // Retorno obligatorio del touchListener
+//            v?.onTouchEvent(event) ?: true
+//        }
 
         reiniciarJuego.setOnTouchListener { v, event ->
             when (event?.action) {
@@ -327,20 +326,12 @@ class GameFragment : Fragment() {
             v?.onTouchEvent(event) ?: true
         }
 
-        botonVerOriginal.setOnTouchListener { v, event ->
-            when (event?.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    if(showingOriginal){
-                        imagen_original.visibility = View.INVISIBLE
-                        showingOriginal = false
-                    } else {
-                        imagen_original.visibility = View.VISIBLE
-                        showingOriginal = true
-                    }
-                }
-            }
-            // Retorno obligatorio del touchListener
-            v?.onTouchEvent(event) ?: true
+        val toggle: ToggleButton = view.findViewById(R.id.toggleVerOriginal)
+        toggle.setOnCheckedChangeListener { _, isChecked->
+            if (isChecked)
+                imagen_original.visibility = View.VISIBLE
+            else
+                imagen_original.visibility = View.INVISIBLE
         }
 
         // Set imagen original
@@ -641,6 +632,7 @@ class GameFragment : Fragment() {
 
     private fun ajustarBarraJuego(orientation: Int) {
         val barraJuego = requireView().findViewById<LinearLayoutCompat>(R.id.barraJuego)
+        val toggleButton = requireView().findViewById<ToggleButton>(R.id.toggleVerOriginal)
         barraJuego.invalidate()
         val divider = resources.getDrawable(R.drawable.divider_barra, null)
         val resize: (Point, Double) -> Int
@@ -654,14 +646,23 @@ class GameFragment : Fragment() {
             divider.setBounds(0, 0, resize(displaySize, 0.02), 0)
         }
         val imageButtons = barraJuego.children.toList().filterIsInstance<ImageButton>()
+        val percentage = 0.13
+        var ibSize = resize(displaySize, percentage)
         for (ib in imageButtons) {
-            val percentage = 0.13
-            val ibSize = resize(displaySize, percentage)
+            ib.invalidate()
             ib.layoutParams.width = ibSize
             ib.layoutParams.height = ibSize
             ib.scaleType = ImageView.ScaleType.CENTER_INSIDE
             ib.requestLayout()
         }
+        if (isTablet) {
+            ibSize = resize(displaySize, percentage * 0.7)
+        }
+        toggleButton.layoutParams.width = ibSize
+        toggleButton.layoutParams.height = ibSize
+        toggleButton.requestLayout()
+
+
         val padding = resize(displaySize, 0.02)
         barraJuego.setPadding(padding, padding, padding, padding)
         barraJuego.showDividers = LinearLayoutCompat.SHOW_DIVIDER_MIDDLE
@@ -685,10 +686,12 @@ class GameFragment : Fragment() {
             val textMov = requireView().findViewById<TextView>(R.id.textMovimientos)
             val countMov = requireView().findViewById<TextView>(R.id.nromov)
             val chrono = requireView().findViewById<Chronometer>(R.id.cronometro)
+            val textToggle = requireView().findViewById<TextView>(R.id.textVerOriginal)
             textMov.invalidate()
             countMov.invalidate()
             titulo.invalidate()
             chrono.invalidate()
+            textToggle.invalidate()
             textMov.textSize *= factor
             textMov.setShadowLayer(textMov.shadowRadius * factor, 0.0f, textMov.shadowDx * factor, textMov.shadowColor)
             countMov.textSize *= factor
@@ -697,10 +700,13 @@ class GameFragment : Fragment() {
             titulo.setShadowLayer(titulo.shadowRadius * factor, 0.0f, titulo.shadowDx * factor, titulo.shadowColor)
             chrono.textSize *= factor
             chrono.setShadowLayer(chrono.shadowRadius * factor, 0.0f, chrono.shadowDx * factor, chrono.shadowColor)
+            textToggle.textSize *= factor
+            textMov.setShadowLayer(textMov.shadowRadius * factor, 0.0f, textMov.shadowDx * factor, textMov.shadowColor)
             textMov.requestLayout()
             countMov.requestLayout()
             titulo.requestLayout()
             chrono.requestLayout()
+            textToggle.requestLayout()
         }
     }
 }

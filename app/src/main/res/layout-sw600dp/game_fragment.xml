@@ -11,23 +11,6 @@
         android:layout_height="match_parent"
         android:background="@color/colorUI3MyrtleGreenDark">
 
-        <ImageView
-            android:id="@+id/imagen_original"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="invisible"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintLeft_toLeftOf="@+id/cuadro1"
-            app:layout_constraintTop_toTopOf="@+id/cuadro1"
-            app:layout_constraintWidth_percent="0.58536" />
-
-        <Button
-            android:id="@+id/botonVerOriginal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="@id/arrowDown4"
-            app:layout_constraintTop_toBottomOf="@id/arrowRight4" />
-
         <TextView
             android:id="@+id/textTituloGame"
             android:layout_width="wrap_content"
@@ -104,6 +87,37 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline_bar"
             app:layout_constraintEnd_toEndOf="@+id/fondoTablero" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vert_bor_bot"
+            app:layout_constraintTop_toTopOf="@+id/guideline_bar">
+
+            <TextView
+                android:id="@+id/textVerOriginal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ver Original"
+                android:textColor="@color/colorUILightCoral"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ToggleButton
+                android:id="@+id/toggleVerOriginal"
+                style="@style/toggleButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/toggle_bg"
+                app:layout_constraintTop_toTopOf="@+id/textVerOriginal"
+                app:layout_constraintBottom_toBottomOf="@+id/textVerOriginal"
+                app:layout_constraintStart_toEndOf="@+id/textVerOriginal" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/barraJuego"
             android:layout_width="wrap_content"
@@ -125,12 +139,6 @@
                 style="@style/ButtonBarraGame"
                 android:src="@drawable/button_play"
                 android:text="INCIAR" />
-
-            <ImageButton
-                android:id="@+id/pausarCronometro"
-                style="@style/ButtonBarraGame"
-                android:src="@drawable/button_pause"
-                android:text="PAUSAR" />
 
             <ImageButton
                 android:id="@+id/reiniciarJuego"
@@ -383,7 +391,9 @@
             style="@style/CuadroTableroNaranjo"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori"
             app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@+id/cuadro4"
             app:layout_constraintStart_toEndOf="@+id/cuadro7"
+            app:layout_constraintTop_toTopOf="@+id/cuadro7"
             app:layout_constraintWidth_default="percent"
             app:layout_constraintWidth_percent="0.14634"
             app:nro="8" />
@@ -402,6 +412,7 @@
             android:id="@+id/cuadro12"
             style="@style/CuadroTableroBlanco"
             app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@+id/cuadro8"
             app:layout_constraintStart_toEndOf="@+id/cuadro11"
             app:layout_constraintTop_toTopOf="@+id/guideline_hori"
             app:layout_constraintWidth_default="percent"
@@ -414,6 +425,7 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/cuadro6"
+            app:layout_constraintTop_toTopOf="@+id/cuadro6"
             app:layout_constraintWidth_default="percent"
             app:layout_constraintWidth_percent="0.14634"
             app:nro="5" />
@@ -461,9 +473,11 @@
         <com.curso.toroidal_puzzle.views.CuadroImageView
             android:id="@+id/cuadro7"
             style="@style/CuadroTableroBlanco"
+            android:layout_marginTop="287dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="@+id/guideline_vert"
+
             app:layout_constraintVertical_bias="1.0"
             app:layout_constraintWidth_default="percent"
             app:layout_constraintWidth_percent="0.14634"
@@ -493,6 +507,7 @@
             android:id="@+id/cuadro16"
             style="@style/CuadroTableroNaranjo"
             app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@+id/cuadro12"
             app:layout_constraintStart_toEndOf="@+id/cuadro15"
             app:layout_constraintTop_toBottomOf="@+id/cuadro12"
             app:layout_constraintWidth_default="percent"
@@ -570,6 +585,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.05" />
+
+        <ImageView
+            android:id="@+id/imagen_original"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="@+id/cuadro1"
+            app:layout_constraintTop_toTopOf="@+id/cuadro1"
+            app:layout_constraintWidth_percent="0.58536" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
