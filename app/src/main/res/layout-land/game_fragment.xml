@@ -11,8 +11,6 @@
         android:layout_height="match_parent"
         android:background="@color/colorUI3MyrtleGreenDark">
 
-
-
         <Button
             android:id="@+id/botonVerOriginal"
             android:layout_width="wrap_content"
@@ -39,6 +37,38 @@
             app:layout_constraintStart_toStartOf="@+id/guideline_titulo"
             app:layout_constraintTop_toTopOf="@+id/guideline_hori"
             app:layout_constraintVertical_bias="0.503" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+
+            android:paddingLeft="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/movimientos"
+            app:layout_constraintTop_toBottomOf="@+id/movimientos">
+
+            <TextView
+                android:id="@+id/textVerOriginal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ver Original"
+                android:textColor="@color/colorUILightCoral"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ToggleButton
+                android:id="@+id/toggleVerOriginal"
+                style="@style/toggleButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/toggle_bg"
+                app:layout_constraintStart_toStartOf="@+id/textVerOriginal"
+                app:layout_constraintTop_toBottomOf="@+id/textVerOriginal" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/movimientos"
@@ -586,5 +616,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.24" />
+
+        <ImageView
+            android:id="@+id/imagen_original"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_percent="0.58536"
+            app:layout_constraintLeft_toLeftOf="@+id/cuadro1"
+            app:layout_constraintTop_toTopOf="@+id/cuadro1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

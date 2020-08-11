@@ -20,8 +20,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline_vert_bor_top"
             app:layout_constraintTop_toTopOf="@+id/guideline_titulo" />
 
-
-
+      
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/movimientos"
             android:layout_width="wrap_content"
@@ -64,6 +63,37 @@
                 android:textStyle="bold" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/guideline_vert_bor_bot"
+            app:layout_constraintTop_toTopOf="@+id/guideline_bar">
+
+            <TextView
+                android:id="@+id/textVerOriginal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ver Original"
+                android:textColor="@color/colorUILightCoral"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ToggleButton
+                android:id="@+id/toggleVerOriginal"
+                style="@style/toggleButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/toggle_bg"
+                app:layout_constraintTop_toTopOf="@+id/textVerOriginal"
+                app:layout_constraintBottom_toBottomOf="@+id/textVerOriginal"
+                app:layout_constraintStart_toEndOf="@+id/textVerOriginal" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <Chronometer
             android:id="@+id/cronometro"
             android:layout_width="wrap_content"
@@ -102,12 +132,6 @@
                 style="@style/ButtonBarraGame"
                 android:src="@drawable/button_play"
                 android:text="INCIAR" />
-
-            <ImageButton
-                android:id="@+id/pausarCronometro"
-                style="@style/ButtonBarraGame"
-                android:src="@drawable/button_pause"
-                android:text="PAUSAR" />
 
             <ImageButton
                 android:id="@+id/reiniciarJuego"
@@ -519,6 +543,7 @@
             app:layout_constraintTop_toTopOf="@+id/cuadro1"
             app:layout_constraintWidth_percent="0.58536" />
 
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_vert"
             android:layout_width="wrap_content"
@@ -574,5 +599,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.76" />
+
+        <ImageView
+            android:id="@+id/imagen_original"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="@+id/cuadro1"
+            app:layout_constraintTop_toTopOf="@+id/cuadro1"
+            app:layout_constraintWidth_percent="0.58536" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
