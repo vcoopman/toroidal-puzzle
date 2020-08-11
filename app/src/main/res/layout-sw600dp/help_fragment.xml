@@ -42,6 +42,10 @@
             <include
                 android:id="@+id/tablero_help"
                 layout="@layout/imagen_tablero_help" />
+
+            <include
+                android:id="@+id/tablero_barra_help"
+                layout="@layout/opciones_juego_help" />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.core.widget.NestedScrollView>
 </FrameLayout>

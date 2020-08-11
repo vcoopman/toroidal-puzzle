@@ -136,34 +136,44 @@
 
             <ImageButton
                 android:id="@+id/iniciarCronometro"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="20dp"
                 style="@style/ButtonBarraGame"
                 android:src="@drawable/button_play"
                 android:text="INCIAR" />
 
             <ImageButton
                 android:id="@+id/reiniciarJuego"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="20dp"
                 style="@style/ButtonBarraGame"
                 android:src="@drawable/button_restart"
                 android:text="REINICIAR" />
 
             <ImageButton
                 android:id="@+id/saveButton"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="20dp"
                 style="@style/ButtonBarraGame"
                 android:src="@drawable/button_save"
                 android:text="SAVE" />
 
             <ImageButton
                 android:id="@+id/loadButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:contentDescription="TODO"
-                android:scaleType="fitXY"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="20dp"
+                style="@style/ButtonBarraGame"
                 android:src="@drawable/button_load"
                 android:text="LOAD" />
 
             <ImageButton
                 android:id="@+id/shuffleButton"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 style="@style/ButtonBarraGame"
                 android:src="@drawable/button_shuffle"
                 android:text="SHUFFLE" />

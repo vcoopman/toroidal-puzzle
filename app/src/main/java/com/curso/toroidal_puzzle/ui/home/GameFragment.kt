@@ -645,7 +645,7 @@ class GameFragment : Fragment() {
         val barraJuego = requireView().findViewById<LinearLayoutCompat>(R.id.barraJuego)
         val toggleButton = requireView().findViewById<ToggleButton>(R.id.toggleVerOriginal)
         barraJuego.invalidate()
-        val divider = resources.getDrawable(R.drawable.divider_barra, null)
+        var divider = resources.getDrawable(R.drawable.divider_barra, null)
         val resize: (Point, Double) -> Int
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             resize = calcHeight
@@ -659,20 +659,21 @@ class GameFragment : Fragment() {
         val imageButtons = barraJuego.children.toList().filterIsInstance<ImageButton>()
         val percentage = 0.13
         var ibSize = resize(displaySize, percentage)
-        for (ib in imageButtons) {
-            ib.invalidate()
-            ib.layoutParams.width = ibSize
-            ib.layoutParams.height = ibSize
-            ib.scaleType = ImageView.ScaleType.CENTER_INSIDE
-            ib.requestLayout()
-        }
+
         if (isTablet) {
             ibSize = resize(displaySize, percentage * 0.7)
+            toggleButton.layoutParams.width = ibSize
+            toggleButton.layoutParams.height = ibSize
+            toggleButton.requestLayout()
+        } else {
+            for (ib in imageButtons) {
+                ib.invalidate()
+                ib.layoutParams.width = ibSize
+                ib.layoutParams.height = ibSize
+                ib.scaleType = ImageView.ScaleType.CENTER_INSIDE
+                ib.requestLayout()
+            }
         }
-        toggleButton.layoutParams.width = ibSize
-        toggleButton.layoutParams.height = ibSize
-        toggleButton.requestLayout()
-
 
         val padding = resize(displaySize, 0.02)
         barraJuego.setPadding(padding, padding, padding, padding)
