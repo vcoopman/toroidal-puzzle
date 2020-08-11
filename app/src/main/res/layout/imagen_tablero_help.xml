@@ -97,12 +97,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert2"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -110,12 +110,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert3"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -123,12 +123,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert4"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -136,12 +136,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert5"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
         <!--endregion-->
 
         <!--region ArrowLeft-->
@@ -151,12 +151,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_left"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori2"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert1"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -164,12 +164,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_left"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori3"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert1"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -177,12 +177,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_left"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori4"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert1"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -190,12 +190,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_left"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori5"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert1"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <!--endregion-->
 
@@ -206,12 +206,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_right"
-            android:tint="@color/colorUIMaximumYellowRed"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori2"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintStart_toEndOf="@+id/guideline_vert5" />
+            app:layout_constraintStart_toEndOf="@+id/guideline_vert5"
+            app:tint="@color/colorUIMaximumYellowRed" />
 
         <ImageView
             android:layout_width="0dp"
@@ -219,12 +219,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_right"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori3"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintStart_toEndOf="@+id/guideline_vert5" />
+            app:layout_constraintStart_toEndOf="@+id/guideline_vert5"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -232,12 +232,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_right"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori4"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintStart_toEndOf="@+id/guideline_vert5" />
+            app:layout_constraintStart_toEndOf="@+id/guideline_vert5"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -245,12 +245,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_right"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline_hori5"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintStart_toEndOf="@+id/guideline_vert5" />
+            app:layout_constraintStart_toEndOf="@+id/guideline_vert5"
+            app:tint="@color/colorUILightCoral" />
         <!--endregion-->
 
         <!--region ArrowDown-->
@@ -261,12 +261,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_down"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert2"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline_hori5" />
+            app:layout_constraintTop_toTopOf="@+id/guideline_hori5"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -274,12 +274,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_down"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert3"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline_hori5" />
+            app:layout_constraintTop_toTopOf="@+id/guideline_hori5"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -287,12 +287,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_down"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert4"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline_hori5" />
+            app:layout_constraintTop_toTopOf="@+id/guideline_hori5"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -300,12 +300,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_down"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline_vert5"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline_hori5" />
+            app:layout_constraintTop_toTopOf="@+id/guideline_hori5"
+            app:tint="@color/colorUILightCoral" />
 
         <!--endregion-->
 
@@ -590,12 +590,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert2"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -603,12 +603,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert3"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -616,12 +616,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert4"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -629,12 +629,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_up"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert5"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
         <!--endregion-->
 
         <!--region ArrowLeft-->
@@ -644,12 +644,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_left"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori2"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert1"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -657,12 +657,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_left"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori3"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert1"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -670,12 +670,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_left"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori4"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert1"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -683,12 +683,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_left"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori5"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert1"
             app:layout_constraintHeight_default="percent"
-            app:layout_constraintHeight_percent="0.16666" />
+            app:layout_constraintHeight_percent="0.16666"
+            app:tint="@color/colorUILightCoral" />
 
         <!--endregion-->
 
@@ -699,12 +699,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_right"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori2"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintStart_toEndOf="@+id/guideline2_vert5" />
+            app:layout_constraintStart_toEndOf="@+id/guideline2_vert5"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -712,12 +712,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_right"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori3"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintStart_toEndOf="@+id/guideline2_vert5" />
+            app:layout_constraintStart_toEndOf="@+id/guideline2_vert5"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -725,12 +725,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_right"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori4"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintStart_toEndOf="@+id/guideline2_vert5" />
+            app:layout_constraintStart_toEndOf="@+id/guideline2_vert5"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -738,12 +738,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_right"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintBottom_toTopOf="@+id/guideline2_hori5"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintStart_toEndOf="@+id/guideline2_vert5" />
+            app:layout_constraintStart_toEndOf="@+id/guideline2_vert5"
+            app:tint="@color/colorUILightCoral" />
         <!--endregion-->
 
         <!--region ArrowDown-->
@@ -754,12 +754,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_down"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert2"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5" />
+            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -767,12 +767,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_down"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert3"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5" />
+            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -780,12 +780,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_down"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert4"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5" />
+            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5"
+            app:tint="@color/colorUILightCoral" />
 
         <ImageView
             android:layout_width="0dp"
@@ -793,12 +793,12 @@
             android:contentDescription="TODO"
             android:scaleType="fitXY"
             android:src="@drawable/arrow_down"
-            android:tint="@color/colorUILightCoral"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/guideline2_vert5"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.16666"
-            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5" />
+            app:layout_constraintTop_toTopOf="@+id/guideline2_hori5"
+            app:tint="@color/colorUILightCoral" />
 
         <!--endregion-->
 
