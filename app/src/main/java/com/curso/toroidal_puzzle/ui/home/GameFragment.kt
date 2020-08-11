@@ -26,7 +26,6 @@ import kotlin.math.ceil
 class GameFragment : Fragment() {
 
     // Estado del juego
-
     private var isRunning : Boolean = false
     private var isTablet: Boolean = false
 
@@ -37,10 +36,9 @@ class GameFragment : Fragment() {
     private var startTime : Long = 0
 
     // Nro Jugadas
-
     private var movimientosRealizados : Long = 0
-    var hayTiempoGuardado : Boolean = false
-    var seHizoSave: Boolean = false
+
+    // Layout
     private val calcWidth = { size: Point, percentage: Double -> ceil(percentage * size.x).toInt()}
     private val calcHeight = { size: Point, percentage: Double -> ceil(percentage * size.y).toInt()}
     private val defDeviceWidth = 1080
@@ -156,16 +154,8 @@ class GameFragment : Fragment() {
         val iniciarCronometro = view.findViewById<ImageButton>(R.id.iniciarCronometro)
 //        val pausarCronometro = view.findViewById<ImageButton>(R.id.pausarCronometro)
 
-        //Convierte la imagen que está en Resources en Bitmap
-        var bitmap = BitmapFactory.decodeResource(resources,
-            R.drawable.vicente
-        )
-
-        //Escala la imagen a 400x400px
-        bitmap = Bitmap.createScaledBitmap(bitmap, 400, 400, false)
-
         //Obtiene la lista de 16 cuadros de 100x100px cada uno
-        listaCuadros = crearCuadros.crearCuadros(bitmap).toMutableList()
+        listaCuadros = cargarImagen().toMutableList()
 
         //Coloca los cuadros en el mapa
         posicionesCuadros[f1] = Cuadro(listaCuadros[0], f1)
@@ -262,6 +252,7 @@ class GameFragment : Fragment() {
                         iniciarCronometro()
                         pausarCronometro()
                     }
+
                 }
             }
             // Retorno obligatorio del touchListener
@@ -425,6 +416,8 @@ class GameFragment : Fragment() {
     }
 
     private fun reiniciarPartida(){
+
+        pausarCronometro()
 
         // Reiniciar Imagenes
         val keys = posicionesCuadros.keys.toMutableList()
@@ -592,6 +585,19 @@ class GameFragment : Fragment() {
             ++i
         }
         updateGameView()
+    }
+
+    private fun cargarImagen() : List<Bitmap>{
+        val img = File(requireContext().applicationContext.dataDir.toString() + File.separator + "imagen.png")
+        var bitmap = BitmapFactory.decodeResource(resources, R.drawable.imagen_udec)
+
+        if(img.exists()){
+            bitmap = BitmapFactory.decodeFile(img.absolutePath)
+        }
+
+        //Escala la imagen a 400x400px
+        bitmap = Bitmap.createScaledBitmap(bitmap, 400, 400, false)
+        return  crearCuadros.crearCuadros(bitmap)
     }
 
     private fun shuffle(){

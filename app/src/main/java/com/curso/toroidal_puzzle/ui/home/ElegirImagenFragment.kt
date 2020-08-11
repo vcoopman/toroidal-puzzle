@@ -80,7 +80,6 @@ class ElegirImagenFragment : Fragment() {
         // TODO: Use the ViewModel
     }
 
-
     //Llama a la cámara
     private fun tomarFoto(view: View) {
         val camaraIntent = Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA)

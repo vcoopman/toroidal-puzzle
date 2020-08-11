@@ -20,6 +20,7 @@
             app:layout_constraintStart_toStartOf="@+id/guideline_vert_bor_top"
             app:layout_constraintTop_toTopOf="@+id/guideline_titulo" />
 
+      
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/movimientos"
             android:layout_width="wrap_content"
@@ -524,6 +525,24 @@
             app:layout_constraintWidth_default="percent"
             app:layout_constraintWidth_percent="0.14634"
             app:nro="14" />
+
+        <Button
+            android:id="@+id/botonVerOriginal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/arrowDown4"
+            app:layout_constraintTop_toBottomOf="@id/arrowRight4" />
+
+        <ImageView
+            android:id="@+id/imagen_original"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="@+id/cuadro1"
+            app:layout_constraintTop_toTopOf="@+id/cuadro1"
+            app:layout_constraintWidth_percent="0.58536" />
+
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_vert"

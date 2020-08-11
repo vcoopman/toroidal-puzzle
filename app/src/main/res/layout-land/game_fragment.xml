@@ -11,6 +11,13 @@
         android:layout_height="match_parent"
         android:background="@color/colorUI3MyrtleGreenDark">
 
+        <Button
+            android:id="@+id/botonVerOriginal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="@id/arrowDown4"
+            app:layout_constraintTop_toBottomOf="@id/arrowRight4" />
+
         <TextView
             android:id="@+id/textTituloGame"
             android:layout_width="wrap_content"
@@ -548,6 +555,18 @@
             app:layout_constraintHeight_percent="0.14634"
             app:layout_constraintTop_toBottomOf="@+id/cuadro10"
             app:nro="14" />
+
+
+<!--        Esta aca abajo para que se dibuje sobre los demas -->
+        <ImageView
+            android:id="@+id/imagen_original"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_percent="0.58536"
+            app:layout_constraintLeft_toLeftOf="@+id/cuadro1"
+            app:layout_constraintTop_toTopOf="@+id/cuadro1" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_vert"
