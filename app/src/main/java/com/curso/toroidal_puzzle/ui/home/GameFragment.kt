@@ -86,6 +86,7 @@ class GameFragment : Fragment() {
     private lateinit var viewModel: GameViewModel
 
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.game_fragment, container, false)
@@ -155,7 +156,8 @@ class GameFragment : Fragment() {
 //        val pausarCronometro = view.findViewById<ImageButton>(R.id.pausarCronometro)
 
         //Obtiene la lista de 16 cuadros de 100x100px cada uno
-        listaCuadros = cargarImagen().toMutableList()
+
+        listaCuadros = crearCuadros.crearCuadros(cargarImagen()).toMutableList()
 
         //Coloca los cuadros en el mapa
         posicionesCuadros[f1] = Cuadro(listaCuadros[0], f1)
@@ -327,7 +329,7 @@ class GameFragment : Fragment() {
 
         // Set imagen original
         // Este recurso o imagen debe ser la que se esta usando para jugar
-        imagen_original.setImageResource(R.drawable.felipe)
+        imagen_original.setImageBitmap(cargarImagen())
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -587,17 +589,17 @@ class GameFragment : Fragment() {
         updateGameView()
     }
 
-    private fun cargarImagen() : List<Bitmap>{
+    private fun cargarImagen() : Bitmap{
         val img = File(requireContext().applicationContext.dataDir.toString() + File.separator + "imagen.png")
         var bitmap = BitmapFactory.decodeResource(resources, R.drawable.imagen_udec)
-
         if(img.exists()){
             bitmap = BitmapFactory.decodeFile(img.absolutePath)
         }
 
         //Escala la imagen a 400x400px
         bitmap = Bitmap.createScaledBitmap(bitmap, 400, 400, false)
-        return  crearCuadros.crearCuadros(bitmap)
+
+        return bitmap
     }
 
     private fun shuffle(){

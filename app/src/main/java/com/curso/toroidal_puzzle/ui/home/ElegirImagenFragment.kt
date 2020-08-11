@@ -23,6 +23,7 @@ import com.curso.toroidal_puzzle.GalleryAdapter
 import com.curso.toroidal_puzzle.R
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
+import kotlinx.android.synthetic.main.content_main.*
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
@@ -79,6 +80,7 @@ class ElegirImagenFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(ElegirImagenViewModel::class.java)
         // TODO: Use the ViewModel
     }
+
 
     //Llama a la cámara
     private fun tomarFoto(view: View) {
@@ -229,53 +231,33 @@ class ElegirImagenFragment : Fragment() {
     //Inicia el juego con la imagen seleccionada
     private fun usarImagen(img: Bitmap) {
 
-        val imagen = Bitmap.createScaledBitmap(img, 400, 400, false)
+        try {
+            //Ubicación donde se guardan las imágenes
+            val path = File(requireContext().applicationContext.dataDir.toString())
 
-        val crearCuadros = CrearCuadros()
+            //Si la ubicación no existe, se crea
+            if (!path.exists()) path.mkdirs()
 
-        val listaCuadros = crearCuadros.crearCuadros(imagen).toMutableList()
+            //Nombre del archivo a guardar
+            val outFile = File(path, "imagen.png")
 
-        var i = 1
+            //Guarda el archivo en formato PNG
+            val outStream = FileOutputStream(outFile)
+            img.compress(Bitmap.CompressFormat.PNG, 100, outStream)
 
-        for (bm in listaCuadros) {
-
-            try {
-                //Ubicación donde se guardan las imágenes
-                val path = File(requireContext().dataDir.toString() + File.separator + "img")
-
-                //Si la ubicación no existe, se crea
-                if (!path.exists()) path.mkdirs()
-
-                //Nombre del archivo a guardar
-                val outFile = File(path, "img${i}.png")
-
-                //Guarda el archivo en formato PNG
-                val outStream = FileOutputStream(outFile)
-                bm.compress(Bitmap.CompressFormat.PNG, 100, outStream)
-
-                //Cierra el archivo
-                outStream.close()
-
-                ++i
-
-            } catch (e: FileNotFoundException) {
-                Log.v("ErrorGuardarArchivo", "Archivo no encontrado: " + e.message!!)
-            } catch (e: IOException) {
-                Log.v("ErrorGuardarArchivo", "Error de Entrada Salida: " + e.message!!)
-            }
+            //Cierra el archivo
+            outStream.close()
+        } catch (e: FileNotFoundException) {
+            Log.v("ErrorGuardarArchivo", "Archivo no encontrado: " + e.message!!)
+        } catch (e: IOException) {
+            Log.v("ErrorGuardarArchivo", "Error de Entrada Salida: " + e.message!!)
         }
+
+
+
+
+
 
         //TODO: llamar a GameFragment
-
-        /*
-        val intent = Intent(this, GameActivity::class.java )
-        intent.putExtra("imagen", imagen)
-
-        if(intent.resolveActivity(packageManager)!=null){
-            startActivity(intent)
-        }
-        */
-
     }
-
 }
