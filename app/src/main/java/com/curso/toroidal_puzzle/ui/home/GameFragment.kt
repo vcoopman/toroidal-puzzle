@@ -603,17 +603,20 @@ class GameFragment : Fragment() {
     }
 
     private fun shuffle(){
-        var listaCuadrosAux = listaCuadros
-        listaCuadrosAux = listaCuadrosAux.toMutableList()
-        var max = 15
+        if(isRunning) {
+            var listaCuadrosAux = listaCuadros.toMutableList()
+            var keys = posicionesCuadros.keys.toMutableList()
+            var max = 15
 
-        for (value in posicionesCuadros.values){
-            val index = (0..max).random()
-            value.imageResource = listaCuadrosAux[index]
-            listaCuadrosAux.removeAt(index)
-            --max
+            for (key in posicionesCuadros.keys) {
+                val index = (0..max).random()
+                posicionesCuadros[key] = Cuadro(listaCuadrosAux[index], keys[index])
+                keys.removeAt(index)
+                listaCuadrosAux.removeAt(index)
+                --max
+            }
+            updateGameView()
         }
-        updateGameView()
     }
 
     @SuppressLint("ClickableViewAccessibility")
