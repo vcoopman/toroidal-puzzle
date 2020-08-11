@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.GridView
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.curso.toroidal_puzzle.CrearCuadros
@@ -247,6 +248,7 @@ class ElegirImagenFragment : Fragment() {
 
             //Cierra el archivo
             outStream.close()
+            Toast.makeText(this.activity, "Imagen Seleccionada", Toast.LENGTH_SHORT).show()
         } catch (e: FileNotFoundException) {
             Log.v("ErrorGuardarArchivo", "Archivo no encontrado: " + e.message!!)
         } catch (e: IOException) {

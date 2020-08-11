@@ -100,13 +100,12 @@ class GameFragment : Fragment() {
 
         isTablet = resources.getBoolean(R.bool.tablet)
 
-
         getDisplaySize()
+
         // Init cronometro
         cronometro = view.findViewById(R.id.cronometro)
 
         // Revisa si hay guardado
-
         try {
             if(readFromInternalStorage("cronometro") > 0 ){
                 hayGuardado = true
@@ -153,11 +152,10 @@ class GameFragment : Fragment() {
         val loadButton = view.findViewById<ImageButton>(R.id.loadButton)
         val shuffleButton = view.findViewById<ImageButton>(R.id.shuffleButton)
         val iniciarCronometro = view.findViewById<ImageButton>(R.id.iniciarCronometro)
-//        val pausarCronometro = view.findViewById<ImageButton>(R.id.pausarCronometro)
 
         //Obtiene la lista de 16 cuadros de 100x100px cada uno
-
         listaCuadros = crearCuadros.crearCuadros(cargarImagen()).toMutableList()
+        Toast.makeText(this.activity, "${listaCuadros.size}", Toast.LENGTH_SHORT).show()
 
         //Coloca los cuadros en el mapa
         posicionesCuadros[f1] = Cuadro(listaCuadros[0], f1)
@@ -260,20 +258,6 @@ class GameFragment : Fragment() {
             // Retorno obligatorio del touchListener
             v?.onTouchEvent(event) ?: true
         }
-
-//        pausarCronometro.setOnTouchListener { v, event ->
-//            when (event?.action) {
-//                MotionEvent.ACTION_DOWN -> {
-//
-//                    // Esto increiblemente elimina bugs.
-//                    pausarCronometro()
-//                    iniciarCronometro()
-//                    pausarCronometro()
-//                }
-//            }
-//            // Retorno obligatorio del touchListener
-//            v?.onTouchEvent(event) ?: true
-//        }
 
         reiniciarJuego.setOnTouchListener { v, event ->
             when (event?.action) {
@@ -604,7 +588,9 @@ class GameFragment : Fragment() {
 
     private fun shuffle(){
         if(isRunning) {
-            var listaCuadrosAux = listaCuadros.toMutableList()
+            // Se crear lista auxiliar
+            var listaCuadrosAux : MutableList<Bitmap> = ArrayList()
+            listaCuadrosAux.addAll(listaCuadros)
             var keys = posicionesCuadros.keys.toMutableList()
             var max = 15
 
