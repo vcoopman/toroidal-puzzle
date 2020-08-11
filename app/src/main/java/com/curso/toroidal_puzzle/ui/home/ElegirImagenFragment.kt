@@ -80,7 +80,6 @@ class ElegirImagenFragment : Fragment() {
         // TODO: Use the ViewModel
     }
 
-
     //Llama a la cámara
     private fun tomarFoto(view: View) {
         val camaraIntent = Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA)
@@ -162,7 +161,7 @@ class ElegirImagenFragment : Fragment() {
 
         try {
             //Ubicación donde se guardan las imágenes
-            val path = File(requireContext().dataDir.toString() + File.separator + "gallery")
+            val path = File(requireContext().applicationContext.dataDir.toString() + File.separator + "gallery")
 
             //Si la ubicación no existe, se crea
             if (!path.exists()) path.mkdirs()

@@ -11,15 +11,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorUI3MyrtleGreenDark">
 
-        <ImageView
-            android:id="@+id/imagen_original"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="invisible"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_percent="0.58536"
-            app:layout_constraintLeft_toLeftOf="@+id/cuadro1"
-            app:layout_constraintTop_toTopOf="@+id/cuadro1" />
+
 
         <Button
             android:id="@+id/botonVerOriginal"
@@ -533,6 +525,18 @@
             app:layout_constraintHeight_percent="0.14634"
             app:layout_constraintTop_toBottomOf="@+id/cuadro10"
             app:nro="14" />
+
+
+<!--        Esta aca abajo para que se dibuje sobre los demas -->
+        <ImageView
+            android:id="@+id/imagen_original"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHeight_percent="0.58536"
+            app:layout_constraintLeft_toLeftOf="@+id/cuadro1"
+            app:layout_constraintTop_toTopOf="@+id/cuadro1" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_vert"
