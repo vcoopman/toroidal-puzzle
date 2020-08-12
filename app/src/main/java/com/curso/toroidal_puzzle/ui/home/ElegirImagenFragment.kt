@@ -254,12 +254,15 @@ class ElegirImagenFragment : Fragment() {
         } catch (e: IOException) {
             Log.v("ErrorGuardarArchivo", "Error de Entrada Salida: " + e.message!!)
         }
+        
+        iniciarJuego()
+    }
+        private fun iniciarJuego(){
 
-
-
-
-
-
-        //TODO: llamar a GameFragment
+        val juego = GameFragment()
+        val ft = requireActivity().supportFragmentManager.beginTransaction()
+        ft.replace(R.id.nav_host_fragment, juego)
+        ft.addToBackStack(null)
+        ft.commit()
     }
 }
