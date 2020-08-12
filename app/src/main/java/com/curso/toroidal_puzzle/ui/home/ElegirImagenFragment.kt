@@ -240,7 +240,7 @@ class ElegirImagenFragment : Fragment() {
             if (!path.exists()) path.mkdirs()
 
             //Nombre del archivo a guardar
-            val outFile = File(path, "imagen.png")
+            val outFile = File(path, "imagenJuego.png")
 
             //Guarda el archivo en formato PNG
             val outStream = FileOutputStream(outFile)
