@@ -82,10 +82,11 @@ class GameFragment : Fragment() {
     //Obtiene la lista de 16 cuadros de 100x100px cada uno
     private var listaCuadros = mutableListOf<Bitmap>()
 
+    // Imagen original ordenada
+    private var imagenJuego : Bitmap? = null
+    private var imagenOrdenada : ImageView? = null
 
     private lateinit var viewModel: GameViewModel
-
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -153,9 +154,16 @@ class GameFragment : Fragment() {
         val shuffleButton = view.findViewById<ImageButton>(R.id.shuffleButton)
         val iniciarCronometro = view.findViewById<ImageButton>(R.id.iniciarCronometro)
 
+        //Obtiene imagen original
+        imagenJuego = cargarImagen()
+
+        // Set imagen original
+        // Este recurso o imagen debe ser la que se esta usando para jugar
+        imagenOrdenada = view.findViewById(R.id.imagen_original)
+        imagenOrdenada!!.setImageBitmap(imagenJuego)
+
         //Obtiene la lista de 16 cuadros de 100x100px cada uno
-        listaCuadros = crearCuadros.crearCuadros(cargarImagen()).toMutableList()
-        Toast.makeText(this.activity, "${listaCuadros.size}", Toast.LENGTH_SHORT).show()
+        listaCuadros = crearCuadros.crearCuadros(imagenJuego!!).toMutableList()
 
         //Coloca los cuadros en el mapa
         posicionesCuadros[f1] = Cuadro(listaCuadros[0], f1)
@@ -310,10 +318,6 @@ class GameFragment : Fragment() {
             else
                 imagen_original.visibility = View.INVISIBLE
         }
-
-        // Set imagen original
-        // Este recurso o imagen debe ser la que se esta usando para jugar
-        imagen_original.setImageBitmap(cargarImagen())
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -371,9 +375,12 @@ class GameFragment : Fragment() {
         // Se guardan imagenes
         var i = 1
         for(cuadro in posicionesCuadros.values){
-            guardarImagen(cuadro.imageResource,"img${i}")
+            guardarImagen(cuadro.imageResource,"img","img${i}")
             ++i
         }
+        // Se guarda imagen ordenada
+        guardarImagen(imagenJuego!!,"imgOrdenada","Ordenada")
+
         // Se guarda tiempo cronometro y cantidad de movimientos
         iniciarCronometro()
         pausarCronometro()
@@ -386,8 +393,15 @@ class GameFragment : Fragment() {
 
     private fun cargarPartida(){
         if(hayGuardado) {
+            // Se recupera la imagen ordenada
+            imagenJuego = recuperarImagen("imgOrdenada","Ordenada")
+            imagenOrdenada!!.setImageBitmap(imagenJuego)
+
+            // Update ListaCuadros
+            listaCuadros = crearCuadros.crearCuadros(imagenJuego!!).toMutableList()
+
             // Se recuperan imagenes
-            recuperarImagen()
+            recuperarImagenes()
 
             // Se recuperan cronometro y cantidad de movimientos
             cronometro!!.base =
@@ -533,11 +547,11 @@ class GameFragment : Fragment() {
         return finalString.toLong()
     }
 
-    private fun guardarImagen(imagen: Bitmap, fileName: String){
+    private fun guardarImagen(imagen: Bitmap, dirName: String, fileName: String){
 
         try {
             //Ubicación donde se guardan las imágenes
-            val path = File(requireContext().applicationContext.dataDir.toString() + File.separator + "img")
+            val path = File(requireContext().applicationContext.dataDir.toString() + File.separator + dirName)
 
             //Si la ubicación no existe, se crea
             if (!path.exists()) path.mkdirs()
@@ -560,21 +574,40 @@ class GameFragment : Fragment() {
         }
     }
 
-    private fun recuperarImagen(){
+    // Recupera bitmaps guardados en el directorio img del storage interno y los guarda correctamente en posicionesCuadros.
+    private fun recuperarImagenes(){
         val path = File(requireContext().applicationContext.dataDir.toString() + File.separator + "img")
         var i = 1
+        var j = 0
         val posicionesCuadrosKeys = posicionesCuadros.keys.toMutableList()
         while( i <= 16) {
+            // Se obtiene bitmap
             val img = File(path, "img$i.png")
             val bitmap = BitmapFactory.decodeFile(img.absolutePath)
-            posicionesCuadros[posicionesCuadrosKeys[i-1]]!!.imageResource = bitmap
+
+            // Se compara bitmap con ListaCuadros
+            while(j < 16){
+                if(bitmap.sameAs(listaCuadros[j])){
+                    // Si son iguales se guarda el index de lista cuadros, y se usa para usar la key correcta al el Cuadro
+                    posicionesCuadros[posicionesCuadrosKeys[i-1]] = Cuadro(bitmap,posicionesCuadrosKeys[j])
+                    break
+                }
+                ++j
+            }
+            j = 0
             ++i
         }
         updateGameView()
     }
 
+    private fun recuperarImagen(dir: String, fileName: String) : Bitmap{
+        val path = File(requireContext().applicationContext.dataDir.toString() + File.separator + dir)
+        val img = File(path,"$fileName.png")
+        return BitmapFactory.decodeFile(img.absolutePath)
+    }
+
     private fun cargarImagen() : Bitmap{
-        val img = File(requireContext().applicationContext.dataDir.toString() + File.separator + "imagen.png")
+        val img = File(requireContext().applicationContext.dataDir.toString() + File.separator + "imagenJuego.png")
         var bitmap = BitmapFactory.decodeResource(resources, R.drawable.imagen_udec)
         if(img.exists()){
             bitmap = BitmapFactory.decodeFile(img.absolutePath)
