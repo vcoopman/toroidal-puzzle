@@ -66,8 +66,8 @@ class GameFragment : Fragment() {
     private var posicionesCuadros = mutableMapOf<ImageView, Cuadro>()
 
     // Para cada posicion en el tablero se almacenan las posiciones que se ven afectadas con un movimiento.
-    // Primer elemento del pair, representa a la posicion de donde inicia el movimiento. Segundo elemento,
-    // los posiciones que se ven afectadas por el.
+    // Primer elemento del pair, representa a la posicion de donde inicia el movimiento.
+    // Segundo elemento, las posiciones que se ven afectadas por el.
     // En este caso, movimientos horizontales.
 
     private var movimientosHorizontal = mutableMapOf<ImageView, Array<ImageView>>()

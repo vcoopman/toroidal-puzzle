@@ -11,13 +11,6 @@
         android:layout_height="match_parent"
         android:background="@color/colorUI3MyrtleGreenDark">
 
-        <Button
-            android:id="@+id/botonVerOriginal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="@id/arrowDown4"
-            app:layout_constraintTop_toBottomOf="@id/arrowRight4" />
-
         <TextView
             android:id="@+id/textTituloGame"
             android:layout_width="wrap_content"
@@ -151,12 +144,6 @@
                 style="@style/ButtonBarraGame"
                 android:src="@drawable/button_play"
                 android:text="INCIAR" />
-
-            <ImageButton
-                android:id="@+id/pausarCronometro"
-                style="@style/ButtonBarraGame"
-                android:src="@drawable/button_pause"
-                android:text="PAUSAR" />
 
             <ImageButton
                 android:id="@+id/reiniciarJuego"
@@ -617,14 +604,5 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.24" />
 
-        <ImageView
-            android:id="@+id/imagen_original"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="invisible"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintHeight_percent="0.58536"
-            app:layout_constraintLeft_toLeftOf="@+id/cuadro1"
-            app:layout_constraintTop_toTopOf="@+id/cuadro1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
